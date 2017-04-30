@@ -1,4 +1,9 @@
 {
   "name": "fk/laravel-references",
-  "description": "Just docs for Laravel development"
+  "description": "Just docs and auto-completion for Laravel development",
+  "autoload": {
+    "psr-4": {
+      "fk\\refrence\\": "generator"
+    }
+  }
 }

@@ -22,6 +22,8 @@ namespace Illuminate\Support\Facades;
  *
  * @method static connection(string $name)
  *
+ * @method static table(string $name, callable $callback)
+ *
  */
 class Schema
 {
