@@ -9,11 +9,11 @@ namespace fk\reference;
 
 use Illuminate\Support\ServiceProvider;
 
-class ReferenceServiceProvider extends ServiceProvider
+class IdeReferenceServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        
+        $this->commands(['command.reference:framework']);
     }
 
     public function boot()

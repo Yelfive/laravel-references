@@ -3,7 +3,7 @@
   "description": "Just docs and auto-completion for Laravel development",
   "autoload": {
     "psr-4": {
-      "fk\\refrence\\": "generator"
+      "fk\\reference\\": "generator"
     }
   }
 }
