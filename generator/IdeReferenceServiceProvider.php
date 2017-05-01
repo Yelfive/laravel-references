@@ -27,6 +27,7 @@ class IdeReferenceServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->registerConfiguredProviders();
         $commands = [];
         $this->app->singleton($commands[] = $this->_prefix('framework'), function () {
             return new Framework();
@@ -39,8 +40,12 @@ class IdeReferenceServiceProvider extends ServiceProvider
         $this->commands($commands);
     }
 
+    const CONFIG_NAMESPACE = 'ide-reference';
+
     public function boot()
     {
-
+        $this->publishes([
+            __DIR__ . '/config/' . self::CONFIG_NAMESPACE . '.php' => config_path(self::CONFIG_NAMESPACE . '.php')
+        ]);
     }
 }

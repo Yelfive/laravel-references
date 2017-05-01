@@ -4,6 +4,7 @@
  * @author Felix Huang <yelfivehuang@gmail.com>
  * @date 2017-04-30
  */
+use fk\reference\support\Helper;
 
 /**
  * @var array $namespace
@@ -14,12 +15,8 @@
  * @var array $rules
  */
 
-?>
-
-
-<?php
-
 echo "<?php\n";
+
 ?>
 
 namespace <?= $namespace ?>;
@@ -28,7 +25,7 @@ namespace <?= $namespace ?>;
  * Fields in the table `<?= $tableName ?>`
  *
 <?php foreach ($columns as list($type, $property, $description)): ?>
- * @property <?= $type ?> <?= $property ?> <?= $description ?><?= "\n" ?>
+ * @property <?= $type ?> $<?= $property ?> <?= $description ?><?= "\n" ?>
 <?php endforeach; ?>
  */
 class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
@@ -43,10 +40,9 @@ class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
     {
         return [
 <?php foreach($rules as $name => $rule): ?>
-            '<?= $name ?>' => <?= $rule ?><?= "\n" ?>
+            '<?= $name ?>' => <?= Helper::dump($rule) ?>,<?= "\n" ?>
 <?php endforeach; ?>
         ];
     }
 
 }
-

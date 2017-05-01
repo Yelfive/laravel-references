@@ -6,6 +6,7 @@
  */
 
 namespace fk\reference\support;
+use Illuminate\Support\Facades\DB;
 
 /**
  */
@@ -52,7 +53,7 @@ class ColumnSchema
     /** @var string */
     public $columnComment;
     /** @var boolean */
-    public $unsigned;
+    public $unsigned = false;
     /** @var integer */
     public $size;
 
