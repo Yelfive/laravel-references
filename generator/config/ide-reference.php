@@ -6,8 +6,11 @@
  */
 
 return [
-    'baseModel' => 'App\Models\Model',
-    'namespace' => 'App\Models',
-    'dir' => 'app\test',
-    'preferArrayRules' => true,
+    'model' => [
+        'baseModel' => 'App\Models\Model',
+        'namespace' => 'App\Models',
+        'dir' => 'app\test',
+        'preferArrayRules' => true,
+        'except' => ['updated_at', 'created_at', 'deleted']
+    ],
 ];

@@ -7,6 +7,7 @@
 
 namespace fk\reference\commands;
 
+use fk\reference\exceptions\FileNotFoundException;
 use fk\reference\IdeReferenceServiceProvider;
 use fk\reference\support\ColumnSchema;
 use fk\reference\support\TableSchema;
@@ -78,7 +79,7 @@ CMD
 
         $dir = dirname($file);
         if (!file_exists($dir)) {
-            if ($this->confirm("Directory [$dir] does not exist! Create?[y/n]", false)) {
+            if ($this->confirm("Directory [$dir] does not exist! Create?", false)) {
                 mkdir($dir, 0755, true);
                 $this->comment('Directory created');
             } else {
@@ -93,7 +94,7 @@ CMD
 
     protected function config($name, $default = '')
     {
-        return config(IdeReferenceServiceProvider::CONFIG_NAMESPACE . ".$name", $default);
+        return config(IdeReferenceServiceProvider::CONFIG_NAMESPACE . ".model.$name", $default);
     }
 
     protected function generateModel($table)
@@ -241,6 +242,9 @@ CMD
     protected function render($params)
     {
         $path = __DIR__ . '/../templates/model.php';
+        if (!file_exists($path)) {
+            throw new FileNotFoundException($path);
+        }
         extract($params);
         ob_start();
         include $path;
