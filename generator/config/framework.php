@@ -5,23 +5,6 @@
  * @date 2017-05-01
  */
 
-//return [
-//    \Illuminate\Database\Eloquent\Builder::class,
-//    \Illuminate\Database\Eloquent\Model::class,
-//];
-//$laravelPath = base_path('vendor/laravel/framework/src/Illuminate/Support/Facades');
-
-$map = [
-    'App' => ['app', Illuminate\Contracts\Console\Kernel::class],
-    'Artisan' => [\Illuminate\Contracts\Console\Kernel::class, \App\Console\Kernel::class],
-    'auth' => \Illuminate\Auth\AuthManager::class,
-    'auth.driver' => '$app[auth]->guard()vendor/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php:45',
-    'auth.driver____' => '\Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard',
-    'AuthenticatableContract::class' => '',
-    'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
-    'auth.password.broker' => '',
-];
-
 $laravelPath = base_path('vendor/laravel/framework/src/Illuminate');
 global $basePath;
 $basePath = dirname($laravelPath);

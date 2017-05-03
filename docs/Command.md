@@ -1,16 +1,19 @@
 # Learn by example
 
-```
+```php
 
 <?php
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class MyCommand extends \Illutminate\Console\Command
+class MyCommand extends \Illuminate\Console\Command
 {
-    protected $name = 'me:do-sth'
- 
+    protected $name = 'me:do-sth';
+
+    /**
+     * @see Symfony\Component\Console\Command\Command::addOption()
+     */
     protected function getOptions()
     {
         return [
@@ -18,7 +21,10 @@ class MyCommand extends \Illutminate\Console\Command
             ['path', 'p', InputOption::VALUE_OPTIONAL, 'Path for the command', '/var/www/html/']
         ];
     }
-    
+
+    /**
+     * @see Symfony\Component\Console\Command\Command::addArgument()
+     */
     protected function getArguments()
     {
         return [
@@ -38,9 +44,12 @@ class MyCommand extends \Illutminate\Console\Command
     If you don't want an alias, just fill with `null`
 - `OptionRule`
     Properties indicate what the option can be. The value is pre-defined in `namespace Symfony\Component\Console\Input\InputOptions`
-    ```
+    ```php
+    <?php
     class InputOption
     {
+        // Indicates the option is a switch, which does not take a default value
+        // And VALUE_NONE and VALUE_OPTIONAL does not work together
         const VALUE_NONE = 1;
         const VALUE_REQUIRED = 2;
         const VALUE_OPTIONAL = 4;
@@ -64,7 +73,8 @@ class MyCommand extends \Illutminate\Console\Command
     Name of the argument. This is display when call `php artisan help me:sth`, and do not need to be specified when called
 - `ArgumentRule`
     As with options, rules is pre-defined to describe the arguments in `namespace Symfony\Component\Console\Input\InputArgument`
-    ```
+    ```php
+    <?php
     class InputArgument
     {
         const REQUIRED = 1;

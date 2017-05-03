@@ -13,6 +13,7 @@ use fk\reference\support\Helper;
  * @var string $tableName
  * @var string $baseModelName
  * @var array $rules
+ * @var array $dynamicWhere
  */
 
 echo "<?php\n";
@@ -27,6 +28,7 @@ namespace <?= $namespace ?>;
 <?php foreach ($columns as list($type, $property, $description)): ?>
  * @property <?= $type ?> $<?= $property ?> <?= $description ?><?= "\n" ?>
 <?php endforeach; ?>
+ *
  */
 class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
 {
@@ -40,7 +42,7 @@ class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
     {
         return [
 <?php foreach($rules as $name => $rule): ?>
-            '<?= $name ?>' => <?= Helper::dump($rule) ?>,<?= "\n" ?>
+            '<?= $name ?>' => <?= Helper::dump($rule, true) ?>,<?= "\n" ?>
 <?php endforeach; ?>
         ];
     }

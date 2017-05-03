@@ -19,7 +19,6 @@ class Model extends Command
 {
 
     protected $name = 'reference:model';
-//    protected $signature = 'reference:model {names?* : name of the table} {--d|dir=App\Models}';
 
     protected $description = 'Generate model references or create model instead of `php artisan make:model`';
 
@@ -67,13 +66,38 @@ CMD
         }
     }
 
-    protected function write($model, $content)
+    protected function doubleConfirm()
     {
-        $file = base_path($this->config('dir')) . "/$model.php";
+        return $this->ask(<<<QUESTION
+------------------------------------------------
+| Are you sure you want to overwrite the model?  |
+| Enter model's short name to overwrite          |
+| Notice the name is case-sensitive              |
+ ------------------------------------------------
+QUESTION
+        );
+    }
+
+    protected function write($modelShortName, $content)
+    {
+        $file = base_path($this->config('dir')) . "/$modelShortName.php";
         $file = str_replace('\\', '/', $file);
-        if (file_exists($file)) {
-            $this->warn("Model `$model` already exists at : $file");
+        $existedAlready = file_exists($file);
+        if (
+            $existedAlready
+            &&
+            (
+                $this->option('overwrite') === false
+                || $this->doubleConfirm() !== $modelShortName
+            )
+        ) {
+            if ($this->option('overwrite')) {
+                $this->error("Confirm failed. The answer is `$modelShortName`");
+                sleep(1);
+            }
+            $this->warn("Model `$modelShortName` already exists at : $file");
             $this->compareModel($file, $content);
+            $this->error('Use option --overwrite if you want to overwrite the existed file.');
             return;
         }
 
@@ -86,10 +110,9 @@ CMD
                 return;
             }
         }
-        $handler = fopen($file, 'w');
-        fwrite($handler, $content);
+        fwrite($handler = fopen($file, 'w'), $content);
         fclose($handler);
-        $this->comment("Model `$model` created");
+        $this->comment("Model `$modelShortName` " . ($existedAlready ? 'updated.' : 'created.'));
     }
 
     protected function config($name, $default = '')
@@ -100,7 +123,6 @@ CMD
     protected function generateModel($table)
     {
         $schema = $this->getTableSchema($table);
-        $dir = app_path('test/');
         $namespace = $this->config('namespace', 'App\Models');
 
         $columns = $rules = [];
@@ -113,10 +135,12 @@ CMD
             if ($column->columnKey !== 'PRI') {
                 $rules[$column->columnName] = $this->getRules($column);
             }
+
         }
         $modelName = ucfirst(ColumnSchema::camelCase($table));
         $baseModelName = $this->config('baseModel', 'App\Models\Model');
         $this->compareModelNamespace($namespace, $baseModelName);
+        // todo add relations
         $relations = [];
         $content = $this->render([
             'namespace' => $namespace,
@@ -242,10 +266,9 @@ CMD
     protected function render($params)
     {
         $path = __DIR__ . '/../templates/model.php';
-        if (!file_exists($path)) {
-            throw new FileNotFoundException($path);
-        }
+        if (!file_exists($path)) throw new FileNotFoundException($path);
         extract($params);
+
         ob_start();
         include $path;
         $content = ob_get_clean();
@@ -268,6 +291,7 @@ CMD
     {
         return [
             ['dir', 'd', InputOption::VALUE_OPTIONAL, 'Directory for the models to be placed', 'App\Models'],
+            ['overwrite', null, InputOption::VALUE_NONE, 'Overwrite if model exists when passed'],
         ];
     }
 

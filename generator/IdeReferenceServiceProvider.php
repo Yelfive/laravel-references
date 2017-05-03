@@ -8,6 +8,7 @@
 namespace fk\reference;
 
 use fk\reference\commands\Framework;
+use fk\reference\commands\Mixin;
 use fk\reference\commands\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,6 +36,10 @@ class IdeReferenceServiceProvider extends ServiceProvider
 
         $this->app->singleton($commands[] = $this->_prefix('model'), function () {
             return new Model();
+        });
+
+        $this->app->singleton($commands[] = $this->_prefix('mixin'), function () {
+            return new Mixin();
         });
 
         $this->commands($commands);

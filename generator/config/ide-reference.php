@@ -5,6 +5,12 @@
  * @date 2017-05-01
  */
 
+/*
+ * \Illuminate\Database\Eloquent\Model
+ * \Illuminate\Database\Eloquent\Builder
+ * \Illuminate\Database\Query\Builder
+ * \Illuminate\Database\Query\Builder::dynamicWhere
+ */
 return [
     'model' => [
         'baseModel' => 'App\Models\Model',
