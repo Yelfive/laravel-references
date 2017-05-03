@@ -18,24 +18,32 @@ use Symfony\Component\Console\Input\InputOption;
 class Framework extends Command
 {
 
-//    use ParseClassTrait;
-
-//    protected $signature = 'reference:framework {name}';
     protected $name = 'reference:framework';
+
     protected $description = 'Generate reference docs for Laravel facades etc.';
 
     public function handle()
     {
-//        $method = $this->argument('name');
-//        $method = 'handle' . ucfirst($method);
-//        $this->$method();
         (new FrameworkHelper($this))->handle($this->argument('name'));
     }
 
     protected function getArguments()
     {
+        $files = scandir(__DIR__ . '/../support');
+        $names = [];
+        foreach ($files as $file) {
+            if (preg_match('/^Handle([A-Z]\w+)Trait\.php$/', $file, $matches)) {
+                $names[] = lcfirst($matches[1]);
+            }
+        }
+        $names = implode("\n- ", $names);
         return [
-            ['name', InputArgument::REQUIRED, 'Name of the option to perform'],
+            ['name', InputArgument::REQUIRED, <<<DESC
+Name of the option to perform.
+Currently supported:
+- $names
+DESC
+            ]
         ];
     }
 
