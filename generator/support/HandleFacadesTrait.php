@@ -7,12 +7,15 @@
 
 namespace fk\reference\support;
 
+/**
+ * @method info(string $message)
+ */
 trait HandleFacadesTrait
 {
 
     public function handleFacades()
     {
-        $classes = include __DIR__ . '/../config/framework.php';
+        $classes = include __DIR__ . '/../config/facades.php';
         $k = -1;
         foreach ($classes as $k => $classInfo) {
             $content = $this->docForClass($classInfo);
@@ -66,7 +69,18 @@ DOC;
         if ($aliasReflectionClass !== $reflectionClass) $this->parseProperties($aliasReflectionClass);
         $this->parseProperties($reflectionClass);
 
-        if ($aliasReflectionClass !== $reflectionClass) $this->parseMethods($aliasReflectionClass);
+        if ($aliasReflectionClass !== $reflectionClass) {
+            $this->parseMethods($aliasReflectionClass);
+//            $this->
+        }
+
+        $__call = include __DIR__ . '/../config/facades.__call.php';
+        $accessor = $reflectionClass->name;
+        while (isset($__call[$accessor])) {
+            $rc = new \ReflectionClass($__call[$accessor]);
+            $this->parseMethods($rc, true);
+            $accessor = $rc->name;
+        }
         $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass);
     }
 

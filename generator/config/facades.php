@@ -5,6 +5,8 @@
  * @date 2017-05-01
  */
 
+$__call = include __DIR__ . '/facades.__call.php';
+
 $laravelPath = base_path('vendor/laravel/framework/src/Illuminate');
 global $basePath;
 $basePath = dirname($laravelPath);
@@ -42,11 +44,13 @@ foreach (findClasses($laravelPath) as $k => $class) {
     $method->setAccessible(true);
     $accessor = $method->invoke(new $class);
 
+    $root = get_class($class::getFacadeRoot());
     $data[] = [
         'alias' => $class,
-        'class' => get_class($class::getFacadeRoot()),
+        'class' => $root,
         'facade' => $class,
         'accessor' => is_scalar($accessor) ? $accessor : get_class($accessor),
+//        '__call' => $__call[$root] ?? null,
     ];
 }
 

@@ -51,6 +51,7 @@ DESC
     {
         return [
             ['yes', 'y', InputOption::VALUE_NONE, 'No interaction, answers yes to all confirms'],
+            ['overwrite', null, InputOption::VALUE_NONE, 'Overwrites files if exists'],
         ];
     }
 

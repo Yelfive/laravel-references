@@ -28,7 +28,13 @@ trait ParseClassTrait
 
         if (!$this->validateDirectory($dir)) return false;
 
-        if (!is_file($filename) || is_file($filename) && $this->confirm("File [$filename] exits, overwrite?")) {
+        if (
+            !is_file($filename)
+            || is_file($filename) && (
+                $this->option('overwrite') ||
+                $this->confirm("File [$filename] exits, overwrite?")
+            )
+        ) {
             fwrite($handler = fopen($filename, 'w'), $content);
             fclose($handler);
 

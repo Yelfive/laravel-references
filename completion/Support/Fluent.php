@@ -21,6 +21,7 @@ namespace Illuminate\Support;
  * @method $this comment(string $comment)
  * @method $this after(string $column)
  * @method $this first()
+ * @method $this change() Indicates altering a column
  *
  *
  */
