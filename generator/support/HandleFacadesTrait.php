@@ -69,10 +69,8 @@ DOC;
         if ($aliasReflectionClass !== $reflectionClass) $this->parseProperties($aliasReflectionClass);
         $this->parseProperties($reflectionClass);
 
-        if ($aliasReflectionClass !== $reflectionClass) {
-            $this->parseMethods($aliasReflectionClass);
-//            $this->
-        }
+        if ($aliasReflectionClass !== $reflectionClass) $this->parseMethods($aliasReflectionClass);
+        $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass);
 
         $__call = include __DIR__ . '/../config/facades.__call.php';
         $accessor = $reflectionClass->name;
@@ -81,7 +79,6 @@ DOC;
             $this->parseMethods($rc, true);
             $accessor = $rc->name;
         }
-        $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass);
     }
 
     protected function metaToString(): string
