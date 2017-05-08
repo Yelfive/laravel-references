@@ -64,7 +64,7 @@ class Helper
         } else if (is_null($input)) {
             return 'null';
         } else if (is_bool($input)) {
-            return $input ? 'true' : 'true';
+            return $input ? 'true' : 'false';
         } else if (is_int($input)) {
             return $input;
         }
