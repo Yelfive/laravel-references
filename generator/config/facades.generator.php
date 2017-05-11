@@ -5,7 +5,7 @@
  * @date 2017-05-01
  */
 
-$__call = include __DIR__ . '/facades.__call.php';
+$__call = include __DIR__ . '/framework.__call.php';
 
 $laravelPath = base_path('vendor/laravel/framework/src/Illuminate');
 global $basePath;

@@ -11,8 +11,25 @@ use fk\reference\exceptions\InvalidVariableException;
 
 trait ParseClassTrait
 {
-
+    /**
+     * @var array
+     *  - methods
+     *      //
+     */
     public $meta;
+
+    protected function initMeta()
+    {
+        $this->meta = [
+            'namespace' => '',
+            'uses' => new ClassMember(),
+            'class_doc' => '',
+            'class_name' => '',
+            'constants' => new ClassMember(),
+            'properties' => new ClassMember(),
+            'methods' => new ClassMember(),
+        ];
+    }
 
     protected function write($fullClassName, $content)
     {
@@ -61,19 +78,6 @@ trait ParseClassTrait
         return true;
     }
 
-    protected function initMeta()
-    {
-        $this->meta = [
-            'namespace' => '',
-            'uses' => [],
-            'class_doc' => '',
-            'class_name' => '',
-            'constants' => [],
-            'properties' => [],
-            'methods' => [],
-        ];
-    }
-
     private function _prefixSpace(string $string, string $space, bool $appendLF = true): string
     {
         if ($space) $string = $space . str_replace(["\n", "\n$space\n"], ["\n$space", "\n\n"], $string);
@@ -82,15 +86,18 @@ trait ParseClassTrait
 
     private function _usesToString(string $space = ''): string
     {
+        /** @var ClassMember $metaUse */
+        $metaUse = $this->meta['uses'];
+        $data = $metaUse->getData();
         if ($space) {
             $uses = '';
-            foreach ($this->meta['uses'] as $use => $as) {
+            foreach ($data as $use => $as) {
                 $uses .= "{$space}use $use" . (basename(str_replace('\\', '/', $use)) === $as ? '' : " as $as;") . ";\n";
             }
             return rtrim($uses, "\n");
         } else {
             $uses = '';
-            foreach ($this->meta['uses'] as $use => $as) {
+            foreach ($data as $use => $as) {
                 $uses .= "use $use" . (basename(str_replace('\\', '/', $use)) === $as ? '' : " as $as;") . ";\n";
             }
             return rtrim($uses, "\n");
@@ -101,20 +108,26 @@ trait ParseClassTrait
     {
         if (empty($this->meta['constants'])) return '';
 
-        $string = implode("\n", $this->meta['constants']);
+        $string = $this->_implode("\n", $this->meta['constants']);
         return $this->_prefixSpace($string, $space);
     }
 
     private function _propertiesToString(string $space = ''): string
     {
-        $string = implode("\n", $this->meta['properties']);
+        $string = $this->_implode("\n", $this->meta['properties']);
         return $this->_prefixSpace($string, $space);
     }
 
     private function _methodsToString(string $space = ''): string
     {
-        $string = implode("\n", $this->meta['methods']);
+        $string = $this->_implode("\n", $this->meta['methods']);
         return $this->_prefixSpace($string, $space);
+    }
+
+    private function _implode($glue, $pieces)
+    {
+        if ($pieces instanceof ClassMember) $pieces = $pieces->getData();
+        return implode($glue, $pieces);
     }
 
     protected function parseClassName(\ReflectionClass $reflectionClass)
@@ -125,7 +138,6 @@ trait ParseClassTrait
     protected function parseConstants(\ReflectionClass $reflectionClass)
     {
         foreach ($reflectionClass->getConstants() as $constant => $value) {
-            if (isset($this->meta['constants'][$constant])) continue;
             $value = Helper::dump($value, true);
             $this->meta['constants'][$constant] = <<<DOC
     const $constant = $value;
@@ -151,7 +163,7 @@ DOC;
     {
         $properties = $reflectionClass->getProperties();
         foreach ($properties as $property) {
-            if (isset($this->meta['properties'][$property->name]) || false == $privacy = $this->propertyPrivacy($property)) continue;
+            if (false == $privacy = $this->propertyPrivacy($property)) continue;
 
             $doc = $property->getDocComment();
             $static = $property->isStatic() ? 'static ' : '';
@@ -187,7 +199,6 @@ DOC;
 
         foreach ($methods as $method) {
             if ($this->skipMethod($method)) continue;
-            if (isset($this->meta['methods'][$method->name])) continue;
             if (is_callable($condition) && !$condition($method)) continue;
 
             $doc = $this->methodDoc($method);
@@ -280,7 +291,7 @@ DOC;
             $uses = &$this->meta['uses'];
 
             $shortType = basename(str_replace('\\', '/', $type));
-            if ($shortType === $this->meta['class_name'] || !isset($uses[$type]) && in_array($shortType, $uses)) {
+            if ($shortType === $this->meta['class_name'] || !isset($uses[$type]) && in_array($shortType, $uses->getData())) {
                 return "\\$type ";
             } else {
                 $this->meta['uses'][$type] = $shortType;

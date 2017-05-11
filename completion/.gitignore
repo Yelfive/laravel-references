@@ -1,4 +1,6 @@
 # Generated via artisan
-Database
-Support/Facades
+#Database
+#Support/Facades
+*
+!/Support/Fluent.php
 !.gitignore

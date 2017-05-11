@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @author Felix Huang <yelfivehuang@gmail.com>
+ * @date 2017-05-04
+ */
+
+/**
+ * This is used when facades accessor has a __call to redirect the methods call into another class
+ *```
+ * accessor::class => another::class
+ *```
+ */
+return [
+    \Illuminate\Session\SessionManager::class => \Illuminate\Session\Store::class,
+    Illuminate\Routing\Router::class => \Illuminate\Routing\RouteRegistrar::class,
+    \Illuminate\Routing\RouteRegistrar::class => [
+        [
+            'return' => \Illuminate\Routing\Route::class,
+            'methods' => ['get', 'post', 'put', 'patch', 'delete', 'options', 'any'],
+            'parameters' => [['string', '$uri'], ['\Closure|array|string|null', '$action']],
+        ],
+        [
+            'return' => \Illuminate\Routing\RouteRegistrar::class,
+            'methods' => ['as', 'domain', 'middleware', 'name', 'namespace', 'prefix'],
+            // 'parameters' => [[type, name]],
+            'parameters' => [['mixed', '$value']],
+        ],
+    ],
+    \Illuminate\Database\Eloquent\Model::class => \Illuminate\Database\Eloquent\Builder::class,
+    \Illuminate\Database\Eloquent\Builder::class => \Illuminate\Database\Query\Builder::class,
+];

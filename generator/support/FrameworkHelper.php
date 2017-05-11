@@ -11,8 +11,7 @@ use Illuminate\Console\Command;
 
 class FrameworkHelper
 {
-    use ParseClassTrait,
-        HandleFacadesTrait, HandleModelTrait;
+    use ParseClassTrait, HandleFrameworkTrait;
 
     /**
      * @var Command
@@ -26,8 +25,9 @@ class FrameworkHelper
 
     public function handle($name)
     {
-        $method = 'handle' . ucfirst($name);
-        $this->$method();
+//        $method = 'handle' . ucfirst($name);
+//        $this->$method();
+        $this->handleFramework();
     }
 
     public function __call($name, $arguments)
