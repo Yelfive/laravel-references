@@ -23,10 +23,8 @@ class FrameworkHelper
         $this->command = $command;
     }
 
-    public function handle($name)
+    public function handle()
     {
-//        $method = 'handle' . ucfirst($name);
-//        $this->$method();
         $this->handleFramework();
     }
 

@@ -24,28 +24,28 @@ class Framework extends Command
 
     public function handle()
     {
-        (new FrameworkHelper($this))->handle($this->argument('name'));
+        (new FrameworkHelper($this))->handle();
     }
 
-    protected function getArguments()
-    {
-        $files = scandir(__DIR__ . '/../support');
-        $names = [];
-        foreach ($files as $file) {
-            if (preg_match('/^Handle([A-Z]\w+)Trait\.php$/', $file, $matches)) {
-                $names[] = lcfirst($matches[1]);
-            }
-        }
-        $names = implode("\n- ", $names);
-        return [
-            ['name', InputArgument::REQUIRED, <<<DESC
-Name of the option to perform.
-Currently supported:
-- $names
-DESC
-            ]
-        ];
-    }
+//    protected function getArguments()
+//    {
+//        $files = scandir(__DIR__ . '/../support');
+//        $names = [];
+//        foreach ($files as $file) {
+//            if (preg_match('/^Handle([A-Z]\w+)Trait\.php$/', $file, $matches)) {
+//                $names[] = lcfirst($matches[1]);
+//            }
+//        }
+//        $names = implode("\n- ", $names);
+//        return [
+//            ['name', InputArgument::REQUIRED, <<<DESC
+//Name of the option to perform.
+//Currently supported:
+//- $names
+//DESC
+//            ]
+//        ];
+//    }
 
     protected function getOptions()
     {

@@ -18,7 +18,6 @@
  * Staticize the facades, in case the accessor overwritten by custom Service Provider
  */
 return [
-/*
     [
         'alias' => '\Illuminate\Support\Facades\App',
         'class' => 'Illuminate\Foundation\Application',
@@ -216,9 +215,9 @@ return [
         'class' => 'Illuminate\View\Factory',
         'facade' => '\Illuminate\Support\Facades\View',
         'accessor' => 'view',
-    ],*/
+    ],
 
     // Normal classes
-//    \Illuminate\Routing\RouteRegistrar::class,
+    \Illuminate\Routing\RouteRegistrar::class,
     \Illuminate\Database\Eloquent\Model::class,
 ];
