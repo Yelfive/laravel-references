@@ -28,7 +28,6 @@ class IdeReferenceServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->registerConfiguredProviders();
         $commands = [];
         $this->app->singleton($commands[] = $this->_prefix('framework'), function () {
             return new Framework();
