@@ -1,6 +1,0 @@
-# Generated via artisan
-#Database
-#Support/Facades
-*
-!/Support/Fluent.php
-!.gitignore

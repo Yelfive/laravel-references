@@ -128,7 +128,7 @@ QUESTION
         $columns = $rules = [];
         foreach ($schema->columns as $column) {
             $columns[] = [
-                $this->getColumnType($column->columnType), $column->columnName, ''
+                $this->getColumnType($column->columnType), $column->columnName, $column->columnComment
             ];
 
             // Do not set rules for primary key, for they are always auto increment
