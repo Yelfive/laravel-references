@@ -72,7 +72,7 @@ CMD
 ------------------------------------------------
 | Are you sure you want to overwrite the model?  |
 | Enter model's short name to overwrite          |
-| Notice the name is case-sensitive              |
+| Notice: the name is case-sensitive             |
  ------------------------------------------------
 QUESTION
         );
@@ -257,6 +257,7 @@ QUESTION
             case 'enum':
             case 'datetime':
             case 'time':
+            case 'timestamp':
                 return 'string';
             default:
                 return $type;

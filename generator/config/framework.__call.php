@@ -8,7 +8,15 @@
 /**
  * This is used when facades accessor has a __call to redirect the methods call into another class
  *```
- * accessor::class => another::class
+ *  // Used when __call invokes callee methods at caller::__call
+ *  caller::class => callee::class,
+ *  // Used when __call sets attributes instead of calling another method in another class
+ *  caller::class => [
+ *      'return' => someType
+ *      'methods' => [],    // the methods called via __call
+ *      'parameters' => [] // the parameters passed via __call
+ *  ]
+ *
  *```
  */
 return [

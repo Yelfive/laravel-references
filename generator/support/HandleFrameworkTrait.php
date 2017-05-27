@@ -84,7 +84,9 @@ DOC;
     protected function handleExtra(string $accessor)
     {
         $__calls = include __DIR__ . '/../config/framework.__call.php';
-        while (isset($__calls[$accessor])) {
+        $accessorChecked = [];
+        while (isset($__calls[$accessor]) && empty($accessorChecked[$accessor])) {
+            $accessorChecked[$accessor] = true;
             $info = $__calls[$accessor];
             if (is_string($info)) {
                 $rc = new \ReflectionClass($info);
@@ -214,23 +216,5 @@ DOC;
         }
         return $this->isStaticMethod = false;
     }
-
-//    protected function isStaticMethod($names = null): bool
-//    {
-//        if (is_bool($this->isStaticMethod)) return $this->isStaticMethod;
-//        if (is_string($names)) $names = [$names];
-//        foreach ($names as $name) {
-//            $name = "$name\\";
-//            if (
-//                strpos($name, '\\Model\\')
-//                || strpos($name, '\\Facades\\')
-//            ) {
-//                $this->isStaticMethod = true;
-//                break;
-//            }
-//        }
-//        $this->isStaticMethod = false;
-//        return $this->isStaticMethod;
-//    }
 
 }
