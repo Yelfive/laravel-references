@@ -1,0 +1,23 @@
+- Route generator
+
+Something like
+```php
+<?php
+
+namespace App\Components\Controllers\World;
+
+class Say
+{
+    /**
+     * @@method POST
+     * @@route hello
+     * @@prefix api
+     * @@namespace World
+     *
+     */
+     public function hello()
+     {
+
+     }
+}
+```

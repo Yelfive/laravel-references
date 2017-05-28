@@ -69,7 +69,7 @@ class ColumnSchema
     {
         switch ($column) {
             case 'isNullable':
-                return !!$value;
+                return $value === 'YES';
                 break;
             case 'columnType':
                 return $this->parseColumnType($value);
@@ -83,10 +83,6 @@ class ColumnSchema
         if (preg_match('/(\w+)(?:\((\d+(?:,?\d+)?)\))?(?: +(\w+))?/', $value, $matches)) {
             $type = $matches[1];
             if (false !== strpos($type, 'int') || $type === 'decimal' || $type === 'float') {
-//                    var_dump($value, $matches);
-//                if (empty($matches[3])) {
-//                    die;
-//                }
                 $this->size = $matches[2];
                 $this->unsigned = $matches[3]??'' === 'unsigned' ? true : false;
             }

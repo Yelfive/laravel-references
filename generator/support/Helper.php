@@ -59,7 +59,9 @@ class Helper
 
     public static function wrapScalar($input)
     {
-        if (is_string($input)) {
+        if (is_numeric($input)) {
+            return $input;
+        } else if (is_string($input)) {
             return "'$input'";
         } else if (is_null($input)) {
             return 'null';

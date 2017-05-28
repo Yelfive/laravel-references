@@ -10,6 +10,7 @@ namespace fk\reference\commands;
 use fk\reference\exceptions\FileNotFoundException;
 use fk\reference\IdeReferenceServiceProvider;
 use fk\reference\support\ColumnSchema;
+use fk\reference\support\Helper;
 use fk\reference\support\TableSchema;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -127,15 +128,15 @@ QUESTION
 
         $columns = $rules = [];
         foreach ($schema->columns as $column) {
+            $description = ($column->columnDefault === null ? '' : "[Default " . Helper::dump($column->columnDefault, true) . "] ") . $column->columnComment;
             $columns[] = [
-                $this->getColumnType($column->columnType), $column->columnName, $column->columnComment
+                $this->getColumnType($column->columnType), $column->columnName, $description
             ];
 
             // Do not set rules for primary key, for they are always auto increment
             if ($column->columnKey !== 'PRI') {
                 $rules[$column->columnName] = $this->getRules($column);
             }
-
         }
         $modelName = ucfirst(ColumnSchema::camelCase($table));
         $baseModelName = $this->config('baseModel', 'App\Models\Model');
@@ -227,10 +228,14 @@ QUESTION
                     'max:' . $column->characterMaximumLength
                 ];
                 break;
+            case 'date':
+            case 'timestamp':
+                $rules = ['date'];
+                break;
         }
 
         if (!$column->columnKey === 'UNI') array_unshift($rules, "unique:$column->tableName");
-        if (!$column->isNullable) array_unshift($rules, 'required');
+        if (!$column->isNullable && $column->columnDefault === null) array_unshift($rules, 'required');
 
         if (!$rules) $rules[] = '';
 
