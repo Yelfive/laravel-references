@@ -552,7 +552,7 @@ namespace Illuminate\Support\Facades {
          * Set a callback to be used to format the host of generated URLs.
          *
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Routing\UrlGenerator
          * @see \Illuminate\Routing\UrlGenerator::formatHostUsing()
          */
         public static function formatHostUsing(Closure $callback)
@@ -563,7 +563,7 @@ namespace Illuminate\Support\Facades {
          * Set a callback to be used to format the path of generated URLs.
          *
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Routing\UrlGenerator
          * @see \Illuminate\Routing\UrlGenerator::formatPathUsing()
          */
         public static function formatPathUsing(Closure $callback)
@@ -605,7 +605,7 @@ namespace Illuminate\Support\Facades {
          * Set the route collection.
          *
          * @param \Illuminate\Routing\RouteCollection $routes
-         * @return $this
+         * @return \Illuminate\Routing\UrlGenerator
          * @see \Illuminate\Routing\UrlGenerator::setRoutes()
          */
         public static function setRoutes(RouteCollection $routes)
@@ -626,7 +626,7 @@ namespace Illuminate\Support\Facades {
          * Set the session resolver for the generator.
          *
          * @param callable $sessionResolver
-         * @return $this
+         * @return \Illuminate\Routing\UrlGenerator
          * @see \Illuminate\Routing\UrlGenerator::setSessionResolver()
          */
         public static function setSessionResolver(callable $sessionResolver)
@@ -637,7 +637,7 @@ namespace Illuminate\Support\Facades {
          * Set the root controller namespace.
          *
          * @param string $rootNamespace
-         * @return $this
+         * @return \Illuminate\Routing\UrlGenerator
          * @see \Illuminate\Routing\UrlGenerator::setRootControllerNamespace()
          */
         public static function setRootControllerNamespace($rootNamespace)

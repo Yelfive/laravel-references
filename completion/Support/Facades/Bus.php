@@ -313,7 +313,7 @@ namespace Illuminate\Support\Facades {
          * Set the pipes through which commands should be piped before dispatching.
          *
          * @param array $pipes
-         * @return $this
+         * @return \Illuminate\Bus\Dispatcher
          * @see \Illuminate\Bus\Dispatcher::pipeThrough()
          */
         public static function pipeThrough(array $pipes)
@@ -324,7 +324,7 @@ namespace Illuminate\Support\Facades {
          * Map a command to a handler.
          *
          * @param array $map
-         * @return $this
+         * @return \Illuminate\Bus\Dispatcher
          * @see \Illuminate\Bus\Dispatcher::map()
          */
         public static function map(array $map)

@@ -503,7 +503,7 @@ namespace Illuminate\Support\Facades {
          * Set the base path for the application.
          *
          * @param string $basePath
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::setBasePath()
          */
         public static function setBasePath($basePath)
@@ -579,7 +579,7 @@ namespace Illuminate\Support\Facades {
          * Set the database directory.
          *
          * @param string $path
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::useDatabasePath()
          */
         public static function useDatabasePath($path)
@@ -620,7 +620,7 @@ namespace Illuminate\Support\Facades {
          * Set the storage directory.
          *
          * @param string $path
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::useStoragePath()
          */
         public static function useStoragePath($path)
@@ -652,7 +652,7 @@ namespace Illuminate\Support\Facades {
          * Set the directory for the environment file.
          *
          * @param string $path
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::useEnvironmentPath()
          */
         public static function useEnvironmentPath($path)
@@ -663,7 +663,7 @@ namespace Illuminate\Support\Facades {
          * Set the environment file to be loaded during bootstrapping.
          *
          * @param string $file
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::loadEnvironmentFrom()
          */
         public static function loadEnvironmentFrom($file)
@@ -1017,7 +1017,7 @@ namespace Illuminate\Support\Facades {
          * Register a terminating callback with the application.
          *
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::terminating()
          */
         public static function terminating(Closure $callback)
@@ -1102,7 +1102,7 @@ namespace Illuminate\Support\Facades {
          * Define a callback to be used to configure Monolog.
          *
          * @param callable $callback
-         * @return $this
+         * @return \Illuminate\Foundation\Application
          * @see \Illuminate\Foundation\Application::configureMonologUsing()
          */
         public static function configureMonologUsing(callable $callback)

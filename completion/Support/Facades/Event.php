@@ -560,7 +560,7 @@ namespace Illuminate\Support\Facades {
          * Set the queue resolver implementation.
          *
          * @param callable $resolver
-         * @return $this
+         * @return \Illuminate\Events\Dispatcher
          * @see \Illuminate\Events\Dispatcher::setQueueResolver()
          */
         public static function setQueueResolver(callable $resolver)

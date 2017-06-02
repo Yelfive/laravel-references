@@ -508,7 +508,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $namespace
          * @param string|array $hints
-         * @return $this
+         * @return \Illuminate\View\Factory
          * @see \Illuminate\View\Factory::addNamespace()
          */
         public static function addNamespace($namespace, $hints)
@@ -520,7 +520,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $namespace
          * @param string|array $hints
-         * @return $this
+         * @return \Illuminate\View\Factory
          * @see \Illuminate\View\Factory::prependNamespace()
          */
         public static function prependNamespace($namespace, $hints)
@@ -532,7 +532,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $namespace
          * @param string|array $hints
-         * @return $this
+         * @return \Illuminate\View\Factory
          * @see \Illuminate\View\Factory::replaceNamespace()
          */
         public static function replaceNamespace($namespace, $hints)

@@ -220,7 +220,7 @@ namespace Illuminate\Support\Facades {
          * Set the default password work factor.
          *
          * @param int $rounds
-         * @return $this
+         * @return \Illuminate\Hashing\BcryptHasher
          * @see \Illuminate\Hashing\BcryptHasher::setRounds()
          */
         public static function setRounds($rounds)

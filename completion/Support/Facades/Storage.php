@@ -414,7 +414,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Filesystem\FilesystemManager
          * @see \Illuminate\Filesystem\FilesystemManager::extend()
          */
         public static function extend($driver, Closure $callback)

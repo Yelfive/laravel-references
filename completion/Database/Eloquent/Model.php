@@ -2630,7 +2630,7 @@ class Model
      *
      * @param string $identifier
      * @param \Illuminate\Database\Eloquent\Scope|\Closure $scope
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::withGlobalScope()
      */
     public static function withGlobalScope($identifier, $scope)
@@ -2641,7 +2641,7 @@ class Model
      * Remove a registered global scope.
      *
      * @param \Illuminate\Database\Eloquent\Scope|string $scope
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::withoutGlobalScope()
      */
     public static function withoutGlobalScope($scope)
@@ -2652,7 +2652,7 @@ class Model
      * Remove all or passed registered global scopes.
      *
      * @param array|null $scopes
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::withoutGlobalScopes()
      */
     public static function withoutGlobalScopes(array $scopes = null)
@@ -2673,7 +2673,7 @@ class Model
      * Add a where clause on the primary key to the query.
      *
      * @param mixed $id
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::whereKey()
      */
     public static function whereKey($id)
@@ -2687,7 +2687,7 @@ class Model
      * @param string $operator
      * @param mixed $value
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::where()
      */
     public static function where($column, $operator = null, $value = null, $boolean = 'and')
@@ -3114,7 +3114,7 @@ class Model
      * Prevent the specified relations from being eager loaded.
      *
      * @param mixed $relations
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::without()
      */
     public static function without($relations)
@@ -3169,7 +3169,7 @@ class Model
      * Set the underlying query builder instance.
      *
      * @param \Illuminate\Database\Query\Builder $query
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::setQuery()
      */
     public static function setQuery($query)
@@ -3200,7 +3200,7 @@ class Model
      * Set the relationships being eagerly loaded.
      *
      * @param array $eagerLoad
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::setEagerLoads()
      */
     public static function setEagerLoads(array $eagerLoad)
@@ -3221,7 +3221,7 @@ class Model
      * Set a model instance for the model being queried.
      *
      * @param \Illuminate\Database\Eloquent\Model $model
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::setModel()
      */
     public static function setModel(\Illuminate\Database\Eloquent\Model $model)
@@ -3389,7 +3389,7 @@ class Model
      * Add subselect queries to count the relations.
      *
      * @param mixed $relations
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::withCount()
      */
     public static function withCount($relations)
@@ -3429,7 +3429,7 @@ class Model
      * @param string $operator
      * @param int $count
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Builder
      * @see \Illuminate\Database\Eloquent\Builder::addWhereCountQuery()
      */
     protected static function addWhereCountQuery(\Illuminate\Database\Query\Builder $query, $operator = '>=', $count = 1, $boolean = 'and')
@@ -3463,7 +3463,7 @@ class Model
      * Set the columns to be selected.
      *
      * @param array|mixed $columns
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::select()
      */
     public static function select($columns = ['*'])
@@ -3511,7 +3511,7 @@ class Model
      * Add a new select column to the query.
      *
      * @param array|mixed $column
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::addSelect()
      */
     public static function addSelect($column)
@@ -3521,7 +3521,7 @@ class Model
     /**
      * Force the query to only return distinct results.
      *
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::distinct()
      */
     public static function distinct()
@@ -3532,7 +3532,7 @@ class Model
      * Set the table which the query is targeting.
      *
      * @param string $table
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::from()
      */
     public static function from($table)
@@ -3548,7 +3548,7 @@ class Model
      * @param string $second
      * @param string $type
      * @param bool $where
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::join()
      */
     public static function join($table, $first, $operator = null, $second = null, $type = 'inner', $where = false)
@@ -3669,7 +3669,7 @@ class Model
      * @param array $column
      * @param string $boolean
      * @param string $method
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::addArrayOfWheres()
      */
     protected static function addArrayOfWheres($column, $boolean, $method = 'where')
@@ -3749,7 +3749,7 @@ class Model
      * @param string $sql
      * @param mixed $bindings
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereRaw()
      */
     public static function whereRaw($sql, $bindings = [], $boolean = 'and')
@@ -3775,7 +3775,7 @@ class Model
      * @param mixed $values
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereIn()
      */
     public static function whereIn($column, $values, $boolean = 'and', $not = false)
@@ -3826,7 +3826,7 @@ class Model
      * @param \Closure $callback
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereInSub()
      */
     protected static function whereInSub($column, Closure $callback, $boolean, $not)
@@ -3840,7 +3840,7 @@ class Model
      * @param \Illuminate\Database\Query\Builder|static $query
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereInExistingQuery()
      */
     protected static function whereInExistingQuery($column, $query, $boolean, $not)
@@ -3853,7 +3853,7 @@ class Model
      * @param string $column
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereNull()
      */
     public static function whereNull($column, $boolean = 'and', $not = false)
@@ -3890,7 +3890,7 @@ class Model
      * @param array $values
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereBetween()
      */
     public static function whereBetween($column, array $values, $boolean = 'and', $not = false)
@@ -4049,7 +4049,7 @@ class Model
      * @param string $operator
      * @param int $value
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::addDateBasedWhere()
      */
     protected static function addDateBasedWhere($type, $column, $operator, $value, $boolean = 'and')
@@ -4083,7 +4083,7 @@ class Model
      *
      * @param \Illuminate\Database\Query\Builder|static $query
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::addNestedWhereQuery()
      */
     public static function addNestedWhereQuery($query, $boolean = 'and')
@@ -4097,7 +4097,7 @@ class Model
      * @param string $operator
      * @param \Closure $callback
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereSub()
      */
     protected static function whereSub($column, $operator, Closure $callback, $boolean)
@@ -4110,7 +4110,7 @@ class Model
      * @param \Closure $callback
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::whereExists()
      */
     public static function whereExists(Closure $callback, $boolean = 'and', $not = false)
@@ -4158,7 +4158,7 @@ class Model
      * @param \Illuminate\Database\Query\Builder $query
      * @param string $boolean
      * @param bool $not
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::addWhereExistsQuery()
      */
     public static function addWhereExistsQuery(\Illuminate\Database\Query\Builder $query, $boolean = 'and', $not = false)
@@ -4170,7 +4170,7 @@ class Model
      *
      * @param string $method
      * @param string $parameters
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::dynamicWhere()
      */
     public static function dynamicWhere($method, $parameters)
@@ -4195,7 +4195,7 @@ class Model
      * Add a "group by" clause to the query.
      *
      * @param array ...$groups
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::groupBy()
      */
     public static function groupBy($groups)
@@ -4209,7 +4209,7 @@ class Model
      * @param string $operator
      * @param string $value
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::having()
      */
     public static function having($column, $operator = null, $value = null, $boolean = 'and')
@@ -4235,7 +4235,7 @@ class Model
      * @param string $sql
      * @param array $bindings
      * @param string $boolean
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::havingRaw()
      */
     public static function havingRaw($sql, array $bindings = [], $boolean = 'and')
@@ -4259,7 +4259,7 @@ class Model
      *
      * @param string $column
      * @param string $direction
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::orderBy()
      */
     public static function orderBy($column, $direction = 'asc')
@@ -4270,7 +4270,7 @@ class Model
      * Add a descending "order by" clause to the query.
      *
      * @param string $column
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::orderByDesc()
      */
     public static function orderByDesc($column)
@@ -4303,7 +4303,7 @@ class Model
      * Put the query's results in random order.
      *
      * @param string $seed
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::inRandomOrder()
      */
     public static function inRandomOrder($seed = '')
@@ -4315,7 +4315,7 @@ class Model
      *
      * @param string $sql
      * @param array $bindings
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::orderByRaw()
      */
     public static function orderByRaw($sql, $bindings = [])
@@ -4337,7 +4337,7 @@ class Model
      * Set the "offset" value of the query.
      *
      * @param int $value
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::offset()
      */
     public static function offset($value)
@@ -4359,7 +4359,7 @@ class Model
      * Set the "limit" value of the query.
      *
      * @param int $value
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::limit()
      */
     public static function limit($value)
@@ -4429,7 +4429,7 @@ class Model
      * Lock the selected rows in the table.
      *
      * @param string|bool $value
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::lock()
      */
     public static function lock($value = true)
@@ -4637,7 +4637,7 @@ class Model
      *
      * @param string $function
      * @param array $columns
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::setAggregate()
      */
     protected static function setAggregate($function, $columns)
@@ -4725,7 +4725,7 @@ class Model
      *
      * @param array $bindings
      * @param string $type
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      *
      * @throws \InvalidArgumentException
      * @see \Illuminate\Database\Query\Builder::setBindings()
@@ -4739,7 +4739,7 @@ class Model
      *
      * @param mixed $value
      * @param string $type
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      *
      * @throws \InvalidArgumentException
      * @see \Illuminate\Database\Query\Builder::addBinding()
@@ -4752,7 +4752,7 @@ class Model
      * Merge an array of bindings into our bindings.
      *
      * @param \Illuminate\Database\Query\Builder $query
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::mergeBindings()
      */
     public static function mergeBindings(\Illuminate\Database\Query\Builder $query)
@@ -4793,7 +4793,7 @@ class Model
     /**
      * Use the write pdo for query.
      *
-     * @return $this
+     * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::useWritePdo()
      */
     public static function useWritePdo()

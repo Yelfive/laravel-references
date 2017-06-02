@@ -27,6 +27,7 @@ class User extends Model
 Once the model `User` is declared,
 you are able to compose your where clause in many ways
 
+**Simple SQL**
 ```php
 <?php
 
@@ -34,3 +35,35 @@ use \App\Models\User;
 # Way 1.
 User::whereName();
 ```
+
+**Parenthesised SQL**
+
+To accomplish the query like
+```SQL
+SELECT * FROM some_table WHERE a AND (b1 OR b2)
+```
+In laravel:
+```php
+<?php
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+
+User::where(function (Builder $query) {
+    // Parenthesis query
+    // All `where` defined here will be put
+    // into a parenthesis
+});
+
+
+
+```
+### pluck(string $column)
+```
+$id = $query->pluck('id');
+```
+Get the first `$column` from the first element of `Collection`.
+Also works for `Collection::pluck`
+
+When using the pluck, remember to call `\Illuminate\Database\Query\Builder::take(1)`
+to make sure only one record is retreived from the database

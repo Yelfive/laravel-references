@@ -387,7 +387,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Cache\CacheManager
          * @see \Illuminate\Cache\CacheManager::extend()
          */
         public static function extend($driver, Closure $callback)

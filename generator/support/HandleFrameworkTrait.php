@@ -49,10 +49,9 @@ trait HandleFrameworkTrait
 
         if (empty($aliasReflectionClass)) {
             $aliasReflectionClass = $reflectionClass;
-            $this->setIsStaticMethod($reflectionClass->name);
-        } else {
-            $this->setIsStaticMethod($aliasReflectionClass->name);
         }
+        $this->targetClassName = $aliasReflectionClass->name;
+        $this->setIsStaticMethod($aliasReflectionClass->name);
 
         $this->parseNamespace($aliasReflectionClass);
 

@@ -418,7 +418,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the Request instance.
          *
-         * @return $this
+         * @return \Illuminate\Http\Request
          * @see \Illuminate\Http\Request::instance()
          */
         public static function instance()
@@ -724,7 +724,7 @@ namespace Illuminate\Support\Facades {
          * Set the JSON payload for the request.
          *
          * @param array $json
-         * @return $this
+         * @return \Illuminate\Http\Request
          * @see \Illuminate\Http\Request::setJson()
          */
         public static function setJson($json)
@@ -745,7 +745,7 @@ namespace Illuminate\Support\Facades {
          * Set the user resolver callback.
          *
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Http\Request
          * @see \Illuminate\Http\Request::setUserResolver()
          */
         public static function setUserResolver(Closure $callback)
@@ -766,7 +766,7 @@ namespace Illuminate\Support\Facades {
          * Set the route resolver callback.
          *
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Http\Request
          * @see \Illuminate\Http\Request::setRouteResolver()
          */
         public static function setRouteResolver(Closure $callback)

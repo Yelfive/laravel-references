@@ -406,7 +406,7 @@ namespace Illuminate\Support\Facades {
          * Set the database connection instance.
          *
          * @param \Illuminate\Database\Connection $connection
-         * @return $this
+         * @return \Illuminate\Database\Schema\Builder
          * @see \Illuminate\Database\Schema\Builder::setConnection()
          */
         public static function setConnection(Connection $connection)

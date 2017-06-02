@@ -9,6 +9,7 @@ use fk\reference\support\Helper;
 /**
  * @var array $namespace
  * @var array $columns
+ * @var array $methods
  * @var string $modelName
  * @var string $tableName
  * @var string $baseModelName
@@ -27,6 +28,10 @@ namespace <?= $namespace ?>;
  *
 <?php foreach ($columns as list($type, $property, $description)): ?>
  * @property <?= $type ?> $<?= $property ?> <?= $description ?><?= "\n" ?>
+<?php endforeach; ?>
+ *
+<?php foreach ($methods as list($type, $name, $parameters, $description)): ?>
+ * @method <?= $type ?> <?= $name ?>(<?= $parameters ?>) <?= $description ?><?= "\n" ?>
 <?php endforeach; ?>
  *
  */

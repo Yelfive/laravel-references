@@ -244,7 +244,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $ability
          * @param callable|string $callback
-         * @return $this
+         * @return \Illuminate\Auth\Access\Gate
          *
          * @throws \InvalidArgumentException
          * @see \Illuminate\Auth\Access\Gate::define()
@@ -269,7 +269,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $class
          * @param string $policy
-         * @return $this
+         * @return \Illuminate\Auth\Access\Gate
          * @see \Illuminate\Auth\Access\Gate::policy()
          */
         public static function policy($class, $policy)
@@ -280,7 +280,7 @@ namespace Illuminate\Support\Facades {
          * Register a callback to run before all Gate checks.
          *
          * @param callable $callback
-         * @return $this
+         * @return \Illuminate\Auth\Access\Gate
          * @see \Illuminate\Auth\Access\Gate::before()
          */
         public static function before(callable $callback)
@@ -291,7 +291,7 @@ namespace Illuminate\Support\Facades {
          * Register a callback to run after all Gate checks.
          *
          * @param callable $callback
-         * @return $this
+         * @return \Illuminate\Auth\Access\Gate
          * @see \Illuminate\Auth\Access\Gate::after()
          */
         public static function after(callable $callback)

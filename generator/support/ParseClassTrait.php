@@ -241,6 +241,9 @@ DOC;
         }
         $docString = implode("\n", $doc);
         $docString = str_replace('@return void', $method->isConstructor() ? '' : '@return null', $docString);
+        if ($this->targetClassName !== $method->class) {
+            $docString = str_replace('@return $this', "@return \\$method->class", $docString);
+        }
         $pos = strrpos($docString, "\n");
         if ($pos !== false) {
             $lastLine = substr($docString, $pos + 1);

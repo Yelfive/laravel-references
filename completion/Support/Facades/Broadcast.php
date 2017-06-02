@@ -377,7 +377,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Broadcasting\BroadcastManager
          * @see \Illuminate\Broadcasting\BroadcastManager::extend()
          */
         public static function extend($driver, Closure $callback)

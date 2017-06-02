@@ -584,7 +584,7 @@ namespace Illuminate\Support\Facades {
          * Set the queue manager instance.
          *
          * @param \Illuminate\Contracts\Queue\Factory $queue
-         * @return $this
+         * @return \Illuminate\Mail\Mailer
          * @see \Illuminate\Mail\Mailer::setQueue()
          */
         public static function setQueue(\Illuminate\Contracts\Queue\Factory $queue)

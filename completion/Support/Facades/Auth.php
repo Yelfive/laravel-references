@@ -329,7 +329,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param callable $callback
-         * @return $this
+         * @return \Illuminate\Auth\AuthManager
          * @see \Illuminate\Auth\AuthManager::viaRequest()
          */
         public static function viaRequest($driver, callable $callback)
@@ -350,7 +350,7 @@ namespace Illuminate\Support\Facades {
          * Set the callback to be used to resolve users.
          *
          * @param \Closure $userResolver
-         * @return $this
+         * @return \Illuminate\Auth\AuthManager
          * @see \Illuminate\Auth\AuthManager::resolveUsersUsing()
          */
         public static function resolveUsersUsing(Closure $userResolver)
@@ -362,7 +362,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Auth\AuthManager
          * @see \Illuminate\Auth\AuthManager::extend()
          */
         public static function extend($driver, Closure $callback)
@@ -374,7 +374,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $name
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Auth\AuthManager
          * @see \Illuminate\Auth\AuthManager::provider()
          */
         public static function provider($name, Closure $callback)

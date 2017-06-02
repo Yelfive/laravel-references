@@ -37,4 +37,5 @@ return [
     ],
     \Illuminate\Database\Eloquent\Model::class => \Illuminate\Database\Eloquent\Builder::class,
     \Illuminate\Database\Eloquent\Builder::class => \Illuminate\Database\Query\Builder::class,
+    \Illuminate\Database\DatabaseManager::class => \Illuminate\Database\Connection::class,
 ];

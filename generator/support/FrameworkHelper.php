@@ -13,6 +13,8 @@ class FrameworkHelper
 {
     use ParseClassTrait, HandleFrameworkTrait;
 
+    protected $targetClassName;
+
     /**
      * @var Command
      */

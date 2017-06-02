@@ -702,7 +702,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $name
          * @param string $class
-         * @return $this
+         * @return \Illuminate\Routing\Router
          * @see \Illuminate\Routing\Router::aliasMiddleware()
          */
         public static function aliasMiddleware($name, $class)
@@ -735,7 +735,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $name
          * @param array $middleware
-         * @return $this
+         * @return \Illuminate\Routing\Router
          * @see \Illuminate\Routing\Router::middlewareGroup()
          */
         public static function middlewareGroup($name, array $middleware)
@@ -749,7 +749,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $group
          * @param string $middleware
-         * @return $this
+         * @return \Illuminate\Routing\Router
          * @see \Illuminate\Routing\Router::prependMiddlewareToGroup()
          */
         public static function prependMiddlewareToGroup($group, $middleware)
@@ -763,7 +763,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $group
          * @param string $middleware
-         * @return $this
+         * @return \Illuminate\Routing\Router
          * @see \Illuminate\Routing\Router::pushMiddlewareToGroup()
          */
         public static function pushMiddlewareToGroup($group, $middleware)
@@ -1082,7 +1082,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $key
          * @param mixed $value
-         * @return $this
+         * @return \Illuminate\Routing\RouteRegistrar
          *
          * @throws \InvalidArgumentException
          * @see \Illuminate\Routing\RouteRegistrar::attribute()

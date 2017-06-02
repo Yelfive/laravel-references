@@ -369,7 +369,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return $this
+         * @return \Illuminate\Support\Manager
          * @see \Illuminate\Support\Manager::extend()
          */
         public static function extend($driver, Closure $callback)

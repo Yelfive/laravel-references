@@ -21,3 +21,9 @@ class Say
      }
 }
 ```
+
+- Fluent
+
+    see migrations/init, reference staff
+
+    see fk/laravel-references/completion/Support/Fluent.php

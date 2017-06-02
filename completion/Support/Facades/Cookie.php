@@ -331,7 +331,7 @@ namespace Illuminate\Support\Facades {
          * @param string $path
          * @param string $domain
          * @param bool $secure
-         * @return $this
+         * @return \Illuminate\Cookie\CookieJar
          * @see \Illuminate\Cookie\CookieJar::setDefaultPathAndDomain()
          */
         public static function setDefaultPathAndDomain($path, $domain, $secure = false)

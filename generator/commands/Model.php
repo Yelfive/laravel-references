@@ -67,7 +67,7 @@ CMD
         }
     }
 
-    protected function doubleConfirm()
+    protected function doubleConfirm($model)
     {
         return $this->ask(<<<QUESTION
 ------------------------------------------------
@@ -75,6 +75,7 @@ CMD
 | Enter model's short name to overwrite          |
 | Notice: the name is case-sensitive             |
  ------------------------------------------------
+ Enter '$model'
 QUESTION
         );
     }
@@ -89,7 +90,7 @@ QUESTION
             &&
             (
                 $this->option('overwrite') === false
-                || $this->doubleConfirm() !== $modelShortName
+                || $this->doubleConfirm($modelShortName) !== $modelShortName
             )
         ) {
             if ($this->option('overwrite')) {
@@ -146,6 +147,7 @@ QUESTION
         $content = $this->render([
             'namespace' => $namespace,
             'columns' => $columns,
+            'methods' => $this->getMethods(),
             'modelName' => $modelName,
             'baseModelName' => $baseModelName,
             'rules' => $rules,
@@ -153,6 +155,11 @@ QUESTION
             'relations' => $relations,
         ]);
         $this->write($modelName, $content);
+    }
+
+    protected function getMethods()
+    {
+        return [];
     }
 
     /**
@@ -260,10 +267,11 @@ QUESTION
             case 'mediumtext':
             case 'longtext':
             case 'enum':
+                return 'string';
             case 'datetime':
             case 'time':
             case 'timestamp':
-                return 'string';
+                return '\Carbon\Carbon';
             default:
                 return $type;
         }
