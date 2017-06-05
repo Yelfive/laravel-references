@@ -239,6 +239,9 @@ QUESTION
             case 'timestamp':
                 $rules = ['date'];
                 break;
+            case 'enum':
+                $rules = ['string'];
+                break;
         }
 
         if (!$column->columnKey === 'UNI') array_unshift($rules, "unique:$column->tableName");
