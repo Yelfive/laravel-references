@@ -193,13 +193,21 @@ DOC;
      * @param bool $forceStatic
      * @param null|callable $condition
      */
-    protected function parseMethods($reflectionClass, $forceStatic = false, $condition = null)
+    protected function parseMethods(\ReflectionClass $reflectionClass, $forceStatic = false, $condition = null)
     {
         $methods = $reflectionClass->getMethods();
 
         foreach ($methods as $method) {
-            if ($this->skipMethod($method)) continue;
-            if (is_callable($condition) && !$condition($method)) continue;
+            if (
+                // Skip all non-public methods for Facades
+                strpos($this->targetClassName, '\\Facades\\') && !$method->isPublic()
+                // Skipp all magic methods
+                || $this->skipMethod($method)
+                // Conditional skip, skip when callable returns false
+                || is_callable($condition) && !call_user_func($condition, $method)
+            ) {
+                continue;
+            }
 
             $doc = $this->methodDoc($method);
             $privacy = $this->methodPrivacy($method);

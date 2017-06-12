@@ -2,9 +2,6 @@
 
 namespace Illuminate\Support\Facades {
 
-    use OpenCloud\Rackspace;
-    use League\Flysystem\AdapterInterface;
-    use League\Flysystem\FilesystemInterface;
     use Closure;
 
     /**
@@ -55,16 +52,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Storage::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -81,46 +68,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -142,17 +89,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -242,41 +178,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Attempt to get the disk from the local cache.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Filesystem\Filesystem
-         * @see \Illuminate\Filesystem\FilesystemManager::get()
-         */
-        protected static function get($name)
-        {
-        }
-
-        /**
-         * Resolve the given disk.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Filesystem\Filesystem
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Filesystem\FilesystemManager::resolve()
-         */
-        protected static function resolve($name)
-        {
-        }
-
-        /**
-         * Call a custom driver creator.
-         *
-         * @param array $config
-         * @return \Illuminate\Contracts\Filesystem\Filesystem
-         * @see \Illuminate\Filesystem\FilesystemManager::callCustomCreator()
-         */
-        protected static function callCustomCreator(array $config)
-        {
-        }
-
-        /**
          * Create an instance of the local driver.
          *
          * @param array $config
@@ -310,17 +211,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Format the given S3 configuration with the default options.
-         *
-         * @param array $config
-         * @return array
-         * @see \Illuminate\Filesystem\FilesystemManager::formatS3Config()
-         */
-        protected static function formatS3Config(array $config)
-        {
-        }
-
-        /**
          * Create an instance of the Rackspace driver.
          *
          * @param array $config
@@ -328,41 +218,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Filesystem\FilesystemManager::createRackspaceDriver()
          */
         public static function createRackspaceDriver(array $config)
-        {
-        }
-
-        /**
-         * Get the Rackspace Cloud Files container.
-         *
-         * @param \OpenCloud\Rackspace $client
-         * @param array $config
-         * @return \OpenCloud\ObjectStore\Resource\Container
-         * @see \Illuminate\Filesystem\FilesystemManager::getRackspaceContainer()
-         */
-        protected static function getRackspaceContainer(Rackspace $client, array $config)
-        {
-        }
-
-        /**
-         * Create a Flysystem instance with the given adapter.
-         *
-         * @param \League\Flysystem\AdapterInterface $adapter
-         * @param array $config
-         * @return \League\Flysystem\FlysystemInterface
-         * @see \Illuminate\Filesystem\FilesystemManager::createFlysystem()
-         */
-        protected static function createFlysystem(AdapterInterface $adapter, array $config)
-        {
-        }
-
-        /**
-         * Adapt the filesystem implementation.
-         *
-         * @param \League\Flysystem\FilesystemInterface $filesystem
-         * @return \Illuminate\Contracts\Filesystem\Filesystem
-         * @see \Illuminate\Filesystem\FilesystemManager::adapt()
-         */
-        protected static function adapt(FilesystemInterface $filesystem)
         {
         }
 
@@ -375,17 +230,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Filesystem\FilesystemManager::set()
          */
         public static function set($name, $disk)
-        {
-        }
-
-        /**
-         * Get the filesystem connection configuration.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\Filesystem\FilesystemManager::getConfig()
-         */
-        protected static function getConfig($name)
         {
         }
 

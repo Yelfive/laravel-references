@@ -41,16 +41,6 @@ namespace Illuminate\Support\Facades {
         protected $customCreators;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Broadcast::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -67,46 +57,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -128,17 +78,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -258,96 +197,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Broadcasting\BroadcastManager::driver()
          */
         public static function driver($name = null)
-        {
-        }
-
-        /**
-         * Attempt to get the connection from the local cache.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Broadcasting\Broadcaster
-         * @see \Illuminate\Broadcasting\BroadcastManager::get()
-         */
-        protected static function get($name)
-        {
-        }
-
-        /**
-         * Resolve the given store.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Broadcasting\Broadcaster
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Broadcasting\BroadcastManager::resolve()
-         */
-        protected static function resolve($name)
-        {
-        }
-
-        /**
-         * Call a custom driver creator.
-         *
-         * @param array $config
-         * @return mixed
-         * @see \Illuminate\Broadcasting\BroadcastManager::callCustomCreator()
-         */
-        protected static function callCustomCreator(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Contracts\Broadcasting\Broadcaster
-         * @see \Illuminate\Broadcasting\BroadcastManager::createPusherDriver()
-         */
-        protected static function createPusherDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Contracts\Broadcasting\Broadcaster
-         * @see \Illuminate\Broadcasting\BroadcastManager::createRedisDriver()
-         */
-        protected static function createRedisDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Contracts\Broadcasting\Broadcaster
-         * @see \Illuminate\Broadcasting\BroadcastManager::createLogDriver()
-         */
-        protected static function createLogDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Contracts\Broadcasting\Broadcaster
-         * @see \Illuminate\Broadcasting\BroadcastManager::createNullDriver()
-         */
-        protected static function createNullDriver(array $config)
-        {
-        }
-
-        /**
-         * Get the connection configuration.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\Broadcasting\BroadcastManager::getConfig()
-         */
-        protected static function getConfig($name)
         {
         }
 

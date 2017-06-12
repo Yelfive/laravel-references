@@ -262,16 +262,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Input::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -288,46 +278,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -349,17 +299,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -623,16 +562,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the input source for the request.
-         *
-         * @return \Symfony\Component\HttpFoundation\ParameterBag
-         * @see \Illuminate\Http\Request::getInputSource()
-         */
-        protected static function getInputSource()
-        {
-        }
-
-        /**
          * Create an Illuminate request from a Symfony instance.
          *
          * @param \Symfony\Component\HttpFoundation\Request $request
@@ -648,17 +577,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Http\Request::duplicate()
          */
         public static function duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
-        {
-        }
-
-        /**
-         * Filter the given array of files, removing any empty values.
-         *
-         * @param mixed $files
-         * @return mixed
-         * @see \Illuminate\Http\Request::filterFiles()
-         */
-        protected static function filterFiles($files)
         {
         }
 
@@ -1705,49 +1623,6 @@ namespace Illuminate\Support\Facades {
         {
         }
 
-        
-        protected static function prepareRequestUri()
-        {
-        }
-
-        /**
-         * Prepares the base URL.
-         *
-         * @return string
-         * @see \Symfony\Component\HttpFoundation\Request::prepareBaseUrl()
-         */
-        protected static function prepareBaseUrl()
-        {
-        }
-
-        /**
-         * Prepares the base path.
-         *
-         * @return string base path
-         * @see \Symfony\Component\HttpFoundation\Request::prepareBasePath()
-         */
-        protected static function prepareBasePath()
-        {
-        }
-
-        /**
-         * Prepares the path info.
-         *
-         * @return string path info
-         * @see \Symfony\Component\HttpFoundation\Request::preparePathInfo()
-         */
-        protected static function preparePathInfo()
-        {
-        }
-
-        /**
-         * Initializes HTTP request formats.
-         * @see \Symfony\Component\HttpFoundation\Request::initializeFormats()
-         */
-        protected static function initializeFormats()
-        {
-        }
-
         /**
          * Indicates whether this request originated from a trusted proxy.
          *
@@ -1978,17 +1853,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Determine if the given input key is an empty string for "has".
-         *
-         * @param string $key
-         * @return bool
-         * @see \Illuminate\Http\Request::isEmptyString()
-         */
-        protected static function isEmptyString($key)
-        {
-        }
-
-        /**
          * Get all of the input and files for the request.
          *
          * @return array
@@ -2089,17 +1953,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Convert the given array of Symfony UploadedFiles to custom Laravel UploadedFiles.
-         *
-         * @param array $files
-         * @return array
-         * @see \Illuminate\Http\Request::convertUploadedFiles()
-         */
-        protected static function convertUploadedFiles(array $files)
-        {
-        }
-
-        /**
          * Determine if the uploaded data contains a file.
          *
          * @param string $key
@@ -2107,17 +1960,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Http\Request::hasFile()
          */
         public static function hasFile($key)
-        {
-        }
-
-        /**
-         * Check that the given file is a valid file instance.
-         *
-         * @param mixed $file
-         * @return bool
-         * @see \Illuminate\Http\Request::isValidFile()
-         */
-        protected static function isValidFile($file)
         {
         }
 
@@ -2130,19 +1972,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Http\Request::file()
          */
         public static function file($key = null, $default = null)
-        {
-        }
-
-        /**
-         * Retrieve a parameter item from a given source.
-         *
-         * @param string $source
-         * @param string $key
-         * @param string|array|null $default
-         * @return string|array
-         * @see \Illuminate\Http\Request::retrieveItem()
-         */
-        protected static function retrieveItem($source, $key, $default)
         {
         }
 

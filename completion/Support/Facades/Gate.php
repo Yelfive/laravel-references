@@ -69,16 +69,6 @@ namespace Illuminate\Support\Facades {
         protected $afterCallbacks;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Gate::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -95,46 +85,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -156,17 +106,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -250,17 +189,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\Access\Gate::define()
          */
         public static function define($ability, $callback)
-        {
-        }
-
-        /**
-         * Create the ability callback for a callback string.
-         *
-         * @param string $callback
-         * @return \Closure
-         * @see \Illuminate\Auth\Access\Gate::buildAbilityCallback()
-         */
-        protected static function buildAbilityCallback($callback)
         {
         }
 
@@ -349,71 +277,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the raw result from the authorization callback.
-         *
-         * @param string $ability
-         * @param array|mixed $arguments
-         * @return mixed
-         * @see \Illuminate\Auth\Access\Gate::raw()
-         */
-        protected static function raw($ability, $arguments = [])
-        {
-        }
-
-        /**
-         * Resolve and call the appropriate authorization callback.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param string $ability
-         * @param array $arguments
-         * @return bool
-         * @see \Illuminate\Auth\Access\Gate::callAuthCallback()
-         */
-        protected static function callAuthCallback($user, $ability, array $arguments)
-        {
-        }
-
-        /**
-         * Call all of the before callbacks and return if a result is given.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param string $ability
-         * @param array $arguments
-         * @return bool|null
-         * @see \Illuminate\Auth\Access\Gate::callBeforeCallbacks()
-         */
-        protected static function callBeforeCallbacks($user, $ability, array $arguments)
-        {
-        }
-
-        /**
-         * Call all of the after callbacks with check result.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param string $ability
-         * @param array $arguments
-         * @param bool $result
-         * @return null
-         * @see \Illuminate\Auth\Access\Gate::callAfterCallbacks()
-         */
-        protected static function callAfterCallbacks($user, $ability, array $arguments, $result)
-        {
-        }
-
-        /**
-         * Resolve the callable for the given ability and arguments.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param string $ability
-         * @param array $arguments
-         * @return callable
-         * @see \Illuminate\Auth\Access\Gate::resolveAuthCallback()
-         */
-        protected static function resolveAuthCallback($user, $ability, array $arguments)
-        {
-        }
-
-        /**
          * Get a policy instance for a given class.
          *
          * @param object|string $class
@@ -436,45 +299,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Resolve the callback for a policy check.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param string $ability
-         * @param array $arguments
-         * @param mixed $policy
-         * @return callable
-         * @see \Illuminate\Auth\Access\Gate::resolvePolicyCallback()
-         */
-        protected static function resolvePolicyCallback($user, $ability, array $arguments, $policy)
-        {
-        }
-
-        /**
-         * Call the "before" method on the given policy, if applicable.
-         *
-         * @param mixed $policy
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param string $ability
-         * @param array $arguments
-         * @return mixed
-         * @see \Illuminate\Auth\Access\Gate::callPolicyBefore()
-         */
-        protected static function callPolicyBefore($policy, $user, $ability, $arguments)
-        {
-        }
-
-        /**
-         * Format the policy ability into a method name.
-         *
-         * @param string $ability
-         * @return string
-         * @see \Illuminate\Auth\Access\Gate::formatAbilityToMethod()
-         */
-        protected static function formatAbilityToMethod($ability)
-        {
-        }
-
-        /**
          * Get a gate instance for the given user.
          *
          * @param \Illuminate\Contracts\Auth\Authenticatable|mixed $user
@@ -482,40 +306,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\Access\Gate::forUser()
          */
         public static function forUser($user)
-        {
-        }
-
-        /**
-         * Resolve the user from the user resolver.
-         *
-         * @return mixed
-         * @see \Illuminate\Auth\Access\Gate::resolveUser()
-         */
-        protected static function resolveUser()
-        {
-        }
-
-        /**
-         * Create a new access response.
-         *
-         * @param string|null $message
-         * @return \Illuminate\Auth\Access\Response
-         * @see \Illuminate\Auth\Access\Gate::allow()
-         */
-        protected static function allow($message = null)
-        {
-        }
-
-        /**
-         * Throws an unauthorized exception.
-         *
-         * @param string $message
-         * @return null
-         *
-         * @throws \Illuminate\Auth\Access\AuthorizationException
-         * @see \Illuminate\Auth\Access\Gate::deny()
-         */
-        protected static function deny($message = 'This action is unauthorized.')
         {
         }
 

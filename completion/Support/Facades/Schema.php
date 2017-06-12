@@ -4,7 +4,6 @@ namespace Illuminate\Support\Facades {
 
     use Illuminate\Database\Connection;
     use Closure;
-    use Illuminate\Database\Schema\Blueprint;
 
     /**
      * @see Illuminate\Support\Facades\Schema
@@ -68,16 +67,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get a schema builder instance for the default connection.
-         *
-         * @return \Illuminate\Database\Schema\Builder
-         * @see \Illuminate\Support\Facades\Schema::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -94,46 +83,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -155,17 +104,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -366,29 +304,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Database\Schema\Builder::disableForeignKeyConstraints()
          */
         public static function disableForeignKeyConstraints()
-        {
-        }
-
-        /**
-         * Execute the blueprint to build / modify the table.
-         *
-         * @param \Illuminate\Database\Schema\Blueprint $blueprint
-         * @return null
-         * @see \Illuminate\Database\Schema\Builder::build()
-         */
-        protected static function build(Blueprint $blueprint)
-        {
-        }
-
-        /**
-         * Create a new command set with a Closure.
-         *
-         * @param string $table
-         * @param \Closure|null $callback
-         * @return \Illuminate\Database\Schema\Blueprint
-         * @see \Illuminate\Database\Schema\Builder::createBlueprint()
-         */
-        protected static function createBlueprint($table, Closure $callback = null)
         {
         }
 

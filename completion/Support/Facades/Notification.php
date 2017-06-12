@@ -58,16 +58,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Notification::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -84,46 +74,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -145,17 +95,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -238,69 +177,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Create an instance of the database driver.
-         *
-         * @return \Illuminate\Notifications\Channels\DatabaseChannel
-         * @see \Illuminate\Notifications\ChannelManager::createDatabaseDriver()
-         */
-        protected static function createDatabaseDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the broadcast driver.
-         *
-         * @return \Illuminate\Notifications\Channels\BroadcastChannel
-         * @see \Illuminate\Notifications\ChannelManager::createBroadcastDriver()
-         */
-        protected static function createBroadcastDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the mail driver.
-         *
-         * @return \Illuminate\Notifications\Channels\MailChannel
-         * @see \Illuminate\Notifications\ChannelManager::createMailDriver()
-         */
-        protected static function createMailDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the Nexmo driver.
-         *
-         * @return \Illuminate\Notifications\Channels\NexmoSmsChannel
-         * @see \Illuminate\Notifications\ChannelManager::createNexmoDriver()
-         */
-        protected static function createNexmoDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the Slack driver.
-         *
-         * @return \Illuminate\Notifications\Channels\SlackWebhookChannel
-         * @see \Illuminate\Notifications\ChannelManager::createSlackDriver()
-         */
-        protected static function createSlackDriver()
-        {
-        }
-
-        /**
-         * Create a new driver instance.
-         *
-         * @param string $driver
-         * @return mixed
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Notifications\ChannelManager::createDriver()
-         */
-        protected static function createDriver($driver)
-        {
-        }
-
-        /**
          * Get the default channel driver name.
          *
          * @return string
@@ -350,17 +226,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Manager::driver()
          */
         public static function driver($driver = null)
-        {
-        }
-
-        /**
-         * Call a custom driver creator.
-         *
-         * @param string $driver
-         * @return mixed
-         * @see \Illuminate\Support\Manager::callCustomCreator()
-         */
-        protected static function callCustomCreator($driver)
         {
         }
 

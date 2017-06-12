@@ -5,7 +5,6 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\View\Factory;
     use Swift_Mailer;
     use Illuminate\Contracts\Events\Dispatcher;
-    use Illuminate\Contracts\Mail\Mailable;
 
     /**
      * @see Illuminate\Support\Facades\Mail
@@ -96,16 +95,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Mail::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -122,46 +111,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -183,17 +132,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -349,68 +287,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Send the given mailable.
-         *
-         * @param MailableContract $mailable
-         * @return mixed
-         * @see \Illuminate\Mail\Mailer::sendMailable()
-         */
-        protected static function sendMailable(Mailable $mailable)
-        {
-        }
-
-        /**
-         * Parse the given view name or array.
-         *
-         * @param string|array $view
-         * @return array
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Mail\Mailer::parseView()
-         */
-        protected static function parseView($view)
-        {
-        }
-
-        /**
-         * Add the content to a given message.
-         *
-         * @param \Illuminate\Mail\Message $message
-         * @param string $view
-         * @param string $plain
-         * @param string $raw
-         * @param array $data
-         * @return null
-         * @see \Illuminate\Mail\Mailer::addContent()
-         */
-        protected static function addContent($message, $view, $plain, $raw, $data)
-        {
-        }
-
-        /**
-         * Render the given view.
-         *
-         * @param string $view
-         * @param array $data
-         * @return string
-         * @see \Illuminate\Mail\Mailer::renderView()
-         */
-        protected static function renderView($view, $data)
-        {
-        }
-
-        /**
-         * Set the global "to" address on the given message.
-         *
-         * @param \Illuminate\Mail\Message $message
-         * @return null
-         * @see \Illuminate\Mail\Mailer::setGlobalTo()
-         */
-        protected static function setGlobalTo($message)
-        {
-        }
-
-        /**
          * Queue a new e-mail message for sending.
          *
          * @param string|array $view
@@ -481,61 +357,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Mail\Mailer::laterOn()
          */
         public static function laterOn($queue, $delay, $view, array $data, $callback)
-        {
-        }
-
-        /**
-         * Create a new message instance.
-         *
-         * @return \Illuminate\Mail\Message
-         * @see \Illuminate\Mail\Mailer::createMessage()
-         */
-        protected static function createMessage()
-        {
-        }
-
-        /**
-         * Send a Swift Message instance.
-         *
-         * @param \Swift_Message $message
-         * @return null
-         * @see \Illuminate\Mail\Mailer::sendSwiftMessage()
-         */
-        protected static function sendSwiftMessage($message)
-        {
-        }
-
-        /**
-         * Determines if the message can be sent.
-         *
-         * @param \Swift_Message $message
-         * @return bool
-         * @see \Illuminate\Mail\Mailer::shouldSendMessage()
-         */
-        protected static function shouldSendMessage($message)
-        {
-        }
-
-        /**
-         * Dispatch the message sent event.
-         *
-         * @param \Illuminate\Mail\Message $message
-         * @return null
-         * @see \Illuminate\Mail\Mailer::dispatchSentEvent()
-         */
-        protected static function dispatchSentEvent($message)
-        {
-        }
-
-        /**
-         * Force the transport to re-connect.
-         *
-         * This will prevent errors in daemon queue situations.
-         *
-         * @return null
-         * @see \Illuminate\Mail\Mailer::forceReconnection()
-         */
-        protected static function forceReconnection()
         {
         }
 

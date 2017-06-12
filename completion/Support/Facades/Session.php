@@ -42,16 +42,6 @@ namespace Illuminate\Support\Facades {
         protected $drivers;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Session::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -68,46 +58,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -129,17 +79,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -182,151 +121,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::setFacadeApplication()
          */
         public static function setFacadeApplication($app)
-        {
-        }
-
-        /**
-         * Call a custom driver creator.
-         *
-         * @param string $driver
-         * @return mixed
-         * @see \Illuminate\Session\SessionManager::callCustomCreator()
-         */
-        protected static function callCustomCreator($driver)
-        {
-        }
-
-        /**
-         * Create an instance of the "array" session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createArrayDriver()
-         */
-        protected static function createArrayDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the "cookie" session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createCookieDriver()
-         */
-        protected static function createCookieDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the file session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createFileDriver()
-         */
-        protected static function createFileDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the file session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createNativeDriver()
-         */
-        protected static function createNativeDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the database session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createDatabaseDriver()
-         */
-        protected static function createDatabaseDriver()
-        {
-        }
-
-        /**
-         * Get the database connection for the database driver.
-         *
-         * @return \Illuminate\Database\Connection
-         * @see \Illuminate\Session\SessionManager::getDatabaseConnection()
-         */
-        protected static function getDatabaseConnection()
-        {
-        }
-
-        /**
-         * Create an instance of the APC session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createApcDriver()
-         */
-        protected static function createApcDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the Memcached session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createMemcachedDriver()
-         */
-        protected static function createMemcachedDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the Redis session driver.
-         *
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createRedisDriver()
-         */
-        protected static function createRedisDriver()
-        {
-        }
-
-        /**
-         * Create an instance of a cache driven driver.
-         *
-         * @param string $driver
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::createCacheBased()
-         */
-        protected static function createCacheBased($driver)
-        {
-        }
-
-        /**
-         * Create the cache based session handler instance.
-         *
-         * @param string $driver
-         * @return \Illuminate\Session\CacheBasedSessionHandler
-         * @see \Illuminate\Session\SessionManager::createCacheHandler()
-         */
-        protected static function createCacheHandler($driver)
-        {
-        }
-
-        /**
-         * Build the session instance.
-         *
-         * @param \SessionHandlerInterface $handler
-         * @return \Illuminate\Session\Store
-         * @see \Illuminate\Session\SessionManager::buildSession()
-         */
-        protected static function buildSession($handler)
-        {
-        }
-
-        /**
-         * Build the encrypted session instance.
-         *
-         * @param \SessionHandlerInterface $handler
-         * @return \Illuminate\Session\EncryptedStore
-         * @see \Illuminate\Session\SessionManager::buildEncryptedSession()
-         */
-        protected static function buildEncryptedSession($handler)
         {
         }
 
@@ -384,19 +178,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Create a new driver instance.
-         *
-         * @param string $driver
-         * @return mixed
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Support\Manager::createDriver()
-         */
-        protected static function createDriver($driver)
-        {
-        }
-
-        /**
          * Register a custom driver creator Closure.
          *
          * @param string $driver
@@ -429,54 +210,12 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Load the session data from the handler.
-         *
-         * @return null
-         * @see \Illuminate\Session\Store::loadSession()
-         */
-        protected static function loadSession()
-        {
-        }
-
-        /**
-         * Read the session data from the handler.
-         *
-         * @return array
-         * @see \Illuminate\Session\Store::readFromHandler()
-         */
-        protected static function readFromHandler()
-        {
-        }
-
-        /**
-         * Prepare the raw string data from the session for unserialization.
-         *
-         * @param string $data
-         * @return string
-         * @see \Illuminate\Session\Store::prepareForUnserialize()
-         */
-        protected static function prepareForUnserialize($data)
-        {
-        }
-
-        /**
          * Save the session data to storage.
          *
          * @return bool
          * @see \Illuminate\Session\Store::save()
          */
         public static function save()
-        {
-        }
-
-        /**
-         * Prepare the serialized session data for storage.
-         *
-         * @param string $data
-         * @return string
-         * @see \Illuminate\Session\Store::prepareForStorage()
-         */
-        protected static function prepareForStorage($data)
         {
         }
 
@@ -686,28 +425,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Merge new flash keys into the new flash array.
-         *
-         * @param array $keys
-         * @return null
-         * @see \Illuminate\Session\Store::mergeNewFlashes()
-         */
-        protected static function mergeNewFlashes(array $keys)
-        {
-        }
-
-        /**
-         * Remove the given keys from the old flash data.
-         *
-         * @param array $keys
-         * @return null
-         * @see \Illuminate\Session\Store::removeFromOldFlashData()
-         */
-        protected static function removeFromOldFlashData(array $keys)
-        {
-        }
-
-        /**
          * Flash an input array to the session.
          *
          * @param array $value
@@ -842,16 +559,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Session\Store::isValidId()
          */
         public static function isValidId($id)
-        {
-        }
-
-        /**
-         * Get a new, random session ID.
-         *
-         * @return string
-         * @see \Illuminate\Session\Store::generateSessionId()
-         */
-        protected static function generateSessionId()
         {
         }
 

@@ -2,11 +2,9 @@
 
 namespace Illuminate\Support\Facades {
 
-    use Illuminate\Console\Scheduling\Schedule;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\Events\Dispatcher;
     use Closure;
-    use Exception;
 
     /**
      * @see Illuminate\Support\Facades\Artisan
@@ -66,16 +64,6 @@ namespace Illuminate\Support\Facades {
         protected $bootstrappers;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Artisan::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -92,46 +80,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -153,17 +101,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -210,27 +147,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Define the application's command schedule.
-         *
-         * @param \Illuminate\Console\Scheduling\Schedule $schedule
-         * @return null
-         * @see \App\Console\Kernel::schedule()
-         */
-        protected static function schedule(Schedule $schedule)
-        {
-        }
-
-        /**
-         * Register the Closure based commands for the application.
-         *
-         * @return null
-         * @see \App\Console\Kernel::commands()
-         */
-        protected static function commands()
-        {
-        }
-
-        /**
          * Create a new console kernel instance.
          *
          * @param \Illuminate\Contracts\Foundation\Application $app
@@ -239,16 +155,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Foundation\Console\Kernel::__construct()
          */
         public function __construct(Application $app, Dispatcher $events)
-        {
-        }
-
-        /**
-         * Define the application's command schedule.
-         *
-         * @return null
-         * @see \Illuminate\Foundation\Console\Kernel::defineConsoleSchedule()
-         */
-        protected static function defineConsoleSchedule()
         {
         }
 
@@ -355,16 +261,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the Artisan application instance.
-         *
-         * @return \Illuminate\Console\Application
-         * @see \Illuminate\Foundation\Console\Kernel::getArtisan()
-         */
-        protected static function getArtisan()
-        {
-        }
-
-        /**
          * Set the Artisan application instance.
          *
          * @param \Illuminate\Console\Application $artisan
@@ -372,39 +268,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Foundation\Console\Kernel::setArtisan()
          */
         public static function setArtisan($artisan)
-        {
-        }
-
-        /**
-         * Get the bootstrap classes for the application.
-         *
-         * @return array
-         * @see \Illuminate\Foundation\Console\Kernel::bootstrappers()
-         */
-        protected static function bootstrappers()
-        {
-        }
-
-        /**
-         * Report the exception to the exception handler.
-         *
-         * @param \Exception $e
-         * @return null
-         * @see \Illuminate\Foundation\Console\Kernel::reportException()
-         */
-        protected static function reportException(Exception $e)
-        {
-        }
-
-        /**
-         * Report the exception to the exception handler.
-         *
-         * @param \Symfony\Component\Console\Output\OutputInterface $output
-         * @param \Exception $e
-         * @return null
-         * @see \Illuminate\Foundation\Console\Kernel::renderException()
-         */
-        protected static function renderException($output, Exception $e)
         {
         }
 

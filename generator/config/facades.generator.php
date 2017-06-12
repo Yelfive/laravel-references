@@ -5,6 +5,10 @@
  * @date 2017-05-01
  */
 
+/**
+ * This file is used to generate relationships of the facades.
+ * Not Called Anywhere Now
+ */
 $__call = include __DIR__ . '/framework.__call.php';
 
 $laravelPath = base_path('vendor/laravel/framework/src/Illuminate');

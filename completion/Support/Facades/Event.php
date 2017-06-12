@@ -65,16 +65,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Event::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -91,46 +81,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -152,17 +102,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -232,18 +171,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Setup a wildcard listener callback.
-         *
-         * @param string $event
-         * @param mixed $listener
-         * @return null
-         * @see \Illuminate\Events\Dispatcher::setupWildcardListen()
-         */
-        protected static function setupWildcardListen($event, $listener)
-        {
-        }
-
-        /**
          * Determine if a given event has listeners.
          *
          * @param string $eventName
@@ -289,17 +216,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Resolve the subscriber instance.
-         *
-         * @param object|string $subscriber
-         * @return mixed
-         * @see \Illuminate\Events\Dispatcher::resolveSubscriber()
-         */
-        protected static function resolveSubscriber($subscriber)
-        {
-        }
-
-        /**
          * Fire an event until the first non-null response is returned.
          *
          * @param string|object $event
@@ -338,40 +254,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Parse the given event and payload and prepare them for dispatching.
-         *
-         * @param mixed $event
-         * @param mixed $payload
-         * @return array
-         * @see \Illuminate\Events\Dispatcher::parseEventAndPayload()
-         */
-        protected static function parseEventAndPayload($event, $payload)
-        {
-        }
-
-        /**
-         * Determine if the payload has a broadcastable event.
-         *
-         * @param array $payload
-         * @return bool
-         * @see \Illuminate\Events\Dispatcher::shouldBroadcast()
-         */
-        protected static function shouldBroadcast(array $payload)
-        {
-        }
-
-        /**
-         * Broadcast the given event class.
-         *
-         * @param \Illuminate\Contracts\Broadcasting\ShouldBroadcast $event
-         * @return null
-         * @see \Illuminate\Events\Dispatcher::broadcastEvent()
-         */
-        protected static function broadcastEvent($event)
-        {
-        }
-
-        /**
          * Get all of the listeners for a given event name.
          *
          * @param string $eventName
@@ -379,29 +261,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Events\Dispatcher::getListeners()
          */
         public static function getListeners($eventName)
-        {
-        }
-
-        /**
-         * Get the wildcard listeners for the event.
-         *
-         * @param string $eventName
-         * @return array
-         * @see \Illuminate\Events\Dispatcher::getWildcardListeners()
-         */
-        protected static function getWildcardListeners($eventName)
-        {
-        }
-
-        /**
-         * Add the listeners for the event's interfaces to the given array.
-         *
-         * @param string $eventName
-         * @param array $listeners
-         * @return array
-         * @see \Illuminate\Events\Dispatcher::addInterfaceListeners()
-         */
-        protected static function addInterfaceListeners($eventName, array $listeners = [])
         {
         }
 
@@ -430,102 +289,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Create the class based event callable.
-         *
-         * @param string $listener
-         * @return callable
-         * @see \Illuminate\Events\Dispatcher::createClassCallable()
-         */
-        protected static function createClassCallable($listener)
-        {
-        }
-
-        /**
-         * Parse the class listener into class and method.
-         *
-         * @param string $listener
-         * @return array
-         * @see \Illuminate\Events\Dispatcher::parseClassCallable()
-         */
-        protected static function parseClassCallable($listener)
-        {
-        }
-
-        /**
-         * Determine if the event handler class should be queued.
-         *
-         * @param string $class
-         * @return bool
-         * @see \Illuminate\Events\Dispatcher::handlerShouldBeQueued()
-         */
-        protected static function handlerShouldBeQueued($class)
-        {
-        }
-
-        /**
-         * Create a callable for putting an event handler on the queue.
-         *
-         * @param string $class
-         * @param string $method
-         * @return \Closure
-         * @see \Illuminate\Events\Dispatcher::createQueuedHandlerCallable()
-         */
-        protected static function createQueuedHandlerCallable($class, $method)
-        {
-        }
-
-        /**
-         * Call the queue method on the handler class.
-         *
-         * @param string $class
-         * @param string $method
-         * @param array $arguments
-         * @return null
-         * @see \Illuminate\Events\Dispatcher::callQueueMethodOnHandler()
-         */
-        protected static function callQueueMethodOnHandler($class, $method, $arguments)
-        {
-        }
-
-        /**
-         * Queue the handler class.
-         *
-         * @param string $class
-         * @param string $method
-         * @param array $arguments
-         * @return null
-         * @see \Illuminate\Events\Dispatcher::queueHandler()
-         */
-        protected static function queueHandler($class, $method, $arguments)
-        {
-        }
-
-        /**
-         * Create the listener and job for a queued listener.
-         *
-         * @param string $class
-         * @param string $method
-         * @param array $arguments
-         * @return array
-         * @see \Illuminate\Events\Dispatcher::createListenerAndJob()
-         */
-        protected static function createListenerAndJob($class, $method, $arguments)
-        {
-        }
-
-        /**
-         * Propogate listener options to the job.
-         *
-         * @param mixed $listener
-         * @param mixed $job
-         * @return mixed
-         * @see \Illuminate\Events\Dispatcher::propogateListenerOptions()
-         */
-        protected static function propogateListenerOptions($listener, $job)
-        {
-        }
-
-        /**
          * Remove a set of listeners from the dispatcher.
          *
          * @param string $event
@@ -543,16 +306,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Events\Dispatcher::forgetPushed()
          */
         public static function forgetPushed()
-        {
-        }
-
-        /**
-         * Get the queue implementation from the resolver.
-         *
-         * @return \Illuminate\Contracts\Queue\Queue
-         * @see \Illuminate\Events\Dispatcher::resolveQueue()
-         */
-        protected static function resolveQueue()
         {
         }
 

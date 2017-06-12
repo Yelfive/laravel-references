@@ -5,7 +5,6 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Events\Dispatcher;
     use Illuminate\Container\Container;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Collection;
     use Closure;
     use Illuminate\Routing\RouteCollection;
     use Illuminate\Routing\Router;
@@ -126,16 +125,6 @@ namespace Illuminate\Support\Facades {
         protected static $macros;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Route::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -152,46 +141,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -213,17 +162,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -415,17 +353,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Update the group stack with the given attributes.
-         *
-         * @param array $attributes
-         * @return null
-         * @see \Illuminate\Routing\Router::updateGroupStack()
-         */
-        protected static function updateGroupStack(array $attributes)
-        {
-        }
-
-        /**
          * Merge the given array with the last group stack.
          *
          * @param array $new
@@ -437,128 +364,12 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Load the provided routes.
-         *
-         * @param \Closure|string $routes
-         * @return null
-         * @see \Illuminate\Routing\Router::loadRoutes()
-         */
-        protected static function loadRoutes($routes)
-        {
-        }
-
-        /**
          * Get the prefix from the last group on the stack.
          *
          * @return string
          * @see \Illuminate\Routing\Router::getLastGroupPrefix()
          */
         public static function getLastGroupPrefix()
-        {
-        }
-
-        /**
-         * Add a route to the underlying route collection.
-         *
-         * @param array|string $methods
-         * @param string $uri
-         * @param \Closure|array|string|null $action
-         * @return \Illuminate\Routing\Route
-         * @see \Illuminate\Routing\Router::addRoute()
-         */
-        protected static function addRoute($methods, $uri, $action)
-        {
-        }
-
-        /**
-         * Create a new route instance.
-         *
-         * @param array|string $methods
-         * @param string $uri
-         * @param mixed $action
-         * @return \Illuminate\Routing\Route
-         * @see \Illuminate\Routing\Router::createRoute()
-         */
-        protected static function createRoute($methods, $uri, $action)
-        {
-        }
-
-        /**
-         * Determine if the action is routing to a controller.
-         *
-         * @param array $action
-         * @return bool
-         * @see \Illuminate\Routing\Router::actionReferencesController()
-         */
-        protected static function actionReferencesController($action)
-        {
-        }
-
-        /**
-         * Add a controller based route action to the action array.
-         *
-         * @param array|string $action
-         * @return array
-         * @see \Illuminate\Routing\Router::convertToControllerAction()
-         */
-        protected static function convertToControllerAction($action)
-        {
-        }
-
-        /**
-         * Prepend the last group namespace onto the use clause.
-         *
-         * @param string $class
-         * @return string
-         * @see \Illuminate\Routing\Router::prependGroupNamespace()
-         */
-        protected static function prependGroupNamespace($class)
-        {
-        }
-
-        /**
-         * Create a new Route object.
-         *
-         * @param array|string $methods
-         * @param string $uri
-         * @param mixed $action
-         * @return \Illuminate\Routing\Route
-         * @see \Illuminate\Routing\Router::newRoute()
-         */
-        protected static function newRoute($methods, $uri, $action)
-        {
-        }
-
-        /**
-         * Prefix the given URI with the last prefix.
-         *
-         * @param string $uri
-         * @return string
-         * @see \Illuminate\Routing\Router::prefix()
-         */
-        protected static function prefix($uri)
-        {
-        }
-
-        /**
-         * Add the necessary where clauses to the route based on its initial registration.
-         *
-         * @param \Illuminate\Routing\Route $route
-         * @return \Illuminate\Routing\Route
-         * @see \Illuminate\Routing\Router::addWhereClausesToRoute()
-         */
-        protected static function addWhereClausesToRoute($route)
-        {
-        }
-
-        /**
-         * Merge the group stack with the controller action.
-         *
-         * @param \Illuminate\Routing\Route $route
-         * @return null
-         * @see \Illuminate\Routing\Router::mergeGroupAttributesIntoRoute()
-         */
-        protected static function mergeGroupAttributesIntoRoute($route)
         {
         }
 
@@ -585,29 +396,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Find the route matching a given request.
-         *
-         * @param \Illuminate\Http\Request $request
-         * @return \Illuminate\Routing\Route
-         * @see \Illuminate\Routing\Router::findRoute()
-         */
-        protected static function findRoute($request)
-        {
-        }
-
-        /**
-         * Run the given route within a Stack "onion" instance.
-         *
-         * @param \Illuminate\Routing\Route $route
-         * @param \Illuminate\Http\Request $request
-         * @return mixed
-         * @see \Illuminate\Routing\Router::runRouteWithinStack()
-         */
-        protected static function runRouteWithinStack(\Illuminate\Routing\Route $route, Request $request)
-        {
-        }
-
-        /**
          * Gather the middleware for the given route with resolved class names.
          *
          * @param \Illuminate\Routing\Route $route
@@ -615,17 +403,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Routing\Router::gatherRouteMiddleware()
          */
         public static function gatherRouteMiddleware(\Illuminate\Routing\Route $route)
-        {
-        }
-
-        /**
-         * Sort the given middleware by priority.
-         *
-         * @param \Illuminate\Support\Collection $middlewares
-         * @return array
-         * @see \Illuminate\Routing\Router::sortMiddleware()
-         */
-        protected static function sortMiddleware(Collection $middlewares)
         {
         }
 
@@ -660,19 +437,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Routing\Router::substituteImplicitBindings()
          */
         public static function substituteImplicitBindings($route)
-        {
-        }
-
-        /**
-         * Call the binding callback for the given key.
-         *
-         * @param string $key
-         * @param string $value
-         * @param \Illuminate\Routing\Route $route
-         * @return mixed
-         * @see \Illuminate\Routing\Router::performBinding()
-         */
-        protected static function performBinding($key, $value, $route)
         {
         }
 
@@ -1092,30 +856,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Register a new route with the router.
-         *
-         * @param string $method
-         * @param string $uri
-         * @param \Closure|array|string|null $action
-         * @return \Illuminate\Routing\Route
-         * @see \Illuminate\Routing\RouteRegistrar::registerRoute()
-         */
-        protected static function registerRoute($method, $uri, $action = null)
-        {
-        }
-
-        /**
-         * Compile the action into an array including the attributes.
-         *
-         * @param \Closure|array|string|null $action
-         * @return array
-         * @see \Illuminate\Routing\RouteRegistrar::compileAction()
-         */
-        protected static function compileAction($action)
-        {
-        }
-
-        /**
          * @param mixed $value
          *
          * @return \Illuminate\Routing\RouteRegistrar
@@ -1157,6 +897,15 @@ namespace Illuminate\Support\Facades {
          * @return \Illuminate\Routing\RouteRegistrar
          */
         public static function namespace($value)
+        {
+        }
+
+        /**
+         * @param mixed $value
+         *
+         * @return \Illuminate\Routing\RouteRegistrar
+         */
+        public static function prefix($value)
         {
         }
 

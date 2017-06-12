@@ -41,16 +41,6 @@ namespace Illuminate\Support\Facades {
         protected $cipher;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Crypt::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -67,46 +57,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -128,17 +78,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -257,65 +196,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Encryption\Encrypter::decryptString()
          */
         public static function decryptString($payload)
-        {
-        }
-
-        /**
-         * Create a MAC for the given value.
-         *
-         * @param string $iv
-         * @param mixed $value
-         * @return string
-         * @see \Illuminate\Encryption\Encrypter::hash()
-         */
-        protected static function hash($iv, $value)
-        {
-        }
-
-        /**
-         * Get the JSON array from the given payload.
-         *
-         * @param string $payload
-         * @return array
-         *
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @see \Illuminate\Encryption\Encrypter::getJsonPayload()
-         */
-        protected static function getJsonPayload($payload)
-        {
-        }
-
-        /**
-         * Verify that the encryption payload is valid.
-         *
-         * @param mixed $payload
-         * @return bool
-         * @see \Illuminate\Encryption\Encrypter::validPayload()
-         */
-        protected static function validPayload($payload)
-        {
-        }
-
-        /**
-         * Determine if the MAC for the given payload is valid.
-         *
-         * @param array $payload
-         * @return bool
-         * @see \Illuminate\Encryption\Encrypter::validMac()
-         */
-        protected static function validMac(array $payload)
-        {
-        }
-
-        /**
-         * Calculate the hash of the given payload.
-         *
-         * @param array $payload
-         * @param string $bytes
-         * @return string
-         * @see \Illuminate\Encryption\Encrypter::calculateMac()
-         */
-        protected static function calculateMac($payload, $bytes)
         {
         }
 

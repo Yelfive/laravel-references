@@ -50,16 +50,6 @@ namespace Illuminate\Support\Facades {
         protected $levels;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Log::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -76,46 +66,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -137,17 +87,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -328,19 +267,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Write a message to Monolog.
-         *
-         * @param string $level
-         * @param string $message
-         * @param array $context
-         * @return null
-         * @see \Illuminate\Log\Writer::writeLog()
-         */
-        protected static function writeLog($level, $message, $context)
-        {
-        }
-
-        /**
          * Register a file log handler.
          *
          * @param string $path
@@ -404,59 +330,12 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Fires a log event.
-         *
-         * @param string $level
-         * @param string $message
-         * @param array $context
-         * @return null
-         * @see \Illuminate\Log\Writer::fireLogEvent()
-         */
-        protected static function fireLogEvent($level, $message, array $context = [])
-        {
-        }
-
-        /**
-         * Format the parameters for the logger.
-         *
-         * @param mixed $message
-         * @return mixed
-         * @see \Illuminate\Log\Writer::formatMessage()
-         */
-        protected static function formatMessage($message)
-        {
-        }
-
-        /**
-         * Parse the string level into a Monolog constant.
-         *
-         * @param string $level
-         * @return int
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Log\Writer::parseLevel()
-         */
-        protected static function parseLevel($level)
-        {
-        }
-
-        /**
          * Get the underlying Monolog instance.
          *
          * @return \Monolog\Logger
          * @see \Illuminate\Log\Writer::getMonolog()
          */
         public static function getMonolog()
-        {
-        }
-
-        /**
-         * Get a default Monolog formatter instance.
-         *
-         * @return \Monolog\Formatter\LineFormatter
-         * @see \Illuminate\Log\Writer::getDefaultFormatter()
-         */
-        protected static function getDefaultFormatter()
         {
         }
 

@@ -93,16 +93,6 @@ namespace Illuminate\Support\Facades {
         protected $resolver;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Validator::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -119,46 +109,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -180,17 +130,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -275,31 +214,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Validation\Factory::validate()
          */
         public static function validate(array $data, array $rules, array $messages = [], array $customAttributes = [])
-        {
-        }
-
-        /**
-         * Resolve a new Validator instance.
-         *
-         * @param array $data
-         * @param array $rules
-         * @param array $messages
-         * @param array $customAttributes
-         * @return \Illuminate\Validation\Validator
-         * @see \Illuminate\Validation\Factory::resolve()
-         */
-        protected static function resolve(array $data, array $rules, array $messages, array $customAttributes)
-        {
-        }
-
-        /**
-         * Add the extensions to a validator instance.
-         *
-         * @param \Illuminate\Validation\Validator $validator
-         * @return null
-         * @see \Illuminate\Validation\Factory::addExtensions()
-         */
-        protected static function addExtensions(\Illuminate\Validation\Validator $validator)
         {
         }
 

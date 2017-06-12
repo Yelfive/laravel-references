@@ -170,16 +170,6 @@ namespace Illuminate\Support\Facades {
         protected $translationReplacements;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\View::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -196,46 +186,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -257,17 +207,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -381,41 +320,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Normalize a view name.
-         *
-         * @param string $name
-         * @return string
-         * @see \Illuminate\View\Factory::normalizeName()
-         */
-        protected static function normalizeName($name)
-        {
-        }
-
-        /**
-         * Parse the given data into a raw array.
-         *
-         * @param mixed $data
-         * @return array
-         * @see \Illuminate\View\Factory::parseData()
-         */
-        protected static function parseData($data)
-        {
-        }
-
-        /**
-         * Create a new view instance from the given arguments.
-         *
-         * @param string $view
-         * @param string $path
-         * @param array $data
-         * @return \Illuminate\Contracts\View\View
-         * @see \Illuminate\View\Factory::viewInstance()
-         */
-        protected static function viewInstance($view, $path, $data)
-        {
-        }
-
-        /**
          * Determine if a given view exists.
          *
          * @param string $view
@@ -436,17 +340,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Factory::getEngineFromPath()
          */
         public static function getEngineFromPath($path)
-        {
-        }
-
-        /**
-         * Get the extension used by the view file.
-         *
-         * @param string $path
-         * @return string
-         * @see \Illuminate\View\Factory::getExtension()
-         */
-        protected static function getExtension($path)
         {
         }
 
@@ -710,17 +603,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the data for the given component.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\View\Factory::componentData()
-         */
-        protected static function componentData($name)
-        {
-        }
-
-        /**
          * Start the slot rendering process.
          *
          * @param string $name
@@ -739,16 +621,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Factory::endSlot()
          */
         public static function endSlot()
-        {
-        }
-
-        /**
-         * Get the index for the current component.
-         *
-         * @return int
-         * @see \Illuminate\View\Factory::currentComponent()
-         */
-        protected static function currentComponent()
         {
         }
 
@@ -784,79 +656,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Factory::composer()
          */
         public static function composer($views, $callback)
-        {
-        }
-
-        /**
-         * Add an event for a given view.
-         *
-         * @param string $view
-         * @param \Closure|string $callback
-         * @param string $prefix
-         * @return \Closure|null
-         * @see \Illuminate\View\Factory::addViewEvent()
-         */
-        protected static function addViewEvent($view, $callback, $prefix = 'composing: ')
-        {
-        }
-
-        /**
-         * Register a class based view composer.
-         *
-         * @param string $view
-         * @param string $class
-         * @param string $prefix
-         * @return \Closure
-         * @see \Illuminate\View\Factory::addClassEvent()
-         */
-        protected static function addClassEvent($view, $class, $prefix)
-        {
-        }
-
-        /**
-         * Build a class based container callback Closure.
-         *
-         * @param string $class
-         * @param string $prefix
-         * @return \Closure
-         * @see \Illuminate\View\Factory::buildClassEventCallback()
-         */
-        protected static function buildClassEventCallback($class, $prefix)
-        {
-        }
-
-        /**
-         * Parse a class based composer name.
-         *
-         * @param string $class
-         * @param string $prefix
-         * @return array
-         * @see \Illuminate\View\Factory::parseClassEvent()
-         */
-        protected static function parseClassEvent($class, $prefix)
-        {
-        }
-
-        /**
-         * Determine the class event method based on the given prefix.
-         *
-         * @param string $prefix
-         * @return string
-         * @see \Illuminate\View\Factory::classEventMethodForPrefix()
-         */
-        protected static function classEventMethodForPrefix($prefix)
-        {
-        }
-
-        /**
-         * Add a listener to the event dispatcher.
-         *
-         * @param string $name
-         * @param \Closure $callback
-         * @return null
-         * @see \Illuminate\View\Factory::addEventListener()
-         */
-        protected static function addEventListener($name, $callback)
         {
         }
 
@@ -936,18 +735,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Factory::appendSection()
          */
         public static function appendSection()
-        {
-        }
-
-        /**
-         * Append content to a given section.
-         *
-         * @param string $section
-         * @param string $content
-         * @return null
-         * @see \Illuminate\View\Factory::extendSection()
-         */
-        protected static function extendSection($section, $content)
         {
         }
 
@@ -1080,18 +867,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Append content to a given push section.
-         *
-         * @param string $section
-         * @param string $content
-         * @return null
-         * @see \Illuminate\View\Factory::extendPush()
-         */
-        protected static function extendPush($section, $content)
-        {
-        }
-
-        /**
          * Start prepending content into a push section.
          *
          * @param string $section
@@ -1111,18 +886,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Factory::stopPrepend()
          */
         public static function stopPrepend()
-        {
-        }
-
-        /**
-         * Prepend content to a given stack.
-         *
-         * @param string $section
-         * @param string $content
-         * @return null
-         * @see \Illuminate\View\Factory::extendPrepend()
-         */
-        protected static function extendPrepend($section, $content)
         {
         }
 

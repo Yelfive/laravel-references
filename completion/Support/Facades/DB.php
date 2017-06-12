@@ -3,14 +3,10 @@
 namespace Illuminate\Support\Facades {
 
     use Illuminate\Database\Connectors\ConnectionFactory;
-    use Illuminate\Database\Connection;
-    use PDOStatement;
     use Closure;
-    use Illuminate\Database\QueryException;
     use Illuminate\Database\Query\Grammars\Grammar;
     use Illuminate\Database\Query\Processors\Processor;
     use Illuminate\Contracts\Events\Dispatcher;
-    use Exception;
 
     /**
      * @see Illuminate\Support\Facades\DB
@@ -56,16 +52,6 @@ namespace Illuminate\Support\Facades {
         protected $extensions;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\DB::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -82,46 +68,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -143,17 +89,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -223,65 +158,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Parse the connection into an array of the name and read / write type.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\Database\DatabaseManager::parseConnectionName()
-         */
-        protected static function parseConnectionName($name)
-        {
-        }
-
-        /**
-         * Make the database connection instance.
-         *
-         * @param string $name
-         * @return \Illuminate\Database\Connection
-         * @see \Illuminate\Database\DatabaseManager::makeConnection()
-         */
-        protected static function makeConnection($name)
-        {
-        }
-
-        /**
-         * Get the configuration for a connection.
-         *
-         * @param string $name
-         * @return array
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Database\DatabaseManager::configuration()
-         */
-        protected static function configuration($name)
-        {
-        }
-
-        /**
-         * Prepare the database connection instance.
-         *
-         * @param \Illuminate\Database\Connection $connection
-         * @param string $type
-         * @return \Illuminate\Database\Connection
-         * @see \Illuminate\Database\DatabaseManager::configure()
-         */
-        protected static function configure(Connection $connection, $type)
-        {
-        }
-
-        /**
-         * Prepare the read / write mode for database connection instance.
-         *
-         * @param \Illuminate\Database\Connection $connection
-         * @param string $type
-         * @return \Illuminate\Database\Connection
-         * @see \Illuminate\Database\DatabaseManager::setPdoForType()
-         */
-        protected static function setPdoForType(Connection $connection, $type = null)
-        {
-        }
-
-        /**
          * Disconnect from the given database and remove from local cache.
          *
          * @param string $name
@@ -311,17 +187,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Database\DatabaseManager::reconnect()
          */
         public static function reconnect($name = null)
-        {
-        }
-
-        /**
-         * Refresh the PDO connections on a given connection.
-         *
-         * @param string $name
-         * @return \Illuminate\Database\Connection
-         * @see \Illuminate\Database\DatabaseManager::refreshPdoConnections()
-         */
-        protected static function refreshPdoConnections($name)
         {
         }
 
@@ -399,16 +264,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the default query grammar instance.
-         *
-         * @return \Illuminate\Database\Query\Grammars\Grammar
-         * @see \Illuminate\Database\Connection::getDefaultQueryGrammar()
-         */
-        protected static function getDefaultQueryGrammar()
-        {
-        }
-
-        /**
          * Set the schema grammar to the default implementation.
          *
          * @return null
@@ -419,32 +274,12 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the default schema grammar instance.
-         *
-         * @return \Illuminate\Database\Schema\Grammars\Grammar
-         * @see \Illuminate\Database\Connection::getDefaultSchemaGrammar()
-         */
-        protected static function getDefaultSchemaGrammar()
-        {
-        }
-
-        /**
          * Set the query post processor to the default implementation.
          *
          * @return null
          * @see \Illuminate\Database\Connection::useDefaultPostProcessor()
          */
         public static function useDefaultPostProcessor()
-        {
-        }
-
-        /**
-         * Get the default post processor instance.
-         *
-         * @return \Illuminate\Database\Query\Processors\Processor
-         * @see \Illuminate\Database\Connection::getDefaultPostProcessor()
-         */
-        protected static function getDefaultPostProcessor()
         {
         }
 
@@ -531,28 +366,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Configure the PDO prepared statement.
-         *
-         * @param \PDOStatement $statement
-         * @return \PDOStatement
-         * @see \Illuminate\Database\Connection::prepared()
-         */
-        protected static function prepared(PDOStatement $statement)
-        {
-        }
-
-        /**
-         * Get the PDO connection to use for a select query.
-         *
-         * @param bool $useReadPdo
-         * @return \PDO
-         * @see \Illuminate\Database\Connection::getPdoForSelect()
-         */
-        protected static function getPdoForSelect($useReadPdo = true)
-        {
-        }
-
-        /**
          * Run an insert statement against the database.
          *
          * @param string $query
@@ -635,17 +448,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Execute the given callback in "dry run" mode.
-         *
-         * @param \Closure $callback
-         * @return array
-         * @see \Illuminate\Database\Connection::withFreshQueryLog()
-         */
-        protected static function withFreshQueryLog($callback)
-        {
-        }
-
-        /**
          * Bind values to their parameters in the given statement.
          *
          * @param \PDOStatement $statement
@@ -669,36 +471,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Run a SQL statement and log its execution context.
-         *
-         * @param string $query
-         * @param array $bindings
-         * @param \Closure $callback
-         * @return mixed
-         *
-         * @throws \Illuminate\Database\QueryException
-         * @see \Illuminate\Database\Connection::run()
-         */
-        protected static function run($query, $bindings, Closure $callback)
-        {
-        }
-
-        /**
-         * Run a SQL statement.
-         *
-         * @param string $query
-         * @param array $bindings
-         * @param \Closure $callback
-         * @return mixed
-         *
-         * @throws \Illuminate\Database\QueryException
-         * @see \Illuminate\Database\Connection::runQueryCallback()
-         */
-        protected static function runQueryCallback($query, $bindings, Closure $callback)
-        {
-        }
-
-        /**
          * Log a query in the connection's query log.
          *
          * @param string $query
@@ -712,57 +484,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the elapsed time since a given starting point.
-         *
-         * @param int $start
-         * @return float
-         * @see \Illuminate\Database\Connection::getElapsedTime()
-         */
-        protected static function getElapsedTime($start)
-        {
-        }
-
-        /**
-         * Handle a query exception.
-         *
-         * @param \Exception $e
-         * @param string $query
-         * @param array $bindings
-         * @param \Closure $callback
-         * @return mixed
-         * @see \Illuminate\Database\Connection::handleQueryException()
-         */
-        protected static function handleQueryException($e, $query, $bindings, Closure $callback)
-        {
-        }
-
-        /**
-         * Handle a query exception that occurred during query execution.
-         *
-         * @param \Illuminate\Database\QueryException $e
-         * @param string $query
-         * @param array $bindings
-         * @param \Closure $callback
-         * @return mixed
-         *
-         * @throws \Illuminate\Database\QueryException
-         * @see \Illuminate\Database\Connection::tryAgainIfCausedByLostConnection()
-         */
-        protected static function tryAgainIfCausedByLostConnection(QueryException $e, $query, $bindings, Closure $callback)
-        {
-        }
-
-        /**
-         * Reconnect to the database if a PDO connection is missing.
-         *
-         * @return null
-         * @see \Illuminate\Database\Connection::reconnectIfMissingConnection()
-         */
-        protected static function reconnectIfMissingConnection()
-        {
-        }
-
-        /**
          * Register a database query listener with the connection.
          *
          * @param \Closure $callback
@@ -770,28 +491,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Database\Connection::listen()
          */
         public static function listen(Closure $callback)
-        {
-        }
-
-        /**
-         * Fire an event for this connection.
-         *
-         * @param string $event
-         * @return null
-         * @see \Illuminate\Database\Connection::fireConnectionEvent()
-         */
-        protected static function fireConnectionEvent($event)
-        {
-        }
-
-        /**
-         * Fire the given event if possible.
-         *
-         * @param mixed $event
-         * @return null
-         * @see \Illuminate\Database\Connection::event()
-         */
-        protected static function event($event)
         {
         }
 
@@ -1153,28 +852,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Determine if the given exception was caused by a deadlock.
-         *
-         * @param \Exception $e
-         * @return bool
-         * @see \Illuminate\Database\Connection::causedByDeadlock()
-         */
-        protected static function causedByDeadlock(Exception $e)
-        {
-        }
-
-        /**
-         * Determine if the given exception was caused by a lost connection.
-         *
-         * @param \Exception $e
-         * @return bool
-         * @see \Illuminate\Database\Connection::causedByLostConnection()
-         */
-        protected static function causedByLostConnection(Exception $e)
-        {
-        }
-
-        /**
          * Execute a Closure within a transaction.
          *
          * @param \Closure $callback
@@ -1189,21 +866,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Handle an exception encountered when running a transacted statement.
-         *
-         * @param \Exception $e
-         * @param int $currentAttempt
-         * @param int $maxAttempts
-         * @return null
-         *
-         * @throws \Exception
-         * @see \Illuminate\Database\Connection::handleTransactionException()
-         */
-        protected static function handleTransactionException($e, $currentAttempt, $maxAttempts)
-        {
-        }
-
-        /**
          * Start a new database transaction.
          *
          * @return null
@@ -1211,39 +873,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Database\Connection::beginTransaction()
          */
         public static function beginTransaction()
-        {
-        }
-
-        /**
-         * Create a transaction within the database.
-         *
-         * @return null
-         * @see \Illuminate\Database\Connection::createTransaction()
-         */
-        protected static function createTransaction()
-        {
-        }
-
-        /**
-         * Create a save point within the database.
-         *
-         * @return null
-         * @see \Illuminate\Database\Connection::createSavepoint()
-         */
-        protected static function createSavepoint()
-        {
-        }
-
-        /**
-         * Handle an exception from a transaction beginning.
-         *
-         * @param \Exception $e
-         * @return null
-         *
-         * @throws \Exception
-         * @see \Illuminate\Database\Connection::handleBeginTransactionException()
-         */
-        protected static function handleBeginTransactionException($e)
         {
         }
 
@@ -1265,17 +894,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Database\Connection::rollBack()
          */
         public static function rollBack($toLevel = null)
-        {
-        }
-
-        /**
-         * Perform a rollback within the database.
-         *
-         * @param int $toLevel
-         * @return null
-         * @see \Illuminate\Database\Connection::performRollBack()
-         */
-        protected static function performRollBack($toLevel)
         {
         }
 

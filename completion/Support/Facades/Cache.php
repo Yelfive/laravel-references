@@ -42,16 +42,6 @@ namespace Illuminate\Support\Facades {
         protected $customCreators;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Cache::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -68,46 +58,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -129,17 +79,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -219,116 +158,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Attempt to get the store from the local cache.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Cache\Repository
-         * @see \Illuminate\Cache\CacheManager::get()
-         */
-        protected static function get($name)
-        {
-        }
-
-        /**
-         * Resolve the given store.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Cache\Repository
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Cache\CacheManager::resolve()
-         */
-        protected static function resolve($name)
-        {
-        }
-
-        /**
-         * Call a custom driver creator.
-         *
-         * @param array $config
-         * @return mixed
-         * @see \Illuminate\Cache\CacheManager::callCustomCreator()
-         */
-        protected static function callCustomCreator(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the APC cache driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Cache\ApcStore
-         * @see \Illuminate\Cache\CacheManager::createApcDriver()
-         */
-        protected static function createApcDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the array cache driver.
-         *
-         * @return \Illuminate\Cache\ArrayStore
-         * @see \Illuminate\Cache\CacheManager::createArrayDriver()
-         */
-        protected static function createArrayDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the file cache driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Cache\FileStore
-         * @see \Illuminate\Cache\CacheManager::createFileDriver()
-         */
-        protected static function createFileDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the Memcached cache driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Cache\MemcachedStore
-         * @see \Illuminate\Cache\CacheManager::createMemcachedDriver()
-         */
-        protected static function createMemcachedDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the Null cache driver.
-         *
-         * @return \Illuminate\Cache\NullStore
-         * @see \Illuminate\Cache\CacheManager::createNullDriver()
-         */
-        protected static function createNullDriver()
-        {
-        }
-
-        /**
-         * Create an instance of the Redis cache driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Cache\RedisStore
-         * @see \Illuminate\Cache\CacheManager::createRedisDriver()
-         */
-        protected static function createRedisDriver(array $config)
-        {
-        }
-
-        /**
-         * Create an instance of the database cache driver.
-         *
-         * @param array $config
-         * @return \Illuminate\Cache\DatabaseStore
-         * @see \Illuminate\Cache\CacheManager::createDatabaseDriver()
-         */
-        protected static function createDatabaseDriver(array $config)
-        {
-        }
-
-        /**
          * Create a new cache repository with the given implementation.
          *
          * @param \Illuminate\Contracts\Cache\Store $store
@@ -336,28 +165,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Cache\CacheManager::repository()
          */
         public static function repository(Store $store)
-        {
-        }
-
-        /**
-         * Get the cache prefix.
-         *
-         * @param array $config
-         * @return string
-         * @see \Illuminate\Cache\CacheManager::getPrefix()
-         */
-        protected static function getPrefix(array $config)
-        {
-        }
-
-        /**
-         * Get the cache connection configuration.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\Cache\CacheManager::getConfig()
-         */
-        protected static function getConfig($name)
         {
         }
 
@@ -391,6 +198,151 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Cache\CacheManager::extend()
          */
         public static function extend($driver, Closure $callback)
+        {
+        }
+
+        /**
+         * Determine if an item exists in the cache.
+         *
+         * @param string $key
+         * @return bool
+         * @see \Illuminate\Contracts\Cache\Repository::has()
+         */
+        public static function has($key)
+        {
+        }
+
+        /**
+         * Retrieve an item from the cache by key.
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed
+         * @see \Illuminate\Contracts\Cache\Repository::get()
+         */
+        public static function get($key, $default = null)
+        {
+        }
+
+        /**
+         * Retrieve an item from the cache and delete it.
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed
+         * @see \Illuminate\Contracts\Cache\Repository::pull()
+         */
+        public static function pull($key, $default = null)
+        {
+        }
+
+        /**
+         * Store an item in the cache.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @param \DateTime|float|int $minutes
+         * @return null
+         * @see \Illuminate\Contracts\Cache\Repository::put()
+         */
+        public static function put($key, $value, $minutes)
+        {
+        }
+
+        /**
+         * Store an item in the cache if the key does not exist.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @param \DateTime|float|int $minutes
+         * @return bool
+         * @see \Illuminate\Contracts\Cache\Repository::add()
+         */
+        public static function add($key, $value, $minutes)
+        {
+        }
+
+        /**
+         * Increment the value of an item in the cache.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return int|bool
+         * @see \Illuminate\Contracts\Cache\Repository::increment()
+         */
+        public static function increment($key, $value = 1)
+        {
+        }
+
+        /**
+         * Decrement the value of an item in the cache.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return int|bool
+         * @see \Illuminate\Contracts\Cache\Repository::decrement()
+         */
+        public static function decrement($key, $value = 1)
+        {
+        }
+
+        /**
+         * Store an item in the cache indefinitely.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return null
+         * @see \Illuminate\Contracts\Cache\Repository::forever()
+         */
+        public static function forever($key, $value)
+        {
+        }
+
+        /**
+         * Get an item from the cache, or store the default value.
+         *
+         * @param string $key
+         * @param \DateTime|float|int $minutes
+         * @param \Closure $callback
+         * @return mixed
+         * @see \Illuminate\Contracts\Cache\Repository::remember()
+         */
+        public static function remember($key, $minutes, Closure $callback)
+        {
+        }
+
+        /**
+         * Get an item from the cache, or store the default value forever.
+         *
+         * @param string $key
+         * @param \Closure $callback
+         * @return mixed
+         * @see \Illuminate\Contracts\Cache\Repository::sear()
+         */
+        public static function sear($key, Closure $callback)
+        {
+        }
+
+        /**
+         * Get an item from the cache, or store the default value forever.
+         *
+         * @param string $key
+         * @param \Closure $callback
+         * @return mixed
+         * @see \Illuminate\Contracts\Cache\Repository::rememberForever()
+         */
+        public static function rememberForever($key, Closure $callback)
+        {
+        }
+
+        /**
+         * Remove an item from the cache.
+         *
+         * @param string $key
+         * @return bool
+         * @see \Illuminate\Contracts\Cache\Repository::forget()
+         */
+        public static function forget($key)
         {
         }
 

@@ -113,16 +113,6 @@ namespace Illuminate\Support\Facades {
         protected static $macros;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\URL::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -139,46 +129,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -200,17 +150,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -300,16 +239,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the previous URL from the session if possible.
-         *
-         * @return string|null
-         * @see \Illuminate\Routing\UrlGenerator::getPreviousUrlFromSession()
-         */
-        protected static function getPreviousUrlFromSession()
-        {
-        }
-
-        /**
          * Generate an absolute URL to the given path.
          *
          * @param string $path
@@ -371,17 +300,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Remove the index.php file from a path.
-         *
-         * @param string $root
-         * @return string
-         * @see \Illuminate\Routing\UrlGenerator::removeIndex()
-         */
-        protected static function removeIndex($root)
-        {
-        }
-
-        /**
          * Get the default scheme for a raw URL.
          *
          * @param bool|null $secure
@@ -408,21 +326,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the URL for a given route instance.
-         *
-         * @param \Illuminate\Routing\Route $route
-         * @param mixed $parameters
-         * @param bool $absolute
-         * @return string
-         *
-         * @throws \Illuminate\Routing\Exceptions\UrlGenerationException
-         * @see \Illuminate\Routing\UrlGenerator::toRoute()
-         */
-        protected static function toRoute($route, $parameters, $absolute)
-        {
-        }
-
-        /**
          * Get the URL to a controller action.
          *
          * @param string $action
@@ -438,17 +341,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Format the given controller action.
-         *
-         * @param string $action
-         * @return string
-         * @see \Illuminate\Routing\UrlGenerator::formatAction()
-         */
-        protected static function formatAction($action)
-        {
-        }
-
-        /**
          * Format the array of URL parameters.
          *
          * @param mixed|array $parameters
@@ -456,17 +348,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Routing\UrlGenerator::formatParameters()
          */
         public static function formatParameters($parameters)
-        {
-        }
-
-        /**
-         * Extract the query string from the given path.
-         *
-         * @param string $path
-         * @return array
-         * @see \Illuminate\Routing\UrlGenerator::extractQueryString()
-         */
-        protected static function extractQueryString($path)
         {
         }
 
@@ -502,16 +383,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Routing\UrlGenerator::isValidUrl()
          */
         public static function isValidUrl($path)
-        {
-        }
-
-        /**
-         * Get the Route URL generator instance.
-         *
-         * @return \Illuminate\Routing\RouteUrlGenerator
-         * @see \Illuminate\Routing\UrlGenerator::routeUrl()
-         */
-        protected static function routeUrl()
         {
         }
 
@@ -609,16 +480,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Routing\UrlGenerator::setRoutes()
          */
         public static function setRoutes(RouteCollection $routes)
-        {
-        }
-
-        /**
-         * Get the session implementation from the resolver.
-         *
-         * @return \Illuminate\Session\Store|null
-         * @see \Illuminate\Routing\UrlGenerator::getSession()
-         */
-        protected static function getSession()
         {
         }
 

@@ -13,6 +13,9 @@ class FrameworkHelper
 {
     use ParseClassTrait, HandleFrameworkTrait;
 
+    /**
+     * @var string The class name to generate as, with namespace
+     */
     protected $targetClassName;
 
     /**

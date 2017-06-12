@@ -3,9 +3,7 @@
 namespace Illuminate\Support\Facades {
 
     use Closure;
-    use Illuminate\Support\ServiceProvider;
     use Symfony\Component\HttpFoundation\Request;
-    use ReflectionParameter;
     use Illuminate\Contracts\Container\Container;
 
     /**
@@ -259,16 +257,6 @@ namespace Illuminate\Support\Facades {
         protected $afterResolvingCallbacks;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\App::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -285,46 +273,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -346,17 +294,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -424,26 +361,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Register the basic bindings into the container.
-         *
-         * @return null
-         * @see \Illuminate\Foundation\Application::registerBaseBindings()
-         */
-        protected static function registerBaseBindings()
-        {
-        }
-
-        /**
-         * Register all of the base service providers.
-         *
-         * @return null
-         * @see \Illuminate\Foundation\Application::registerBaseServiceProviders()
-         */
-        protected static function registerBaseServiceProviders()
-        {
-        }
-
-        /**
          * Run the given array of bootstrap classes.
          *
          * @param array $bootstrappers
@@ -507,16 +424,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Foundation\Application::setBasePath()
          */
         public static function setBasePath($basePath)
-        {
-        }
-
-        /**
-         * Bind all of the application paths in the container.
-         *
-         * @return null
-         * @see \Illuminate\Foundation\Application::bindPathsInContainer()
-         */
-        protected static function bindPathsInContainer()
         {
         }
 
@@ -787,17 +694,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Mark the given provider as registered.
-         *
-         * @param \Illuminate\Support\ServiceProvider $provider
-         * @return null
-         * @see \Illuminate\Foundation\Application::markAsRegistered()
-         */
-        protected static function markAsRegistered($provider)
-        {
-        }
-
-        /**
          * Load and boot all of the remaining deferred providers.
          *
          * @return null
@@ -877,17 +773,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Boot the given service provider.
-         *
-         * @param \Illuminate\Support\ServiceProvider $provider
-         * @return mixed
-         * @see \Illuminate\Foundation\Application::bootProvider()
-         */
-        protected static function bootProvider(ServiceProvider $provider)
-        {
-        }
-
-        /**
          * Register a new boot listener.
          *
          * @param mixed $callback
@@ -906,17 +791,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Foundation\Application::booted()
          */
         public static function booted($callback)
-        {
-        }
-
-        /**
-         * Call the booting callbacks for the application.
-         *
-         * @param array $callbacks
-         * @return null
-         * @see \Illuminate\Foundation\Application::fireAppCallbacks()
-         */
-        protected static function fireAppCallbacks(array $callbacks)
         {
         }
 
@@ -1251,18 +1125,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the Closure to be used when building a type.
-         *
-         * @param string $abstract
-         * @param string $concrete
-         * @return \Closure
-         * @see \Illuminate\Container\Container::getClosure()
-         */
-        protected static function getClosure($abstract, $concrete)
-        {
-        }
-
-        /**
          * Determine if the container has a method binding.
          *
          * @param string $method
@@ -1362,17 +1224,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Remove an alias from the contextual binding alias cache.
-         *
-         * @param string $searched
-         * @return null
-         * @see \Illuminate\Container\Container::removeAbstractAlias()
-         */
-        protected static function removeAbstractAlias($searched)
-        {
-        }
-
-        /**
          * Assign a set of tags to a given binding.
          *
          * @param array|string $abstracts
@@ -1433,28 +1284,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Fire the "rebound" callbacks for the given abstract type.
-         *
-         * @param string $abstract
-         * @return null
-         * @see \Illuminate\Container\Container::rebound()
-         */
-        protected static function rebound($abstract)
-        {
-        }
-
-        /**
-         * Get the rebound callbacks for a given type.
-         *
-         * @param string $abstract
-         * @return array
-         * @see \Illuminate\Container\Container::getReboundCallbacks()
-         */
-        protected static function getReboundCallbacks($abstract)
-        {
-        }
-
-        /**
          * Wrap the given closure such that its dependencies will be injected when executed.
          *
          * @param \Closure $callback
@@ -1503,63 +1332,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Resolve the given type from the container.
-         *
-         * @param string $abstract
-         * @param array $parameters
-         * @return mixed
-         * @see \Illuminate\Container\Container::resolve()
-         */
-        protected static function resolve($abstract, $parameters = [])
-        {
-        }
-
-        /**
-         * Get the concrete type for a given abstract.
-         *
-         * @param string $abstract
-         * @return mixed $concrete
-         * @see \Illuminate\Container\Container::getConcrete()
-         */
-        protected static function getConcrete($abstract)
-        {
-        }
-
-        /**
-         * Get the contextual concrete binding for the given abstract.
-         *
-         * @param string $abstract
-         * @return string|null
-         * @see \Illuminate\Container\Container::getContextualConcrete()
-         */
-        protected static function getContextualConcrete($abstract)
-        {
-        }
-
-        /**
-         * Find the concrete binding for the given abstract in the contextual binding array.
-         *
-         * @param string $abstract
-         * @return string|null
-         * @see \Illuminate\Container\Container::findInContextualBindings()
-         */
-        protected static function findInContextualBindings($abstract)
-        {
-        }
-
-        /**
-         * Determine if the given concrete is buildable.
-         *
-         * @param mixed $concrete
-         * @param string $abstract
-         * @return bool
-         * @see \Illuminate\Container\Container::isBuildable()
-         */
-        protected static function isBuildable($concrete, $abstract)
-        {
-        }
-
-        /**
          * Instantiate a concrete instance of the given type.
          *
          * @param string $concrete
@@ -1569,91 +1341,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Container\Container::build()
          */
         public static function build($concrete)
-        {
-        }
-
-        /**
-         * Resolve all of the dependencies from the ReflectionParameters.
-         *
-         * @param array $dependencies
-         * @return array
-         * @see \Illuminate\Container\Container::resolveDependencies()
-         */
-        protected static function resolveDependencies(array $dependencies)
-        {
-        }
-
-        /**
-         * Determine if the given dependency has a parameter override from makeWith.
-         *
-         * @param \ReflectionParameter $dependency
-         * @return bool
-         * @see \Illuminate\Container\Container::hasParameterOverride()
-         */
-        protected static function hasParameterOverride($dependency)
-        {
-        }
-
-        /**
-         * Get a parameter override for a dependency.
-         *
-         * @param \ReflectionParameter $dependency
-         * @return mixed
-         * @see \Illuminate\Container\Container::getParameterOverride()
-         */
-        protected static function getParameterOverride($dependency)
-        {
-        }
-
-        /**
-         * Resolve a non-class hinted primitive dependency.
-         *
-         * @param \ReflectionParameter $parameter
-         * @return mixed
-         *
-         * @throws \Illuminate\Contracts\Container\BindingResolutionException
-         * @see \Illuminate\Container\Container::resolvePrimitive()
-         */
-        protected static function resolvePrimitive(ReflectionParameter $parameter)
-        {
-        }
-
-        /**
-         * Resolve a class based dependency from the container.
-         *
-         * @param \ReflectionParameter $parameter
-         * @return mixed
-         *
-         * @throws \Illuminate\Contracts\Container\BindingResolutionException
-         * @see \Illuminate\Container\Container::resolveClass()
-         */
-        protected static function resolveClass(ReflectionParameter $parameter)
-        {
-        }
-
-        /**
-         * Throw an exception that the concrete is not instantiable.
-         *
-         * @param string $concrete
-         * @return null
-         *
-         * @throws \Illuminate\Contracts\Container\BindingResolutionException
-         * @see \Illuminate\Container\Container::notInstantiable()
-         */
-        protected static function notInstantiable($concrete)
-        {
-        }
-
-        /**
-         * Throw an exception for an unresolvable primitive.
-         *
-         * @param \ReflectionParameter $parameter
-         * @return null
-         *
-         * @throws \Illuminate\Contracts\Container\BindingResolutionException
-         * @see \Illuminate\Container\Container::unresolvablePrimitive()
-         */
-        protected static function unresolvablePrimitive(ReflectionParameter $parameter)
         {
         }
 
@@ -1682,56 +1369,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Fire all of the resolving callbacks.
-         *
-         * @param string $abstract
-         * @param mixed $object
-         * @return null
-         * @see \Illuminate\Container\Container::fireResolvingCallbacks()
-         */
-        protected static function fireResolvingCallbacks($abstract, $object)
-        {
-        }
-
-        /**
-         * Fire all of the after resolving callbacks.
-         *
-         * @param string $abstract
-         * @param mixed $object
-         * @return null
-         * @see \Illuminate\Container\Container::fireAfterResolvingCallbacks()
-         */
-        protected static function fireAfterResolvingCallbacks($abstract, $object)
-        {
-        }
-
-        /**
-         * Get all callbacks for a given type.
-         *
-         * @param string $abstract
-         * @param object $object
-         * @param array $callbacksPerType
-         *
-         * @return array
-         * @see \Illuminate\Container\Container::getCallbacksForType()
-         */
-        protected static function getCallbacksForType($abstract, $object, array $callbacksPerType)
-        {
-        }
-
-        /**
-         * Fire an array of callbacks with an object.
-         *
-         * @param mixed $object
-         * @param array $callbacks
-         * @return null
-         * @see \Illuminate\Container\Container::fireCallbackArray()
-         */
-        protected static function fireCallbackArray($object, array $callbacks)
-        {
-        }
-
-        /**
          * Get the container's bindings.
          *
          * @return array
@@ -1751,28 +1388,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Container\Container::getAlias()
          */
         public static function getAlias($abstract)
-        {
-        }
-
-        /**
-         * Get the extender callbacks for a given type.
-         *
-         * @param string $abstract
-         * @return array
-         * @see \Illuminate\Container\Container::getExtenders()
-         */
-        protected static function getExtenders($abstract)
-        {
-        }
-
-        /**
-         * Drop all of the stale instances and aliases.
-         *
-         * @param string $abstract
-         * @return null
-         * @see \Illuminate\Container\Container::dropStaleInstances()
-         */
-        protected static function dropStaleInstances($abstract)
         {
         }
 

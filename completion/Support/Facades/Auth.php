@@ -57,16 +57,6 @@ namespace Illuminate\Support\Facades {
         protected $customProviderCreators;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Auth::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Register the typical authentication routes for an application.
          *
          * @return null
@@ -97,46 +87,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
-        {
-        }
-
-        /**
          * Hotswap the underlying instance behind the facade.
          *
          * @param mixed $instance
@@ -154,17 +104,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -233,31 +172,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Resolve the given guard.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Auth\AuthManager::resolve()
-         */
-        protected static function resolve($name)
-        {
-        }
-
-        /**
-         * Call a custom driver creator.
-         *
-         * @param string $name
-         * @param array $config
-         * @return mixed
-         * @see \Illuminate\Auth\AuthManager::callCustomCreator()
-         */
-        protected static function callCustomCreator($name, array $config)
-        {
-        }
-
-        /**
          * Create a session based authentication guard.
          *
          * @param string $name
@@ -278,17 +192,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\AuthManager::createTokenDriver()
          */
         public static function createTokenDriver($name, $config)
-        {
-        }
-
-        /**
-         * Get the guard configuration.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\Auth\AuthManager::getConfig()
-         */
-        protected static function getConfig($name)
         {
         }
 
@@ -391,28 +294,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\AuthManager::createUserProvider()
          */
         public static function createUserProvider($provider)
-        {
-        }
-
-        /**
-         * Create an instance of the database user provider.
-         *
-         * @param array $config
-         * @return \Illuminate\Auth\DatabaseUserProvider
-         * @see \Illuminate\Auth\AuthManager::createDatabaseProvider()
-         */
-        protected static function createDatabaseProvider($config)
-        {
-        }
-
-        /**
-         * Create an instance of the Eloquent user provider.
-         *
-         * @param array $config
-         * @return \Illuminate\Auth\EloquentUserProvider
-         * @see \Illuminate\Auth\AuthManager::createEloquentProvider()
-         */
-        protected static function createEloquentProvider($config)
         {
         }
 

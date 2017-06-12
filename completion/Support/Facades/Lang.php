@@ -77,16 +77,6 @@ namespace Illuminate\Support\Facades {
         protected static $macros;
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Lang::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -103,46 +93,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -164,17 +114,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -326,55 +265,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the proper locale for a choice operation.
-         *
-         * @param string|null $locale
-         * @return string
-         * @see \Illuminate\Translation\Translator::localeForChoice()
-         */
-        protected static function localeForChoice($locale)
-        {
-        }
-
-        /**
-         * Retrieve a language line out the loaded array.
-         *
-         * @param string $namespace
-         * @param string $group
-         * @param string $locale
-         * @param string $item
-         * @param array $replace
-         * @return string|array|null
-         * @see \Illuminate\Translation\Translator::getLine()
-         */
-        protected static function getLine($namespace, $group, $locale, $item, array $replace)
-        {
-        }
-
-        /**
-         * Make the place-holder replacements on a line.
-         *
-         * @param string $line
-         * @param array $replace
-         * @return string
-         * @see \Illuminate\Translation\Translator::makeReplacements()
-         */
-        protected static function makeReplacements($line, array $replace)
-        {
-        }
-
-        /**
-         * Sort the replacements array.
-         *
-         * @param array $replace
-         * @return array
-         * @see \Illuminate\Translation\Translator::sortReplacements()
-         */
-        protected static function sortReplacements(array $replace)
-        {
-        }
-
-        /**
          * Add translation lines to the given locale.
          *
          * @param array $lines
@@ -401,19 +291,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Determine if the given group has been loaded.
-         *
-         * @param string $namespace
-         * @param string $group
-         * @param string $locale
-         * @return bool
-         * @see \Illuminate\Translation\Translator::isLoaded()
-         */
-        protected static function isLoaded($namespace, $group, $locale)
-        {
-        }
-
-        /**
          * Add a new namespace to the loader.
          *
          * @param string $namespace
@@ -433,17 +310,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Translation\Translator::parseKey()
          */
         public static function parseKey($key)
-        {
-        }
-
-        /**
-         * Get the array of locales to be checked.
-         *
-         * @param string|null $locale
-         * @return array
-         * @see \Illuminate\Translation\Translator::localeArray()
-         */
-        protected static function localeArray($locale)
         {
         }
 
@@ -527,28 +393,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Translation\Translator::setFallback()
          */
         public static function setFallback($fallback)
-        {
-        }
-
-        /**
-         * Parse an array of basic segments.
-         *
-         * @param array $segments
-         * @return array
-         * @see \Illuminate\Support\NamespacedItemResolver::parseBasicSegments()
-         */
-        protected static function parseBasicSegments(array $segments)
-        {
-        }
-
-        /**
-         * Parse an array of namespaced segments.
-         *
-         * @param string $key
-         * @return array
-         * @see \Illuminate\Support\NamespacedItemResolver::parseNamespacedSegments()
-         */
-        protected static function parseNamespacedSegments($key)
         {
         }
 

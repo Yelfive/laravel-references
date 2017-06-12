@@ -51,16 +51,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the registered name of the component.
-         *
-         * @return string
-         * @see \Illuminate\Support\Facades\Queue::getFacadeAccessor()
-         */
-        protected static function getFacadeAccessor()
-        {
-        }
-
-        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -77,46 +67,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::shouldReceive()
          */
         public static function shouldReceive()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\Expectation
-         * @see \Illuminate\Support\Facades\Facade::createFreshMockInstance()
-         */
-        protected static function createFreshMockInstance()
-        {
-        }
-
-        /**
-         * Create a fresh mock instance for the given class.
-         *
-         * @return \Mockery\MockInterface
-         * @see \Illuminate\Support\Facades\Facade::createMock()
-         */
-        protected static function createMock()
-        {
-        }
-
-        /**
-         * Determines whether a mock is set as the instance of the facade.
-         *
-         * @return bool
-         * @see \Illuminate\Support\Facades\Facade::isMock()
-         */
-        protected static function isMock()
-        {
-        }
-
-        /**
-         * Get the mockable class for the bound instance.
-         *
-         * @return string|null
-         * @see \Illuminate\Support\Facades\Facade::getMockableClass()
-         */
-        protected static function getMockableClass()
         {
         }
 
@@ -138,17 +88,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Support\Facades\Facade::getFacadeRoot()
          */
         public static function getFacadeRoot()
-        {
-        }
-
-        /**
-         * Resolve the facade root instance from the container.
-         *
-         * @param string|object $name
-         * @return mixed
-         * @see \Illuminate\Support\Facades\Facade::resolveFacadeInstance()
-         */
-        protected static function resolveFacadeInstance($name)
         {
         }
 
@@ -294,30 +233,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Resolve a queue connection.
-         *
-         * @param string $name
-         * @return \Illuminate\Contracts\Queue\Queue
-         * @see \Illuminate\Queue\QueueManager::resolve()
-         */
-        protected static function resolve($name)
-        {
-        }
-
-        /**
-         * Get the connector for a given driver.
-         *
-         * @param string $driver
-         * @return \Illuminate\Queue\Connectors\ConnectorInterface
-         *
-         * @throws \InvalidArgumentException
-         * @see \Illuminate\Queue\QueueManager::getConnector()
-         */
-        protected static function getConnector($driver)
-        {
-        }
-
-        /**
          * Add a queue connection resolver.
          *
          * @param string $driver
@@ -338,17 +253,6 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Queue\QueueManager::addConnector()
          */
         public static function addConnector($driver, Closure $resolver)
-        {
-        }
-
-        /**
-         * Get the queue connection configuration.
-         *
-         * @param string $name
-         * @return array
-         * @see \Illuminate\Queue\QueueManager::getConfig()
-         */
-        protected static function getConfig($name)
         {
         }
 
