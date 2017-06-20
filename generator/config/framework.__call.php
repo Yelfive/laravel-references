@@ -31,7 +31,6 @@ return [
         [
             'return' => \Illuminate\Routing\RouteRegistrar::class,
             'methods' => ['as', 'domain', 'middleware', 'name', 'namespace', 'prefix'],
-            // 'parameters' => [[type, name]],
             'parameters' => [['mixed', '$value']],
         ],
     ],

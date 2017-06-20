@@ -22,8 +22,11 @@ namespace Illuminate\Support;
  * @method $this after(string $column)
  * @method $this first()
  * @method $this change() Indicates altering a column
- * @method $this references(string $column) Indicates altering a column
- * @method $this on(string $table) Indicates altering a column
+ *
+ * @method $this references(string $column) The reference column of the foreign table @see \Illuminate\Database\Schema\Blueprint::foreign for more information
+ * @method $this on(string $table) Foreign table name
+ *
+ * @method $this unique() Create unique index at this column
  *
  */
 class Fluent
