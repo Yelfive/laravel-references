@@ -7,6 +7,8 @@
 
 namespace fk\reference\support;
 
+use function MongoDB\is_string_array;
+
 /**
  * @method info(string $message)
  */
@@ -87,15 +89,29 @@ DOC;
         while (isset($__calls[$accessor]) && empty($accessorChecked[$accessor])) {
             $accessorChecked[$accessor] = true;
             $info = $__calls[$accessor];
-            if (is_string($info)) {
-                $rc = new \ReflectionClass($info);
-                $this->parseMethods($rc, $this->isStaticMethod);
-                $accessor = $rc->name;
+            if (is_string($info) || $this->isIndexedArray($info)) {
+                $infoArray = (array)$info;
+                foreach ($infoArray as $info) {
+                    $rc = new \ReflectionClass($info);
+                    $this->parseMethods($rc, $this->isStaticMethod);
+                    $accessor = $rc->name;
+                }
             } else if (is_array($info)) {
                 $this->handleExtraWhenArray($info);
                 break;
             }
         }
+    }
+
+    protected function isIndexedArray($array)
+    {
+        $i = 0;
+        foreach ($array as $k => $v) {
+            if ($i++ !== $k || !is_string($v)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     protected function handleExtraWhenArray($info)
@@ -128,7 +144,7 @@ METHOD;
         }
     }
 
-    protected function extractMethodsFromGroup($group):array
+    protected function extractMethodsFromGroup($group): array
     {
         $return = $this->extractFromGroup($group, 'return', 0);
 

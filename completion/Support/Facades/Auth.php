@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades {
 
     use Closure;
+    use Illuminate\Contracts\Auth\Authenticatable;
 
     /**
      * @see \Illuminate\Support\Facades\Auth
@@ -294,6 +295,146 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\AuthManager::createUserProvider()
          */
         public static function createUserProvider($provider)
+        {
+        }
+
+        /**
+         * Determine if the current user is authenticated.
+         *
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\Guard::check()
+         */
+        public static function check()
+        {
+        }
+
+        /**
+         * Determine if the current user is a guest.
+         *
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\Guard::guest()
+         */
+        public static function guest()
+        {
+        }
+
+        /**
+         * Get the currently authenticated user.
+         *
+         * @return \Illuminate\Contracts\Auth\Authenticatable|null
+         * @see \Illuminate\Contracts\Auth\Guard::user()
+         */
+        public static function user()
+        {
+        }
+
+        /**
+         * Get the ID for the currently authenticated user.
+         *
+         * @return int|null
+         * @see \Illuminate\Contracts\Auth\Guard::id()
+         */
+        public static function id()
+        {
+        }
+
+        /**
+         * Validate a user's credentials.
+         *
+         * @param array $credentials
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\Guard::validate()
+         */
+        public static function validate(array $credentials = [])
+        {
+        }
+
+        /**
+         * Set the current user.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @return null
+         * @see \Illuminate\Contracts\Auth\Guard::setUser()
+         */
+        public static function setUser(Authenticatable $user)
+        {
+        }
+
+        /**
+         * Attempt to authenticate a user using the given credentials.
+         *
+         * @param array $credentials
+         * @param bool $remember
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::attempt()
+         */
+        public static function attempt(array $credentials = [], $remember = false)
+        {
+        }
+
+        /**
+         * Log a user into the application without sessions or cookies.
+         *
+         * @param array $credentials
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::once()
+         */
+        public static function once(array $credentials = [])
+        {
+        }
+
+        /**
+         * Log a user into the application.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param bool $remember
+         * @return null
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::login()
+         */
+        public static function login(Authenticatable $user, $remember = false)
+        {
+        }
+
+        /**
+         * Log the given user ID into the application.
+         *
+         * @param mixed $id
+         * @param bool $remember
+         * @return \Illuminate\Contracts\Auth\Authenticatable
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::loginUsingId()
+         */
+        public static function loginUsingId($id, $remember = false)
+        {
+        }
+
+        /**
+         * Log the given user ID into the application without sessions or cookies.
+         *
+         * @param mixed $id
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::onceUsingId()
+         */
+        public static function onceUsingId($id)
+        {
+        }
+
+        /**
+         * Determine if the user was authenticated via "remember me" cookie.
+         *
+         * @return bool
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::viaRemember()
+         */
+        public static function viaRemember()
+        {
+        }
+
+        /**
+         * Log the user out of the application.
+         *
+         * @return null
+         * @see \Illuminate\Contracts\Auth\StatefulGuard::logout()
+         */
+        public static function logout()
         {
         }
 

@@ -21,7 +21,7 @@
  */
 return [
     \Illuminate\Session\SessionManager::class => \Illuminate\Session\Store::class,
-    Illuminate\Routing\Router::class => \Illuminate\Routing\RouteRegistrar::class,
+    \Illuminate\Routing\Router::class => \Illuminate\Routing\RouteRegistrar::class,
     \Illuminate\Routing\RouteRegistrar::class => [
         [
             'return' => \Illuminate\Routing\Route::class,
@@ -37,5 +37,6 @@ return [
     \Illuminate\Database\Eloquent\Model::class => \Illuminate\Database\Eloquent\Builder::class,
     \Illuminate\Database\Eloquent\Builder::class => \Illuminate\Database\Query\Builder::class,
     \Illuminate\Database\DatabaseManager::class => \Illuminate\Database\Connection::class,
-    \Illuminate\Cache\CacheManager::class => \Illuminate\Contracts\Cache\Repository::class
+    \Illuminate\Cache\CacheManager::class => \Illuminate\Contracts\Cache\Repository::class,
+    \Illuminate\Auth\AuthManager::class => [\Illuminate\Contracts\Auth\Guard::class, \Illuminate\Contracts\Auth\StatefulGuard::class],
 ];
