@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Routing\Redirector;
 
     /**
-     * @see Illuminate\Support\Facades\Response
-     * @see Illuminate\Routing\ResponseFactory
+     * @see \Illuminate\Support\Facades\Response
+     * @see \Illuminate\Routing\ResponseFactory
      */
     class Response
     {

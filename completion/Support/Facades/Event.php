@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Container\Container;
 
     /**
-     * @see Illuminate\Support\Facades\Event
-     * @see Illuminate\Events\Dispatcher
+     * @see \Illuminate\Support\Facades\Event
+     * @see \Illuminate\Events\Dispatcher
      */
     class Event
     {

@@ -10,8 +10,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Routing\Router;
 
     /**
-     * @see Illuminate\Support\Facades\Route
-     * @see Illuminate\Routing\Router
+     * @see \Illuminate\Support\Facades\Route
+     * @see \Illuminate\Routing\Router
      */
     class Route
     {

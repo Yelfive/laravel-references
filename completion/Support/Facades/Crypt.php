@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\Crypt
-     * @see Illuminate\Encryption\Encrypter
+     * @see \Illuminate\Support\Facades\Crypt
+     * @see \Illuminate\Encryption\Encrypter
      */
     class Crypt
     {

@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Broadcast
-     * @see Illuminate\Broadcasting\BroadcastManager
+     * @see \Illuminate\Support\Facades\Broadcast
+     * @see \Illuminate\Broadcasting\BroadcastManager
      */
     class Broadcast
     {

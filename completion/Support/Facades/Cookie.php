@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\Cookie
-     * @see Illuminate\Cookie\CookieJar
+     * @see \Illuminate\Support\Facades\Cookie
+     * @see \Illuminate\Cookie\CookieJar
      */
     class Cookie
     {

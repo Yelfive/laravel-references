@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Storage
-     * @see Illuminate\Filesystem\FilesystemManager
+     * @see \Illuminate\Support\Facades\Storage
+     * @see \Illuminate\Filesystem\FilesystemManager
      */
     class Storage
     {

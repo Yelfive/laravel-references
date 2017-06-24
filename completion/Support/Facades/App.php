@@ -7,8 +7,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Container\Container;
 
     /**
-     * @see Illuminate\Support\Facades\App
-     * @see Illuminate\Foundation\Application
+     * @see \Illuminate\Support\Facades\App
+     * @see \Illuminate\Foundation\Application
      */
     class App
     {

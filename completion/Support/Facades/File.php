@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\File
-     * @see Illuminate\Filesystem\Filesystem
+     * @see \Illuminate\Support\Facades\File
+     * @see \Illuminate\Filesystem\Filesystem
      */
     class File
     {

@@ -60,8 +60,8 @@ trait HandleFrameworkTrait
         } else {
             $this->meta['class_doc'] = <<<DOC
 /**
- * @see {$aliasReflectionClass->name}
- * @see {$reflectionClass->name}
+ * @see \\{$aliasReflectionClass->name}
+ * @see \\{$reflectionClass->name}
  */
 DOC;
         }

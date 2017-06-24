@@ -7,8 +7,8 @@ namespace Illuminate\Support\Facades {
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     /**
-     * @see Illuminate\Support\Facades\Input
-     * @see Illuminate\Http\Request
+     * @see \Illuminate\Support\Facades\Input
+     * @see \Illuminate\Http\Request
      */
     class Input
     {

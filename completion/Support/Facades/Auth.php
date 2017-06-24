@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Auth
-     * @see Illuminate\Auth\AuthManager
+     * @see \Illuminate\Support\Facades\Auth
+     * @see \Illuminate\Auth\AuthManager
      */
     class Auth
     {

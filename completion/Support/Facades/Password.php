@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\Password
-     * @see Illuminate\Auth\Passwords\PasswordBrokerManager
+     * @see \Illuminate\Support\Facades\Password
+     * @see \Illuminate\Auth\Passwords\PasswordBrokerManager
      */
     class Password
     {

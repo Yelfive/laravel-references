@@ -7,8 +7,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\URL
-     * @see Illuminate\Routing\UrlGenerator
+     * @see \Illuminate\Support\Facades\URL
+     * @see \Illuminate\Routing\UrlGenerator
      */
     class URL
     {

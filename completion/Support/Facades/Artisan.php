@@ -7,8 +7,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Artisan
-     * @see App\Console\Kernel
+     * @see \Illuminate\Support\Facades\Artisan
+     * @see \App\Console\Kernel
      */
     class Artisan
     {

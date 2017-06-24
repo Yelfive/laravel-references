@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Schema
-     * @see Illuminate\Database\Schema\MySqlBuilder
+     * @see \Illuminate\Support\Facades\Schema
+     * @see \Illuminate\Database\Schema\MySqlBuilder
      */
     class Schema
     {

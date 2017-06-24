@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\Hash
-     * @see Illuminate\Hashing\BcryptHasher
+     * @see \Illuminate\Support\Facades\Hash
+     * @see \Illuminate\Hashing\BcryptHasher
      */
     class Hash
     {

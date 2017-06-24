@@ -9,8 +9,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Events\Dispatcher;
 
     /**
-     * @see Illuminate\Support\Facades\DB
-     * @see Illuminate\Database\DatabaseManager
+     * @see \Illuminate\Support\Facades\DB
+     * @see \Illuminate\Database\DatabaseManager
      */
     class DB
     {

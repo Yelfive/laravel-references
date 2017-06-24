@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Filesystem\Filesystem;
 
     /**
-     * @see Illuminate\Support\Facades\Blade
-     * @see Illuminate\View\Compilers\BladeCompiler
+     * @see \Illuminate\Support\Facades\Blade
+     * @see \Illuminate\View\Compilers\BladeCompiler
      */
     class Blade
     {

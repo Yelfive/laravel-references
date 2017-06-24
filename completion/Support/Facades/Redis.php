@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\Redis
-     * @see Illuminate\Redis\RedisManager
+     * @see \Illuminate\Support\Facades\Redis
+     * @see \Illuminate\Redis\RedisManager
      */
     class Redis
     {

@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Container\Container;
 
     /**
-     * @see Illuminate\Support\Facades\Gate
-     * @see Illuminate\Auth\Access\Gate
+     * @see \Illuminate\Support\Facades\Gate
+     * @see \Illuminate\Auth\Access\Gate
      */
     class Gate
     {

@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
 
 
     /**
-     * @see Illuminate\Support\Facades\Config
-     * @see Illuminate\Config\Repository
+     * @see \Illuminate\Support\Facades\Config
+     * @see \Illuminate\Config\Repository
      */
     class Config
     {

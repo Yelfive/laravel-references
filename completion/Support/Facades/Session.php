@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use SessionHandlerInterface;
 
     /**
-     * @see Illuminate\Support\Facades\Session
-     * @see Illuminate\Session\SessionManager
+     * @see \Illuminate\Support\Facades\Session
+     * @see \Illuminate\Session\SessionManager
      */
     class Session
     {

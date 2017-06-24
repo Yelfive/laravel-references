@@ -7,8 +7,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Events\Dispatcher;
 
     /**
-     * @see Illuminate\Support\Facades\Mail
-     * @see Illuminate\Mail\Mailer
+     * @see \Illuminate\Support\Facades\Mail
+     * @see \Illuminate\Mail\Mailer
      */
     class Mail
     {

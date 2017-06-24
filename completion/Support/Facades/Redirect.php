@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Session\Store;
 
     /**
-     * @see Illuminate\Support\Facades\Redirect
-     * @see Illuminate\Routing\Redirector
+     * @see \Illuminate\Support\Facades\Redirect
+     * @see \Illuminate\Routing\Redirector
      */
     class Redirect
     {

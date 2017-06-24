@@ -8,8 +8,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Validation\PresenceVerifierInterface;
 
     /**
-     * @see Illuminate\Support\Facades\Validator
-     * @see Illuminate\Validation\Factory
+     * @see \Illuminate\Support\Facades\Validator
+     * @see \Illuminate\Validation\Factory
      */
     class Validator
     {

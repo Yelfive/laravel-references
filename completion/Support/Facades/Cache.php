@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Cache
-     * @see Illuminate\Cache\CacheManager
+     * @see \Illuminate\Support\Facades\Cache
+     * @see \Illuminate\Cache\CacheManager
      */
     class Cache
     {

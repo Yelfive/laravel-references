@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Translation\MessageSelector;
 
     /**
-     * @see Illuminate\Support\Facades\Lang
-     * @see Illuminate\Translation\Translator
+     * @see \Illuminate\Support\Facades\Lang
+     * @see \Illuminate\Translation\Translator
      */
     class Lang
     {

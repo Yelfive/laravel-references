@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Notification
-     * @see Illuminate\Notifications\ChannelManager
+     * @see \Illuminate\Support\Facades\Notification
+     * @see \Illuminate\Notifications\ChannelManager
      */
     class Notification
     {

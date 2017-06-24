@@ -5,8 +5,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Queue
-     * @see Illuminate\Queue\QueueManager
+     * @see \Illuminate\Support\Facades\Queue
+     * @see \Illuminate\Queue\QueueManager
      */
     class Queue
     {

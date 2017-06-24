@@ -6,8 +6,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Bus
-     * @see Illuminate\Bus\Dispatcher
+     * @see \Illuminate\Support\Facades\Bus
+     * @see \Illuminate\Bus\Dispatcher
      */
     class Bus
     {

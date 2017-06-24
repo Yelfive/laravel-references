@@ -8,8 +8,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Container\Container;
 
     /**
-     * @see Illuminate\Support\Facades\View
-     * @see Illuminate\View\Factory
+     * @see \Illuminate\Support\Facades\View
+     * @see \Illuminate\View\Factory
      */
     class View
     {

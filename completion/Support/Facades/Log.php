@@ -7,8 +7,8 @@ namespace Illuminate\Support\Facades {
     use Closure;
 
     /**
-     * @see Illuminate\Support\Facades\Log
-     * @see Illuminate\Log\Writer
+     * @see \Illuminate\Support\Facades\Log
+     * @see \Illuminate\Log\Writer
      */
     class Log
     {
