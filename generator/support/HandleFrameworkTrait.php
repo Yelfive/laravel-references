@@ -77,10 +77,10 @@ DOC;
         if ($aliasReflectionClass !== $reflectionClass) $this->parseMethods($aliasReflectionClass);
         $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass);
 
-        $this->handleExtra($reflectionClass->name);
+        $this->handleExtraCall($reflectionClass->name);
     }
 
-    protected function handleExtra(string $accessor)
+    protected function handleExtraCall(string $accessor)
     {
         $__calls = include __DIR__ . '/../config/framework.__call.php';
         $accessorChecked = [];

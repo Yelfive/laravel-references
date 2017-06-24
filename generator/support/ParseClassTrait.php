@@ -188,6 +188,26 @@ DOC;
         return '';
     }
 
+    protected function getMethodDocument(\ReflectionMethod $method)
+    {
+        $raw = $method->getDocComment();
+
+        $configArray = include __DIR__ . '/../config/framework.rewrite/methods.add_params.php';
+
+        $currentClass = $this->targetClassName;
+        foreach ($configArray as $class => $config) {
+
+            if ($currentClass === $class && isset($config[$method->name])) {
+                $params = $config[$method->name];
+                if (!is_array($params)) break;
+                foreach ($params as $param => $types) {
+                    $raw = preg_replace("#@param +([\w\|\\\\]+) +\\$$param#", "@param $types|$1 $param", $raw);
+                }
+            }
+        }
+        return $raw;
+    }
+
     /**
      * @param \ReflectionClass $reflectionClass
      * @param bool $forceStatic
@@ -240,7 +260,7 @@ DOC;
 
     protected function methodDoc(\ReflectionMethod $method): string
     {
-        $rawDoc = $method->getDocComment();
+        $rawDoc = $this->getMethodDocument($method);
         $doc = [];
         foreach (explode("\n", $rawDoc) as $line) {
             $doc[] = preg_replace_callback('/\S(\s+)\S/', function ($match) {
@@ -267,9 +287,9 @@ DOC;
     protected function skipMethod(\ReflectionMethod $method): bool
     {
         return $method->isPrivate() || in_array($method->name, [
-            '__call', '__callStatic', '__toString',
-            '__get', '__set', '__invoke', '__sleep', '__clone'
-        ]);
+                '__call', '__callStatic', '__toString',
+                '__get', '__set', '__invoke', '__sleep', '__clone'
+            ]);
     }
 
     protected function methodPrivacy(\ReflectionMethod $method)

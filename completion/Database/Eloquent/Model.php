@@ -2683,7 +2683,7 @@ class Model
     /**
      * Add a basic where clause to the query.
      *
-     * @param string|\Closure $column
+     * @param array|string|\Closure column
      * @param string $operator
      * @param mixed $value
      * @param string $boolean
