@@ -7,11 +7,14 @@ You can extend a validation by calling
 
 and the $extension is callable
 
-```
+```php
+<?php
+
 $extension = function (string $field, mixed $value, array $parameters ,\Illuminate\Validation\Validator $validator) {
     // return true to indicate passes
     // return false indicates otherwise
-}
+};
+
 ```
 
 # Built-ins
