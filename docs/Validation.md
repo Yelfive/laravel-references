@@ -17,7 +17,8 @@ $extension = function (string $field, mixed $value, array $parameters ,\Illumina
 
 ```
 
-# Built-ins
+## Built-in Validators
+
 - Accepted
 - Active URL
 - After (Date)
