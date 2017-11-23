@@ -1,5 +1,5 @@
-PHPUnit call stack
----
+# PHPUnit call stack
+
 - TestSuite::run
     - $test->run line 722
 - TestCase::runBare()
@@ -18,6 +18,7 @@ PHPUnit call stack
     - Artisan::forgetBootstrappers()
 
 From the stack we know, the unit test does the following things:
+
 - Initialize the variables for the test
 - Run the test
 - Unset the variables
