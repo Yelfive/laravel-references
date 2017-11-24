@@ -125,6 +125,10 @@ QUESTION
     protected function generateModel($table)
     {
         $schema = $this->getTableSchema($table);
+        if (!$schema->columns) {
+            $this->alert('No columns found, maybe prefix missing ?');
+            sleep(1);
+        }
         $namespace = $this->config('namespace', 'App\Models');
 
         $columns = $rules = [];

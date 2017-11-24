@@ -15,7 +15,7 @@ return [
     'model' => [
         'baseModel' => 'App\Models\Model',
         'namespace' => 'App\Models',
-        'dir' => 'app\test',
+        'dir' => 'app\Models',
         'preferArrayRules' => true,
         'except' => ['updated_at', 'created_at', 'deleted']
     ],
