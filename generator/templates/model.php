@@ -15,6 +15,7 @@ use fk\reference\support\Helper;
  * @var string $baseModelName
  * @var array $rules
  * @var array $dynamicWhere
+ * @var array $uses
  */
 
 echo "<?php\n";
@@ -22,6 +23,12 @@ echo "<?php\n";
 ?>
 
 namespace <?= $namespace ?>;
+<?php if ($uses): ?>
+
+<?php foreach($uses as $use): ?>
+use <?= $use; ?>;
+<?php endforeach; ?>
+<?php endif; ?>
 
 /**
  * Fields in the table `<?= $tableName ?>`
@@ -30,10 +37,12 @@ namespace <?= $namespace ?>;
  * @property <?= $type ?> $<?= $property ?> <?= $description ?><?= "\n" ?>
 <?php endforeach; ?>
  *
+<?php if($methods): ?>
 <?php foreach ($methods as list($type, $name, $parameters, $description)): ?>
  * @method <?= $type ?> <?= $name ?>(<?= $parameters ?>) <?= $description ?><?= "\n" ?>
 <?php endforeach; ?>
  *
+<?php endif; ?>
  */
 class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
 {

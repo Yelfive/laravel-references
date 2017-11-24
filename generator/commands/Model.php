@@ -10,9 +10,11 @@ namespace fk\reference\commands;
 use fk\reference\exceptions\FileNotFoundException;
 use fk\reference\IdeReferenceServiceProvider;
 use fk\reference\support\ColumnSchema;
+use fk\reference\support\DumperExpression;
 use fk\reference\support\Helper;
 use fk\reference\support\TableSchema;
 use Illuminate\Console\Command;
+use Illuminate\Validation\Rule;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -22,6 +24,8 @@ class Model extends Command
     protected $name = 'reference:model';
 
     protected $description = 'Generate model references or create model instead of `php artisan make:model`';
+
+    protected $uses = [];
 
     public function handle()
     {
@@ -161,8 +165,16 @@ QUESTION
             'rules' => $rules,
             'tableName' => $table,
             'relations' => $relations,
+            'uses' => $this->uses,
         ]);
         $this->write($modelName, $content);
+    }
+
+    protected function willUse($class)
+    {
+        if (!in_array($class, $this->uses)) {
+            $this->uses[] = $class;
+        }
     }
 
     protected function getMethods()
@@ -248,7 +260,8 @@ QUESTION
                 $rules = ['date'];
                 break;
             case 'enum':
-                $rules = ['string'];
+                $this->willUse(Rule::class);
+                $rules = [new DumperExpression('Rule::in(' . Helper::dump($column->values, true) . ')')];
                 break;
         }
 

@@ -6,6 +6,7 @@
  */
 
 namespace fk\reference\support;
+
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -56,6 +57,8 @@ class ColumnSchema
     public $unsigned = false;
     /** @var integer */
     public $size;
+    /** @var array|null Array for `enum` */
+    public $values = null;
 
     public function __construct($columns)
     {
@@ -84,8 +87,16 @@ class ColumnSchema
             $type = $matches[1];
             if (false !== strpos($type, 'int') || $type === 'decimal' || $type === 'float') {
                 $this->size = $matches[2];
-                $this->unsigned = $matches[3]??'' === 'unsigned' ? true : false;
+                $this->unsigned = $matches[3] ?? '' === 'unsigned' ? true : false;
             }
+
+            /* enum('no','yes') */
+            if ($type === 'enum') {
+                $this->values = array_map(function ($v) {
+                    return trim($v, '\'""');
+                }, explode(',', substr($value, 5, -1)));;
+            }
+
             return $type;
         } else {
             return $value;

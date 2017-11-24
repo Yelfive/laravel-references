@@ -34,30 +34,29 @@ class Helper
      */
     public static function dump($input, bool $inline = false, $depth = 1): string
     {
-        if (is_scalar($input) || is_null($input)) {
-            return static::wrapScalar($input);
-        } else if (is_array($input)) {
+        if (is_array($input)) {
             $string = '';
 
             $space = $inline ? ' ' : "\n" . str_repeat(' ', $depth * 4);
 
             if (static::isIndexedArray($input)) {
                 foreach ($input as $value) {
-                    $string .= ",$space" . (is_scalar($value) ? static::wrapScalar($value) : static::dump($value, $inline, $depth + 1));
+                    $string .= ",$space" . (is_scalar($value) ? static::escape($value) : static::dump($value, $inline, $depth + 1));
                 }
             } else {
                 foreach ($input as $k => $value) {
-                    $string .= ",$space" . static::wrapScalar($k) . ' => ' . (is_scalar($value) ? static::wrapScalar($value) : static::dump($value, $inline, $depth + 1));
+                    $string .= ",$space" . static::escape($k) . ' => ' . (is_scalar($value) ? static::escape($value) : static::dump($value, $inline, $depth + 1));
                 }
             }
 
             $chars = $inline ? ', ' : ',';
             return '[' . ltrim($string, $chars) . ($inline ? '' : ',') . substr($space, 0, -4) . ']';
+        } else {
+            return static::escape($input);
         }
-        throw new InvalidVariableException('Cannot dump such data type: ' . var_export($input, true));
     }
 
-    public static function wrapScalar($input)
+    protected static function escape($input)
     {
         if (is_numeric($input)) {
             return $input;
@@ -69,6 +68,8 @@ class Helper
             return $input ? 'true' : 'false';
         } else if (is_int($input)) {
             return $input;
+        } else if ($input instanceof DumperExpression) {
+            return $input->expression;
         }
     }
 }
