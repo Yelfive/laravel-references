@@ -126,8 +126,12 @@ QUESTION
     {
         $schema = $this->getTableSchema($table);
         if (!$schema->columns) {
-            $this->alert('No columns found, maybe prefix missing ?');
-            sleep(1);
+            $this->alert('No column found, maybe prefix missing ?');
+            if ($this->option('force')) {
+                sleep(2);
+            } else {
+                return;
+            }
         }
         $namespace = $this->config('namespace', 'App\Models');
 
@@ -313,6 +317,7 @@ QUESTION
         return [
             ['dir', 'd', InputOption::VALUE_OPTIONAL, 'Directory for the models to be placed', 'App\Models'],
             ['overwrite', null, InputOption::VALUE_NONE, 'Overwrite if model exists when passed'],
+            ['force', 'f', InputOption::VALUE_NONE, 'Force to create model even when no column fetched from database']
         ];
     }
 
