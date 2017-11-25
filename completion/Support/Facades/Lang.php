@@ -2,7 +2,7 @@
 
 namespace Illuminate\Support\Facades {
 
-    use Illuminate\Translation\LoaderInterface;
+    use Illuminate\Contracts\Translation\Loader;
     use Illuminate\Translation\MessageSelector;
 
     /**
@@ -30,7 +30,7 @@ namespace Illuminate\Support\Facades {
         /**
          * The loader implementation.
          *
-         * @var \Illuminate\Translation\LoaderInterface
+         * @var \Illuminate\Contracts\Translation\Loader
          */
         protected $loader;
 
@@ -162,12 +162,12 @@ namespace Illuminate\Support\Facades {
         /**
          * Create a new translator instance.
          *
-         * @param \Illuminate\Translation\LoaderInterface $loader
+         * @param \Illuminate\Contracts\Translation\Loader $loader
          * @param string $locale
          * 
          * @see \Illuminate\Translation\Translator::__construct()
          */
-        public function __construct(LoaderInterface $loader, $locale)
+        public function __construct(Loader $loader, $locale)
         {
         }
 
@@ -229,7 +229,7 @@ namespace Illuminate\Support\Facades {
          * @param string $key
          * @param array $replace
          * @param string $locale
-         * @return string
+         * @return string|array|null
          * @see \Illuminate\Translation\Translator::getFromJson()
          */
         public static function getFromJson($key, array $replace = [], $locale = null)
@@ -303,6 +303,17 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Add a new JSON path to the loader.
+         *
+         * @param string $path
+         * @return null
+         * @see \Illuminate\Translation\Translator::addJsonPath()
+         */
+        public static function addJsonPath($path)
+        {
+        }
+
+        /**
          * Parse a key into namespace, group, and item.
          *
          * @param string $key
@@ -337,7 +348,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the language line loader implementation.
          *
-         * @return \Illuminate\Translation\LoaderInterface
+         * @return \Illuminate\Contracts\Translation\Loader
          * @see \Illuminate\Translation\Translator::getLoader()
          */
         public static function getLoader()
@@ -412,11 +423,23 @@ namespace Illuminate\Support\Facades {
          * Register a custom macro.
          *
          * @param string $name
-         * @param callable $macro
+         * @param object|callable $macro
+         *
          * @return null
          * @see \Illuminate\Translation\Translator::macro()
          */
-        public static function macro($name, callable $macro)
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Translation\Translator::mixin()
+         */
+        public static function mixin($mixin)
         {
         }
 

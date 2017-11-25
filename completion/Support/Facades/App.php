@@ -12,7 +12,7 @@ namespace Illuminate\Support\Facades {
      */
     class App
     {
-        const VERSION = '5.4.18';
+        const VERSION = '5.5.21';
 
         const MASTER_REQUEST = 1;
 
@@ -386,7 +386,7 @@ namespace Illuminate\Support\Facades {
          * Register a callback to run before a bootstrapper.
          *
          * @param string $bootstrapper
-         * @param Closure $callback
+         * @param \Closure $callback
          * @return null
          * @see \Illuminate\Foundation\Application::beforeBootstrapping()
          */
@@ -398,7 +398,7 @@ namespace Illuminate\Support\Facades {
          * Register a callback to run after a bootstrapper.
          *
          * @param string $bootstrapper
-         * @param Closure $callback
+         * @param \Closure $callback
          * @return null
          * @see \Illuminate\Foundation\Application::afterBootstrapping()
          */
@@ -683,6 +683,17 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Get the registered service provider instances if any exist.
+         *
+         * @param \Illuminate\Support\ServiceProvider|string $provider
+         * @return array
+         * @see \Illuminate\Foundation\Application::getProviders()
+         */
+        public static function getProviders($provider)
+        {
+        }
+
+        /**
          * Resolve a service provider instance from the class name.
          *
          * @param string $provider
@@ -718,7 +729,7 @@ namespace Illuminate\Support\Facades {
          * Register a deferred provider and service.
          *
          * @param string $provider
-         * @param string $service
+         * @param string|null $service
          * @return null
          * @see \Illuminate\Foundation\Application::registerDeferredProvider()
          */
@@ -732,10 +743,11 @@ namespace Illuminate\Support\Facades {
          * (Overriding Container::make)
          *
          * @param string $abstract
+         * @param array $parameters
          * @return mixed
          * @see \Illuminate\Foundation\Application::make()
          */
-        public static function make($abstract)
+        public static function make($abstract, array $parameters = [])
         {
         }
 
@@ -819,6 +831,16 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Foundation\Application::getCachedServicesPath()
          */
         public static function getCachedServicesPath()
+        {
+        }
+
+        /**
+         * Get the path to the cached packages.php file.
+         *
+         * @return string
+         * @see \Illuminate\Foundation\Application::getCachedPackagesPath()
+         */
+        public static function getCachedPackagesPath()
         {
         }
 
@@ -1079,6 +1101,14 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * {@inheritdoc}
+         * @see \Illuminate\Container\Container::has()
+         */
+        public static function has($id)
+        {
+        }
+
+        /**
          * Determine if the given abstract type has been resolved.
          *
          * @param string $abstract
@@ -1216,7 +1246,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $abstract
          * @param mixed $instance
-         * @return null
+         * @return mixed
          * @see \Illuminate\Container\Container::instance()
          */
         public static function instance($abstract, $instance)
@@ -1320,14 +1350,22 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Resolve the given type with the given parameter overrides.
+         * An alias function name for make().
          *
          * @param string $abstract
          * @param array $parameters
          * @return mixed
          * @see \Illuminate\Container\Container::makeWith()
          */
-        public static function makeWith($abstract, array $parameters)
+        public static function makeWith($abstract, array $parameters = [])
+        {
+        }
+
+        /**
+         * {@inheritdoc}
+         * @see \Illuminate\Container\Container::get()
+         */
+        public static function get($id)
         {
         }
 
@@ -1388,6 +1426,17 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Container\Container::getAlias()
          */
         public static function getAlias($abstract)
+        {
+        }
+
+        /**
+         * Remove all of the extender callbacks for a given type.
+         *
+         * @param string $abstract
+         * @return null
+         * @see \Illuminate\Container\Container::forgetExtenders()
+         */
+        public static function forgetExtenders($abstract)
         {
         }
 

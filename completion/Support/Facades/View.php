@@ -130,7 +130,7 @@ namespace Illuminate\Support\Facades {
         /**
          * The parent placeholder for the request.
          *
-         * @var string
+         * @var mixed
          */
         protected static $parentPlaceholder;
 
@@ -292,6 +292,19 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Get the first view that actually exists from the given list.
+         *
+         * @param array $views
+         * @param array $data
+         * @param array $mergeData
+         * @return \Illuminate\Contracts\View\View
+         * @see \Illuminate\View\Factory::first()
+         */
+        public static function first(array $views, $data = [], $mergeData = [])
+        {
+        }
+
+        /**
          * Get the rendered content of the view based on a given condition.
          *
          * @param bool $condition
@@ -334,7 +347,7 @@ namespace Illuminate\Support\Facades {
          * Get the appropriate view engine for the given path.
          *
          * @param string $path
-         * @return \Illuminate\View\Engines\EngineInterface
+         * @return \Illuminate\Contracts\View\Engine
          *
          * @throws \InvalidArgumentException
          * @see \Illuminate\View\Factory::getEngineFromPath()
@@ -769,6 +782,18 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Factory::hasSection()
          */
         public static function hasSection($name)
+        {
+        }
+
+        /**
+         * Get the contents of a section.
+         *
+         * @param string $name
+         * @param string $default
+         * @return mixed
+         * @see \Illuminate\View\Factory::getSection()
+         */
+        public static function getSection($name, $default = null)
         {
         }
 

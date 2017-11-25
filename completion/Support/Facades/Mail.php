@@ -85,6 +85,13 @@ namespace Illuminate\Support\Facades {
         protected $failedRecipients;
 
         /**
+         * The registered string macros.
+         *
+         * @var array
+         */
+        protected static $macros;
+
+        /**
          * Replace the bound instance with a fake.
          *
          * @return null
@@ -274,9 +281,21 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Send a new message using a view.
+         * Render the given message as a view.
          *
          * @param string|array $view
+         * @param array $data
+         * @return \Illuminate\View\View
+         * @see \Illuminate\Mail\Mailer::render()
+         */
+        public static function render($view, array $data = [])
+        {
+        }
+
+        /**
+         * Send a new message using a view.
+         *
+         * @param string|array|MailableContract $view
          * @param array $data
          * @param \Closure|string $callback
          * @return null
@@ -289,14 +308,12 @@ namespace Illuminate\Support\Facades {
         /**
          * Queue a new e-mail message for sending.
          *
-         * @param string|array $view
-         * @param array $data
-         * @param \Closure|string $callback
+         * @param string|array|MailableContract $view
          * @param string|null $queue
          * @return mixed
          * @see \Illuminate\Mail\Mailer::queue()
          */
-        public static function queue($view, array $data = [], $callback = null, $queue = null)
+        public static function queue($view, $queue = null)
         {
         }
 
@@ -305,12 +322,10 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $queue
          * @param string|array $view
-         * @param array $data
-         * @param \Closure|string $callback
          * @return mixed
          * @see \Illuminate\Mail\Mailer::onQueue()
          */
-        public static function onQueue($queue, $view, array $data, $callback)
+        public static function onQueue($queue, $view)
         {
         }
 
@@ -321,27 +336,23 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $queue
          * @param string|array $view
-         * @param array $data
-         * @param \Closure|string $callback
          * @return mixed
          * @see \Illuminate\Mail\Mailer::queueOn()
          */
-        public static function queueOn($queue, $view, array $data, $callback)
+        public static function queueOn($queue, $view)
         {
         }
 
         /**
          * Queue a new e-mail message for sending after (n) seconds.
          *
-         * @param int $delay
-         * @param string|array $view
-         * @param array $data
-         * @param \Closure|string $callback
+         * @param \DateTimeInterface|\DateInterval|int $delay
+         * @param string|array|MailableContract $view
          * @param string|null $queue
          * @return mixed
          * @see \Illuminate\Mail\Mailer::later()
          */
-        public static function later($delay, $view, array $data = [], $callback = null, $queue = null)
+        public static function later($delay, $view, $queue = null)
         {
         }
 
@@ -349,14 +360,12 @@ namespace Illuminate\Support\Facades {
          * Queue a new e-mail message for sending after (n) seconds on the given queue.
          *
          * @param string $queue
-         * @param int $delay
+         * @param \DateTimeInterface|\DateInterval|int $delay
          * @param string|array $view
-         * @param array $data
-         * @param \Closure|string $callback
          * @return mixed
          * @see \Illuminate\Mail\Mailer::laterOn()
          */
-        public static function laterOn($queue, $delay, $view, array $data, $callback)
+        public static function laterOn($queue, $delay, $view)
         {
         }
 
@@ -409,6 +418,41 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Mail\Mailer::setQueue()
          */
         public static function setQueue(\Illuminate\Contracts\Queue\Factory $queue)
+        {
+        }
+
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         *
+         * @return null
+         * @see \Illuminate\Mail\Mailer::macro()
+         */
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Mail\Mailer::mixin()
+         */
+        public static function mixin($mixin)
+        {
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool
+         * @see \Illuminate\Mail\Mailer::hasMacro()
+         */
+        public static function hasMacro($name)
         {
         }
 

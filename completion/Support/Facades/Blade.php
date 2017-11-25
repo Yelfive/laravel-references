@@ -36,11 +36,16 @@ namespace Illuminate\Support\Facades {
         /**
          * All custom "directive" handlers.
          *
-         * This was implemented as a more usable "extend" in 5.1.
-         *
          * @var array
          */
         protected $customDirectives;
+
+        /**
+         * All custom "condition" handlers.
+         *
+         * @var array
+         */
+        protected $conditions;
 
         /**
          * The file currently being compiled.
@@ -92,18 +97,11 @@ namespace Illuminate\Support\Facades {
         protected $footer;
 
         /**
-         * Placeholder to temporary mark the position of verbatim blocks.
-         *
-         * @var string
-         */
-        protected $verbatimPlaceholder;
-
-        /**
-         * Array to temporary store the verbatim blocks found in the template.
+         * Array to temporary store the raw blocks found in the template.
          *
          * @var array
          */
-        protected $verbatimBlocks;
+        protected $rawBlocks;
 
         /**
          * The Filesystem instance.
@@ -118,6 +116,20 @@ namespace Illuminate\Support\Facades {
          * @var string
          */
         protected $cachePath;
+
+        /**
+         * Identifier for the first case in switch statement.
+         *
+         * @var bool
+         */
+        protected $firstCaseInSwitch;
+
+        /**
+         * The default JSON encoding options.
+         *
+         * @var int
+         */
+        private $encodingOptions;
 
         /**
          * The name of the last section that was started.
@@ -288,6 +300,30 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\View\Compilers\BladeCompiler::getExtensions()
          */
         public static function getExtensions()
+        {
+        }
+
+        /**
+         * Register an "if" statement directive.
+         *
+         * @param string $name
+         * @param callable $callback
+         * @return null
+         * @see \Illuminate\View\Compilers\BladeCompiler::if()
+         */
+        public static function if($name, callable $callback)
+        {
+        }
+
+        /**
+         * Check the result of a condition.
+         *
+         * @param string $name
+         * @param array $parameters
+         * @return bool
+         * @see \Illuminate\View\Compilers\BladeCompiler::check()
+         */
+        public static function check($name, $parameters)
         {
         }
 

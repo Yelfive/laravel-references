@@ -58,6 +58,18 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Begin sending a notification to an anonymous notifiable.
+         *
+         * @param string $channel
+         * @param mixed $route
+         * @return \Illuminate\Notifications\AnonymousNotifiable
+         * @see \Illuminate\Support\Facades\Notification::route()
+         */
+        public static function route($channel, $route)
+        {
+        }
+
+        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null

@@ -75,7 +75,7 @@ class RouteRegistrar
      * @param string $name
      * @param string $controller
      * @param array $options
-     * @return null
+     * @return \Illuminate\Routing\PendingResourceRegistration
      * @see \Illuminate\Routing\RouteRegistrar::resource()
      */
     public function resource($name, $controller, array $options = [])
@@ -85,7 +85,7 @@ class RouteRegistrar
     /**
      * Create a route group with shared attributes.
      *
-     * @param \Closure $callback
+     * @param \Closure|string $callback
      * @return null
      * @see \Illuminate\Routing\RouteRegistrar::group()
      */

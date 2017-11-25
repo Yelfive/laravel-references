@@ -387,7 +387,7 @@ namespace Illuminate\Support\Facades {
          * @return null
          * @see \Illuminate\Session\Store::flash()
          */
-        public static function flash($key, $value)
+        public static function flash(string $key, $value = true)
         {
         }
 

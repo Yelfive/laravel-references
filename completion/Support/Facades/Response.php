@@ -312,11 +312,23 @@ namespace Illuminate\Support\Facades {
          * Register a custom macro.
          *
          * @param string $name
-         * @param callable $macro
+         * @param object|callable $macro
+         *
          * @return null
          * @see \Illuminate\Routing\ResponseFactory::macro()
          */
-        public static function macro($name, callable $macro)
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Routing\ResponseFactory::mixin()
+         */
+        public static function mixin($mixin)
         {
         }
 

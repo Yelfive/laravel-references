@@ -3,6 +3,7 @@
 namespace Illuminate\Database\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
+use self;
 use Illuminate\Database\ConnectionResolverInterface;
 use DateTimeInterface;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -60,6 +61,13 @@ class Model
      * @var array
      */
     protected $with;
+
+    /**
+     * The relationship counts that should be eager loaded on every query.
+     *
+     * @var array
+     */
+    protected $withCount;
 
     /**
      * The number of models to return for pagination.
@@ -125,6 +133,13 @@ class Model
     protected $original;
 
     /**
+     * The changed model attributes.
+     *
+     * @var array
+     */
+    protected $changes;
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -173,7 +188,7 @@ class Model
      *
      * @var array
      */
-    protected $events;
+    protected $dispatchesEvents;
 
     /**
      * User exposed observable events.
@@ -412,6 +427,17 @@ class Model
     }
 
     /**
+     * Eager load relations on the model if they are not already eager loaded.
+     *
+     * @param array|string $relations
+     * @return $this
+     * @see \Illuminate\Database\Eloquent\Model::loadMissing()
+     */
+    public function loadMissing($relations)
+    {
+    }
+
+    /**
      * Increment a column's value by a given amount.
      *
      * @param string $column
@@ -643,6 +669,27 @@ class Model
     }
 
     /**
+     * Get a new query builder with no relationships loaded.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @see \Illuminate\Database\Eloquent\Model::newQueryWithoutRelationships()
+     */
+    public function newQueryWithoutRelationships()
+    {
+    }
+
+    /**
+     * Register the global scopes for this builder instance.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @see \Illuminate\Database\Eloquent\Model::registerGlobalScopes()
+     */
+    public function registerGlobalScopes($builder)
+    {
+    }
+
+    /**
      * Get a new query builder that doesn't have any global scopes.
      *
      * @return \Illuminate\Database\Eloquent\Builder|static
@@ -706,7 +753,7 @@ class Model
      * @return \Illuminate\Database\Eloquent\Relations\Pivot
      * @see \Illuminate\Database\Eloquent\Model::newPivot()
      */
-    public function newPivot(\Illuminate\Database\Eloquent\Model $parent, array $attributes, $table, $exists, $using = null)
+    public function newPivot(self $parent, array $attributes, $table, $exists, $using = null)
     {
     }
 
@@ -755,6 +802,16 @@ class Model
     }
 
     /**
+     * Reload the current model instance with fresh attributes from the database.
+     *
+     * @return $this
+     * @see \Illuminate\Database\Eloquent\Model::refresh()
+     */
+    public function refresh()
+    {
+    }
+
+    /**
      * Clone the model into a new, non-existing instance.
      *
      * @param array|null $except
@@ -768,11 +825,22 @@ class Model
     /**
      * Determine if two models have the same ID and belong to the same table.
      *
-     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param \Illuminate\Database\Eloquent\Model|null $model
      * @return bool
      * @see \Illuminate\Database\Eloquent\Model::is()
      */
-    public function is(\Illuminate\Database\Eloquent\Model $model)
+    public function is($model)
+    {
+    }
+
+    /**
+     * Determine if two models are not the same.
+     *
+     * @param \Illuminate\Database\Eloquent\Model|null $model
+     * @return bool
+     * @see \Illuminate\Database\Eloquent\Model::isNot()
+     */
+    public function isNot($model)
     {
     }
 
@@ -964,6 +1032,16 @@ class Model
     }
 
     /**
+     * Get the queueable connection for the entity.
+     *
+     * @return mixed
+     * @see \Illuminate\Database\Eloquent\Model::getQueueableConnection()
+     */
+    public function getQueueableConnection()
+    {
+    }
+
+    /**
      * Get the value of the model's route key.
      *
      * @return mixed
@@ -980,6 +1058,17 @@ class Model
      * @see \Illuminate\Database\Eloquent\Model::getRouteKeyName()
      */
     public function getRouteKeyName()
+    {
+    }
+
+    /**
+     * Retrieve the model for a bound value.
+     *
+     * @param mixed $value
+     * @return \Illuminate\Database\Eloquent\Model|null
+     * @see \Illuminate\Database\Eloquent\Model::resolveRouteBinding()
+     */
+    public function resolveRouteBinding($value)
     {
     }
 
@@ -1411,7 +1500,7 @@ class Model
      * Return a timestamp as DateTime object with time set to 00:00:00.
      *
      * @param mixed $value
-     * @return \Carbon\Carbon
+     * @return \Illuminate\Support\Carbon
      * @see \Illuminate\Database\Eloquent\Model::asDate()
      */
     protected function asDate($value)
@@ -1422,7 +1511,7 @@ class Model
      * Return a timestamp as DateTime object.
      *
      * @param mixed $value
-     * @return \Carbon\Carbon
+     * @return \Illuminate\Support\Carbon
      * @see \Illuminate\Database\Eloquent\Model::asDateTime()
      */
     protected function asDateTime($value)
@@ -1583,6 +1672,17 @@ class Model
     }
 
     /**
+     * Get a subset of the model's attributes.
+     *
+     * @param array|mixed $attributes
+     * @return array
+     * @see \Illuminate\Database\Eloquent\Model::only()
+     */
+    public function only($attributes)
+    {
+    }
+
+    /**
      * Sync the original attributes with the current.
      *
      * @return $this
@@ -1600,6 +1700,16 @@ class Model
      * @see \Illuminate\Database\Eloquent\Model::syncOriginalAttribute()
      */
     public function syncOriginalAttribute($attribute)
+    {
+    }
+
+    /**
+     * Sync the changed attributes.
+     *
+     * @return $this
+     * @see \Illuminate\Database\Eloquent\Model::syncChanges()
+     */
+    public function syncChanges()
     {
     }
 
@@ -1626,6 +1736,29 @@ class Model
     }
 
     /**
+     * Determine if the model or given attribute(s) have been modified.
+     *
+     * @param array|string|null $attributes
+     * @return bool
+     * @see \Illuminate\Database\Eloquent\Model::wasChanged()
+     */
+    public function wasChanged($attributes = null)
+    {
+    }
+
+    /**
+     * Determine if the given attributes were changed.
+     *
+     * @param array $changes
+     * @param array|string|null $attributes
+     * @return bool
+     * @see \Illuminate\Database\Eloquent\Model::hasChanges()
+     */
+    protected function hasChanges($changes, $attributes = null)
+    {
+    }
+
+    /**
      * Get the attributes that have been changed since last sync.
      *
      * @return array
@@ -1636,13 +1769,24 @@ class Model
     }
 
     /**
-     * Determine if the new and old values for a given key are numerically equivalent.
+     * Get the attributes that was changed.
+     *
+     * @return array
+     * @see \Illuminate\Database\Eloquent\Model::getChanges()
+     */
+    public function getChanges()
+    {
+    }
+
+    /**
+     * Determine if the new and old values for a given key are equivalent.
      *
      * @param string $key
+     * @param mixed $current
      * @return bool
-     * @see \Illuminate\Database\Eloquent\Model::originalIsNumericallyEquivalent()
+     * @see \Illuminate\Database\Eloquent\Model::originalIsEquivalent()
      */
-    protected function originalIsNumericallyEquivalent($key)
+    protected function originalIsEquivalent($key, $current)
     {
     }
 
@@ -1798,6 +1942,17 @@ class Model
      * @see \Illuminate\Database\Eloquent\Model::filterModelEventResults()
      */
     protected function filterModelEventResults($result)
+    {
+    }
+
+    /**
+     * Register a retrieved model event with the dispatcher.
+     *
+     * @param \Closure|string $callback
+     * @return null
+     * @see \Illuminate\Database\Eloquent\Model::retrieved()
+     */
+    public static function retrieved($callback)
     {
     }
 
@@ -2100,10 +2255,11 @@ class Model
      * @param string|null $firstKey
      * @param string|null $secondKey
      * @param string|null $localKey
+     * @param string|null $secondLocalKey
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      * @see \Illuminate\Database\Eloquent\Model::hasManyThrough()
      */
-    public function hasManyThrough($related, $through, $firstKey = null, $secondKey = null, $localKey = null)
+    public function hasManyThrough($related, $through, $firstKey = null, $secondKey = null, $localKey = null, $secondLocalKey = null)
     {
     }
 
@@ -2127,13 +2283,15 @@ class Model
      *
      * @param string $related
      * @param string $table
-     * @param string $foreignKey
+     * @param string $foreignPivotKey
+     * @param string $relatedPivotKey
+     * @param string $parentKey
      * @param string $relatedKey
      * @param string $relation
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      * @see \Illuminate\Database\Eloquent\Model::belongsToMany()
      */
-    public function belongsToMany($related, $table = null, $foreignKey = null, $relatedKey = null, $relation = null)
+    public function belongsToMany($related, $table = null, $foreignPivotKey = null, $relatedPivotKey = null, $parentKey = null, $relatedKey = null, $relation = null)
     {
     }
 
@@ -2143,13 +2301,15 @@ class Model
      * @param string $related
      * @param string $name
      * @param string $table
-     * @param string $foreignKey
+     * @param string $foreignPivotKey
+     * @param string $relatedPivotKey
+     * @param string $parentKey
      * @param string $relatedKey
      * @param bool $inverse
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      * @see \Illuminate\Database\Eloquent\Model::morphToMany()
      */
-    public function morphToMany($related, $name, $table = null, $foreignKey = null, $relatedKey = null, $inverse = false)
+    public function morphToMany($related, $name, $table = null, $foreignPivotKey = null, $relatedPivotKey = null, $parentKey = null, $relatedKey = null, $inverse = false)
     {
     }
 
@@ -2159,12 +2319,14 @@ class Model
      * @param string $related
      * @param string $name
      * @param string $table
-     * @param string $foreignKey
+     * @param string $foreignPivotKey
+     * @param string $relatedPivotKey
+     * @param string $parentKey
      * @param string $relatedKey
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      * @see \Illuminate\Database\Eloquent\Model::morphedByMany()
      */
-    public function morphedByMany($related, $name, $table = null, $foreignKey = null, $relatedKey = null)
+    public function morphedByMany($related, $name, $table = null, $foreignPivotKey = null, $relatedPivotKey = null, $parentKey = null, $relatedKey = null)
     {
     }
 
@@ -2365,7 +2527,7 @@ class Model
     /**
      * Get a fresh timestamp for the model.
      *
-     * @return \Carbon\Carbon
+     * @return \Illuminate\Support\Carbon
      * @see \Illuminate\Database\Eloquent\Model::freshTimestamp()
      */
     public function freshTimestamp()
@@ -2626,6 +2788,17 @@ class Model
     }
 
     /**
+     * Create and return an un-saved model instance.
+     *
+     * @param array $attributes
+     * @return \Illuminate\Database\Eloquent\Model
+     * @see \Illuminate\Database\Eloquent\Builder::make()
+     */
+    public static function make(array $attributes = [])
+    {
+    }
+
+    /**
      * Register a new global scope.
      *
      * @param string $identifier
@@ -2681,9 +2854,20 @@ class Model
     }
 
     /**
+     * Add a where clause on the primary key to the query.
+     *
+     * @param mixed $id
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @see \Illuminate\Database\Eloquent\Builder::whereKeyNot()
+     */
+    public static function whereKeyNot($id)
+    {
+    }
+
+    /**
      * Add a basic where clause to the query.
      *
-     * @param array|string|\Closure column
+     * @param array|string|array|\Closure column
      * @param string $operator
      * @param mixed $value
      * @param string $boolean
@@ -2697,7 +2881,7 @@ class Model
     /**
      * Add an "or where" clause to the query.
      *
-     * @param string|\Closure $column
+     * @param \Closure|array|string $column
      * @param string $operator
      * @param mixed $value
      * @return \Illuminate\Database\Eloquent\Builder|static
@@ -2745,7 +2929,7 @@ class Model
     /**
      * Find multiple models by their primary keys.
      *
-     * @param array $ids
+     * @param \Illuminate\Contracts\Support\Arrayable|array $ids
      * @param array $columns
      * @return \Illuminate\Database\Eloquent\Collection
      * @see \Illuminate\Database\Eloquent\Builder::findMany()
@@ -3001,7 +3185,7 @@ class Model
      * Save a new model and return the instance.
      *
      * @param array $attributes
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|$this
      * @see \Illuminate\Database\Eloquent\Builder::create()
      */
     public static function create(array $attributes = [])
@@ -3012,7 +3196,7 @@ class Model
      * Save a new model and return the instance. Allow mass-assignment.
      *
      * @param array $attributes
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|$this
      * @see \Illuminate\Database\Eloquent\Builder::forceCreate()
      */
     public static function forceCreate(array $attributes)
@@ -3118,6 +3302,17 @@ class Model
      * @see \Illuminate\Database\Eloquent\Builder::without()
      */
     public static function without($relations)
+    {
+    }
+
+    /**
+     * Create a new instance of the model being queried.
+     *
+     * @param array $attributes
+     * @return \Illuminate\Database\Eloquent\Model
+     * @see \Illuminate\Database\Eloquent\Builder::newModelInstance()
+     */
+    public static function newModelInstance($attributes = [])
     {
     }
 
@@ -3267,7 +3462,7 @@ class Model
      * Execute the query and get the first result.
      *
      * @param array $columns
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Model|static|null
      * @see \Illuminate\Database\Eloquent\Builder::first()
      */
     public static function first($columns = ['*'])
@@ -3278,12 +3473,65 @@ class Model
      * Apply the callback's query changes if the given "value" is true.
      *
      * @param mixed $value
-     * @param \Closure $callback
-     * @param \Closure $default
+     * @param callable $callback
+     * @param callable $default
      * @return mixed
      * @see \Illuminate\Database\Eloquent\Builder::when()
      */
     public static function when($value, $callback, $default = null)
+    {
+    }
+
+    /**
+     * Pass the query to a given callback.
+     *
+     * @param \Closure $callback
+     * @return \Illuminate\Database\Query\Builder
+     * @see \Illuminate\Database\Eloquent\Builder::tap()
+     */
+    public static function tap($callback)
+    {
+    }
+
+    /**
+     * Apply the callback's query changes if the given "value" is false.
+     *
+     * @param mixed $value
+     * @param callable $callback
+     * @param callable $default
+     * @return mixed
+     * @see \Illuminate\Database\Eloquent\Builder::unless()
+     */
+    public static function unless($value, $callback, $default = null)
+    {
+    }
+
+    /**
+     * Create a new length-aware paginator instance.
+     *
+     * @param \Illuminate\Support\Collection $items
+     * @param int $total
+     * @param int $perPage
+     * @param int $currentPage
+     * @param array $options
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @see \Illuminate\Database\Eloquent\Builder::paginator()
+     */
+    protected static function paginator($items, $total, $perPage, $currentPage, $options)
+    {
+    }
+
+    /**
+     * Create a new simple paginator instance.
+     *
+     * @param \Illuminate\Support\Collection $items
+     * @param int $perPage
+     * @param int $currentPage
+     * @param array $options
+     * @return \Illuminate\Pagination\Paginator
+     * @see \Illuminate\Database\Eloquent\Builder::simplePaginator()
+     */
+    protected static function simplePaginator($items, $perPage, $currentPage, $options)
     {
     }
 
@@ -3346,6 +3594,17 @@ class Model
     }
 
     /**
+     * Add a relationship count / exists condition to the query with an "or".
+     *
+     * @param string $relation
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     * @see \Illuminate\Database\Eloquent\Builder::orDoesntHave()
+     */
+    public static function orDoesntHave($relation)
+    {
+    }
+
+    /**
      * Add a relationship count / exists condition to the query with where clauses.
      *
      * @param string $relation
@@ -3382,6 +3641,18 @@ class Model
      * @see \Illuminate\Database\Eloquent\Builder::whereDoesntHave()
      */
     public static function whereDoesntHave($relation, Closure $callback = null)
+    {
+    }
+
+    /**
+     * Add a relationship count / exists condition to the query with where clauses and an "or".
+     *
+     * @param string $relation
+     * @param \Closure $callback
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     * @see \Illuminate\Database\Eloquent\Builder::orWhereDoesntHave()
+     */
+    public static function orWhereDoesntHave($relation, Closure $callback = null)
     {
     }
 
@@ -3544,8 +3815,8 @@ class Model
      *
      * @param string $table
      * @param string $first
-     * @param string $operator
-     * @param string $second
+     * @param string|null $operator
+     * @param string|null $second
      * @param string $type
      * @param bool $where
      * @return \Illuminate\Database\Query\Builder
@@ -3575,8 +3846,8 @@ class Model
      *
      * @param string $table
      * @param string $first
-     * @param string $operator
-     * @param string $second
+     * @param string|null $operator
+     * @param string|null $second
      * @return \Illuminate\Database\Query\Builder|static
      * @see \Illuminate\Database\Query\Builder::leftJoin()
      */
@@ -3603,8 +3874,8 @@ class Model
      *
      * @param string $table
      * @param string $first
-     * @param string $operator
-     * @param string $second
+     * @param string|null $operator
+     * @param string|null $second
      * @return \Illuminate\Database\Query\Builder|static
      * @see \Illuminate\Database\Query\Builder::rightJoin()
      */
@@ -3630,24 +3901,13 @@ class Model
      * Add a "cross join" clause to the query.
      *
      * @param string $table
-     * @param string $first
-     * @param string $operator
-     * @param string $second
+     * @param string|null $first
+     * @param string|null $operator
+     * @param string|null $second
      * @return \Illuminate\Database\Query\Builder|static
      * @see \Illuminate\Database\Query\Builder::crossJoin()
      */
     public static function crossJoin($table, $first = null, $operator = null, $second = null)
-    {
-    }
-
-    /**
-     * Pass the query to a given callback.
-     *
-     * @param \Closure $callback
-     * @return \Illuminate\Database\Query\Builder
-     * @see \Illuminate\Database\Query\Builder::tap()
-     */
-    public static function tap($callback)
     {
     }
 
@@ -3760,11 +4020,11 @@ class Model
      * Add a raw or where clause to the query.
      *
      * @param string $sql
-     * @param array $bindings
+     * @param mixed $bindings
      * @return \Illuminate\Database\Query\Builder|static
      * @see \Illuminate\Database\Query\Builder::orWhereRaw()
      */
-    public static function orWhereRaw($sql, array $bindings = [])
+    public static function orWhereRaw($sql, $bindings = [])
     {
     }
 
@@ -4161,7 +4421,7 @@ class Model
      * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::addWhereExistsQuery()
      */
-    public static function addWhereExistsQuery(\Illuminate\Database\Query\Builder $query, $boolean = 'and', $not = false)
+    public static function addWhereExistsQuery(self $query, $boolean = 'and', $not = false)
     {
     }
 
@@ -4206,8 +4466,8 @@ class Model
      * Add a "having" clause to the query.
      *
      * @param string $column
-     * @param string $operator
-     * @param string $value
+     * @param string|null $operator
+     * @param string|null $value
      * @param string $boolean
      * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::having()
@@ -4220,8 +4480,8 @@ class Model
      * Add a "or having" clause to the query.
      *
      * @param string $column
-     * @param string $operator
-     * @param string $value
+     * @param string|null $operator
+     * @param string|null $value
      * @return \Illuminate\Database\Query\Builder|static
      * @see \Illuminate\Database\Query\Builder::orHaving()
      */
@@ -4392,7 +4652,7 @@ class Model
     }
 
     /**
-     * Get an array orders with all orders for an given column removed.
+     * Get an array with all orders with a given column removed.
      *
      * @param string $column
      * @return array
@@ -4659,7 +4919,7 @@ class Model
      * Insert a new record and get the value of the primary key.
      *
      * @param array $values
-     * @param string $sequence
+     * @param string|null $sequence
      * @return int
      * @see \Illuminate\Database\Query\Builder::insertGetId()
      */
@@ -4686,6 +4946,16 @@ class Model
      * @see \Illuminate\Database\Query\Builder::truncate()
      */
     public static function truncate()
+    {
+    }
+
+    /**
+     * Create a new query instance for a sub-query.
+     *
+     * @return \Illuminate\Database\Query\Builder
+     * @see \Illuminate\Database\Query\Builder::forSubQuery()
+     */
+    protected static function forSubQuery()
     {
     }
 
@@ -4755,7 +5025,7 @@ class Model
      * @return \Illuminate\Database\Query\Builder
      * @see \Illuminate\Database\Query\Builder::mergeBindings()
      */
-    public static function mergeBindings(\Illuminate\Database\Query\Builder $query)
+    public static function mergeBindings(self $query)
     {
     }
 
@@ -4803,11 +5073,11 @@ class Model
     /**
      * Clone the query without the given properties.
      *
-     * @param array $except
+     * @param array $properties
      * @return static
      * @see \Illuminate\Database\Query\Builder::cloneWithout()
      */
-    public static function cloneWithout(array $except)
+    public static function cloneWithout(array $properties)
     {
     }
 
@@ -4826,11 +5096,23 @@ class Model
      * Register a custom macro.
      *
      * @param string $name
-     * @param callable $macro
+     * @param object|callable $macro
+     *
      * @return null
      * @see \Illuminate\Database\Query\Builder::macro()
      */
-    public static function macro($name, callable $macro)
+    public static function macro($name, $macro)
+    {
+    }
+
+    /**
+     * Mix another object into the class.
+     *
+     * @param object $mixin
+     * @return null
+     * @see \Illuminate\Database\Query\Builder::mixin()
+     */
+    public static function mixin($mixin)
     {
     }
 

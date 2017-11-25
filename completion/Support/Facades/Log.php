@@ -136,7 +136,7 @@ namespace Illuminate\Support\Facades {
          * Create a new log writer instance.
          *
          * @param \Monolog\Logger $monolog
-         * @param \Illuminate\Contracts\Events\Dispatcher $dispatcher
+         * @param \Illuminate\Contracts\Events\Dispatcher|null $dispatcher
          * 
          * @see \Illuminate\Log\Writer::__construct()
          */

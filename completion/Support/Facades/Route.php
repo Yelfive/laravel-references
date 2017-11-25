@@ -304,6 +304,43 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Register a new Fallback route with the router.
+         *
+         * @param \Closure|array|string|null $action
+         * @return \Illuminate\Routing\Route
+         * @see \Illuminate\Routing\Router::fallback()
+         */
+        public static function fallback($action)
+        {
+        }
+
+        /**
+         * Create a redirect from one URI to another.
+         *
+         * @param string $uri
+         * @param string $destination
+         * @param int $status
+         * @return \Illuminate\Routing\Route
+         * @see \Illuminate\Routing\Router::redirect()
+         */
+        public static function redirect($uri, $destination, $status = 301)
+        {
+        }
+
+        /**
+         * Register a new route that returns a view.
+         *
+         * @param string $uri
+         * @param string $view
+         * @param array $data
+         * @return \Illuminate\Routing\Route
+         * @see \Illuminate\Routing\Router::view()
+         */
+        public static function view($uri, $view, $data = [])
+        {
+        }
+
+        /**
          * Register a new route with the given verbs.
          *
          * @param array|string $methods
@@ -333,10 +370,34 @@ namespace Illuminate\Support\Facades {
          * @param string $name
          * @param string $controller
          * @param array $options
-         * @return null
+         * @return \Illuminate\Routing\PendingResourceRegistration
          * @see \Illuminate\Routing\Router::resource()
          */
         public static function resource($name, $controller, array $options = [])
+        {
+        }
+
+        /**
+         * Register an array of API resource controllers.
+         *
+         * @param array $resources
+         * @return null
+         * @see \Illuminate\Routing\Router::apiResources()
+         */
+        public static function apiResources(array $resources)
+        {
+        }
+
+        /**
+         * Route an API resource to a controller.
+         *
+         * @param string $name
+         * @param string $controller
+         * @param array $options
+         * @return \Illuminate\Routing\PendingResourceRegistration
+         * @see \Illuminate\Routing\Router::apiResource()
+         */
+        public static function apiResource($name, $controller, array $options = [])
         {
         }
 
@@ -374,10 +435,21 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Return the response returned by the given route.
+         *
+         * @param string $name
+         * @return mixed
+         * @see \Illuminate\Routing\Router::respondWithRoute()
+         */
+        public static function respondWithRoute($name)
+        {
+        }
+
+        /**
          * Dispatch the request to the application.
          *
          * @param \Illuminate\Http\Request $request
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
          * @see \Illuminate\Routing\Router::dispatch()
          */
         public static function dispatch(Request $request)
@@ -411,10 +483,22 @@ namespace Illuminate\Support\Facades {
          *
          * @param \Symfony\Component\HttpFoundation\Request $request
          * @param mixed $response
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
          * @see \Illuminate\Routing\Router::prepareResponse()
          */
         public static function prepareResponse($request, $response)
+        {
+        }
+
+        /**
+         * Static version of prepareResponse.
+         *
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param mixed $response
+         * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+         * @see \Illuminate\Routing\Router::toResponse()
+         */
+        public static function toResponse($request, $response)
         {
         }
 
@@ -691,21 +775,22 @@ namespace Illuminate\Support\Facades {
         /**
          * Alias for the "currentRouteNamed" method.
          *
+         * @param dynamic $patterns
          * @return bool
          * @see \Illuminate\Routing\Router::is()
          */
-        public static function is()
+        public static function is($patterns)
         {
         }
 
         /**
-         * Determine if the current route matches a given name.
+         * Determine if the current route matches a pattern.
          *
-         * @param string $name
+         * @param dynamic $patterns
          * @return bool
          * @see \Illuminate\Routing\Router::currentRouteNamed()
          */
-        public static function currentRouteNamed($name)
+        public static function currentRouteNamed($patterns)
         {
         }
 
@@ -722,10 +807,11 @@ namespace Illuminate\Support\Facades {
         /**
          * Alias for the "currentRouteUses" method.
          *
+         * @param array ...$patterns
          * @return bool
          * @see \Illuminate\Routing\Router::uses()
          */
-        public static function uses()
+        public static function uses($patterns)
         {
         }
 
@@ -808,11 +894,23 @@ namespace Illuminate\Support\Facades {
          * Register a custom macro.
          *
          * @param string $name
-         * @param callable $macro
+         * @param object|callable $macro
+         *
          * @return null
          * @see \Illuminate\Routing\Router::macro()
          */
-        public static function macro($name, callable $macro)
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Routing\Router::mixin()
+         */
+        public static function mixin($mixin)
         {
         }
 

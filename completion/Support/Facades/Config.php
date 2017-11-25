@@ -141,12 +141,23 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the specified configuration value.
          *
-         * @param string $key
+         * @param array|string $key
          * @param mixed $default
          * @return mixed
          * @see \Illuminate\Config\Repository::get()
          */
         public static function get($key, $default = null)
+        {
+        }
+
+        /**
+         * Get many configuration values.
+         *
+         * @param array $keys
+         * @return array
+         * @see \Illuminate\Config\Repository::getMany()
+         */
+        public static function getMany($keys)
         {
         }
 

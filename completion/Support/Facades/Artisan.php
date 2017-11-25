@@ -186,7 +186,7 @@ namespace Illuminate\Support\Facades {
          * Register a Closure based command with the application.
          *
          * @param string $signature
-         * @param Closure $callback
+         * @param \Closure $callback
          * @return \Illuminate\Foundation\Console\ClosureCommand
          * @see \Illuminate\Foundation\Console\Kernel::command()
          */
@@ -223,7 +223,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $command
          * @param array $parameters
-         * @return null
+         * @return \Illuminate\Foundation\Bus\PendingDispatch
          * @see \Illuminate\Foundation\Console\Kernel::queue()
          */
         public static function queue($command, array $parameters = [])

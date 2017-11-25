@@ -170,7 +170,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if a given ability has been defined.
          *
-         * @param string $ability
+         * @param string|array $ability
          * @return bool
          * @see \Illuminate\Auth\Access\Gate::has()
          */
@@ -189,6 +189,19 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\Access\Gate::define()
          */
         public static function define($ability, $callback)
+        {
+        }
+
+        /**
+         * Define abilities for a resource.
+         *
+         * @param string $name
+         * @param string $class
+         * @param array $abilities
+         * @return \Illuminate\Auth\Access\Gate
+         * @see \Illuminate\Auth\Access\Gate::resource()
+         */
+        public static function resource($name, $class, array $abilities = null)
         {
         }
 
@@ -251,14 +264,26 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Determine if the given ability should be granted for the current user.
+         * Determine if all of the given abilities should be granted for the current user.
          *
-         * @param string $ability
+         * @param iterable|string $abilities
          * @param array|mixed $arguments
          * @return bool
          * @see \Illuminate\Auth\Access\Gate::check()
          */
-        public static function check($ability, $arguments = [])
+        public static function check($abilities, $arguments = [])
+        {
+        }
+
+        /**
+         * Determine if any one of the given abilities should be granted for the current user.
+         *
+         * @param iterable|string $abilities
+         * @param array|mixed $arguments
+         * @return bool
+         * @see \Illuminate\Auth\Access\Gate::any()
+         */
+        public static function any($abilities, $arguments = [])
         {
         }
 
@@ -306,6 +331,26 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Auth\Access\Gate::forUser()
          */
         public static function forUser($user)
+        {
+        }
+
+        /**
+         * Get all of the defined abilities.
+         *
+         * @return array
+         * @see \Illuminate\Auth\Access\Gate::abilities()
+         */
+        public static function abilities()
+        {
+        }
+
+        /**
+         * Get all of the defined policies.
+         *
+         * @return array
+         * @see \Illuminate\Auth\Access\Gate::policies()
+         */
+        public static function policies()
         {
         }
 

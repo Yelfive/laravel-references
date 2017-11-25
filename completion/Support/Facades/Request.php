@@ -11,15 +11,27 @@ namespace Illuminate\Support\Facades {
      */
     class Request
     {
-        const HEADER_FORWARDED = 'forwarded';
+        const HEADER_FORWARDED = 1;
 
-        const HEADER_CLIENT_IP = 'client_ip';
+        const HEADER_X_FORWARDED_FOR = 2;
 
-        const HEADER_CLIENT_HOST = 'client_host';
+        const HEADER_X_FORWARDED_HOST = 4;
 
-        const HEADER_CLIENT_PROTO = 'client_proto';
+        const HEADER_X_FORWARDED_PROTO = 8;
 
-        const HEADER_CLIENT_PORT = 'client_port';
+        const HEADER_X_FORWARDED_PORT = 16;
+
+        const HEADER_X_FORWARDED_ALL = 30;
+
+        const HEADER_X_FORWARDED_AWS_ELB = 26;
+
+        const HEADER_CLIENT_IP = 2;
+
+        const HEADER_CLIENT_HOST = 4;
+
+        const HEADER_CLIENT_PROTO = 8;
+
+        const HEADER_CLIENT_PORT = 16;
 
         const METHOD_HEAD = 'HEAD';
 
@@ -106,6 +118,8 @@ namespace Illuminate\Support\Facades {
          *
          * The other headers are non-standard, but widely used
          * by popular reverse proxies (like Apache mod_proxy or Amazon EC2).
+         *
+         * @deprecated since version 3.3, to be removed in 4.0
          */
         protected static $trustedHeaders;
 
@@ -162,7 +176,7 @@ namespace Illuminate\Support\Facades {
         public $headers;
 
         /**
-         * @var string
+         * @var string|resource
          */
         protected $content;
 
@@ -411,7 +425,7 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the current encoded path info for the request.
+         * Get the current decoded path info for the request.
          *
          * @return string
          * @see \Illuminate\Http\Request::decodedPath()
@@ -445,20 +459,33 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the current request URI matches a pattern.
          *
+         * @param dynamic $patterns
          * @return bool
          * @see \Illuminate\Http\Request::is()
          */
-        public static function is()
+        public static function is($patterns)
+        {
+        }
+
+        /**
+         * Determine if the route name matches a given pattern.
+         *
+         * @param dynamic $patterns
+         * @return bool
+         * @see \Illuminate\Http\Request::routeIs()
+         */
+        public static function routeIs($patterns)
         {
         }
 
         /**
          * Determine if the current request URL and query string matches a pattern.
          *
+         * @param dynamic $patterns
          * @return bool
          * @see \Illuminate\Http\Request::fullUrlIs()
          */
-        public static function fullUrlIs()
+        public static function fullUrlIs($patterns)
         {
         }
 
@@ -493,7 +520,7 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Returns the client IP address.
+         * Get the client IP address.
          *
          * @return string
          * @see \Illuminate\Http\Request::ip()
@@ -503,12 +530,22 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Returns the client IP addresses.
+         * Get the client IP addresses.
          *
          * @return array
          * @see \Illuminate\Http\Request::ips()
          */
         public static function ips()
+        {
+        }
+
+        /**
+         * Get the client user agent.
+         *
+         * @return string
+         * @see \Illuminate\Http\Request::userAgent()
+         */
+        public static function userAgent()
         {
         }
 
@@ -743,8 +780,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Constructor.
-         *
          * @param array $query The GET parameters
          * @param array $request The POST parameters
          * @param array $attributes The request attributes (parameters parsed from the PATH_INFO, ...)
@@ -838,6 +873,9 @@ namespace Illuminate\Support\Facades {
          * You should only list the reverse proxies that you manage directly.
          *
          * @param array $proxies A list of trusted proxies
+         * @param int $trustedHeaderSet A bit field of Request::HEADER_*, to set which headers to trust from your proxies
+         *
+         * @throws \InvalidArgumentException When $trustedHeaderSet is invalid
          * @see \Symfony\Component\HttpFoundation\Request::setTrustedProxies()
          */
         public static function setTrustedProxies(array $proxies)
@@ -851,6 +889,16 @@ namespace Illuminate\Support\Facades {
          * @see \Symfony\Component\HttpFoundation\Request::getTrustedProxies()
          */
         public static function getTrustedProxies()
+        {
+        }
+
+        /**
+         * Gets the set of trusted headers from trusted proxies.
+         *
+         * @return int A bit field of Request::HEADER_* that defines which headers are trusted from your proxies
+         * @see \Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet()
+         */
+        public static function getTrustedHeaderSet()
         {
         }
 
@@ -893,6 +941,8 @@ namespace Illuminate\Support\Facades {
          * @param string $value The header name
          *
          * @throws \InvalidArgumentException
+         *
+         * @deprecated since version 3.3, to be removed in 4.0. Use the $trustedHeaderSet argument of the Request::setTrustedProxies() method instead.
          * @see \Symfony\Component\HttpFoundation\Request::setTrustedHeaderName()
          */
         public static function setTrustedHeaderName($key, $value)
@@ -907,6 +957,8 @@ namespace Illuminate\Support\Facades {
          * @return string The header name
          *
          * @throws \InvalidArgumentException
+         *
+         * @deprecated since version 3.3, to be removed in 4.0. Use the Request::getTrustedHeaderSet() method instead.
          * @see \Symfony\Component\HttpFoundation\Request::getTrustedHeaderName()
          */
         public static function getTrustedHeaderName($key)
@@ -963,8 +1015,8 @@ namespace Illuminate\Support\Facades {
          *
          * Order of precedence: PATH (routing placeholders or custom attributes), GET, BODY
          *
-         * @param string $key the key
-         * @param mixed $default the default value if the parameter key does not exist
+         * @param string $key The key
+         * @param mixed $default The default value if the parameter key does not exist
          *
          * @return mixed
          * @see \Symfony\Component\HttpFoundation\Request::get()
@@ -1046,10 +1098,10 @@ namespace Illuminate\Support\Facades {
          * adding the IP address where it received the request from.
          *
          * If your reverse proxy uses a different header name than "X-Forwarded-For",
-         * ("Client-Ip" for instance), configure it via "setTrustedHeaderName()" with
-         * the "client-ip" key.
+         * ("Client-Ip" for instance), configure it via the $trustedHeaderSet
+         * argument of the Request::setTrustedProxies() method instead.
          *
-         * @return string The client IP address
+         * @return string|null The client IP address
          *
          * @see getClientIps()
          * @see http://en.wikipedia.org/wiki/X-Forwarded-For
@@ -1139,9 +1191,10 @@ namespace Illuminate\Support\Facades {
          * The "X-Forwarded-Port" header must contain the client port.
          *
          * If your reverse proxy uses a different header name than "X-Forwarded-Port",
-         * configure it via "setTrustedHeaderName()" with the "client-port" key.
+         * configure it via via the $trustedHeaderSet argument of the
+         * Request::setTrustedProxies() method instead.
          *
-         * @return string
+         * @return int|string can be a string if fetched from the server bag
          * @see \Symfony\Component\HttpFoundation\Request::getPort()
          */
         public static function getPort()
@@ -1283,8 +1336,8 @@ namespace Illuminate\Support\Facades {
          * The "X-Forwarded-Proto" header must contain the protocol: "https" or "http".
          *
          * If your reverse proxy uses a different header name than "X-Forwarded-Proto"
-         * ("SSL_HTTPS" for instance), configure it via "setTrustedHeaderName()" with
-         * the "client-proto" key.
+         * ("SSL_HTTPS" for instance), configure it via the $trustedHeaderSet
+         * argument of the Request::setTrustedProxies() method instead.
          *
          * @return bool
          * @see \Symfony\Component\HttpFoundation\Request::isSecure()
@@ -1302,11 +1355,12 @@ namespace Illuminate\Support\Facades {
          * The "X-Forwarded-Host" header must contain the client host name.
          *
          * If your reverse proxy uses a different header name than "X-Forwarded-Host",
-         * configure it via "setTrustedHeaderName()" with the "client-host" key.
+         * configure it via the $trustedHeaderSet argument of the
+         * Request::setTrustedProxies() method instead.
          *
          * @return string
          *
-         * @throws \UnexpectedValueException when the host name is invalid
+         * @throws SuspiciousOperationException when the host name is invalid or not trusted
          * @see \Symfony\Component\HttpFoundation\Request::getHost()
          */
         public static function getHost()
@@ -1846,7 +1900,7 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Determine if the request contains a non-empty value for an input item.
+         * Determine if the request contains a given input item key.
          *
          * @param string|array $key
          * @return bool
@@ -1857,12 +1911,45 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Determine if the request contains any of the given inputs.
+         *
+         * @param dynamic $key
+         * @return bool
+         * @see \Illuminate\Http\Request::hasAny()
+         */
+        public static function hasAny($keys)
+        {
+        }
+
+        /**
+         * Determine if the request contains a non-empty value for an input item.
+         *
+         * @param string|array $key
+         * @return bool
+         * @see \Illuminate\Http\Request::filled()
+         */
+        public static function filled($key)
+        {
+        }
+
+        /**
+         * Get the keys for all of the input and files.
+         *
+         * @return array
+         * @see \Illuminate\Http\Request::keys()
+         */
+        public static function keys()
+        {
+        }
+
+        /**
          * Get all of the input and files for the request.
          *
+         * @param array|mixed $keys
          * @return array
          * @see \Illuminate\Http\Request::all()
          */
-        public static function all()
+        public static function all($keys = null)
         {
         }
 
@@ -1901,17 +1988,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Intersect an array of items with the input data.
-         *
-         * @param array|mixed $keys
-         * @return array
-         * @see \Illuminate\Http\Request::intersect()
-         */
-        public static function intersect($keys)
-        {
-        }
-
-        /**
          * Retrieve a query string item from the request.
          *
          * @param string $key
@@ -1920,6 +1996,19 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Http\Request::query()
          */
         public static function query($key = null, $default = null)
+        {
+        }
+
+        /**
+         * Retrieve a request payload item from the request.
+         *
+         * @param string $key
+         * @param string|array|null $default
+         *
+         * @return string|array
+         * @see \Illuminate\Http\Request::post()
+         */
+        public static function post($key = null, $default = null)
         {
         }
 
@@ -1983,11 +2072,23 @@ namespace Illuminate\Support\Facades {
          * Register a custom macro.
          *
          * @param string $name
-         * @param callable $macro
+         * @param object|callable $macro
+         *
          * @return null
          * @see \Illuminate\Http\Request::macro()
          */
-        public static function macro($name, callable $macro)
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Http\Request::mixin()
+         */
+        public static function mixin($mixin)
         {
         }
 

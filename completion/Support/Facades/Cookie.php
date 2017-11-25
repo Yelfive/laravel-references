@@ -48,9 +48,16 @@ namespace Illuminate\Support\Facades {
         protected $secure;
 
         /**
+         * The default SameSite option (if specified).
+         *
+         * @var string
+         */
+        protected $sameSite;
+
+        /**
          * All of the cookies queued for sending.
          *
-         * @var array
+         * @var \Symfony\Component\HttpFoundation\Cookie[]
          */
         protected $queued;
 
@@ -170,10 +177,12 @@ namespace Illuminate\Support\Facades {
          * @param string $domain
          * @param bool $secure
          * @param bool $httpOnly
+         * @param bool $raw
+         * @param string|null $sameSite
          * @return \Symfony\Component\HttpFoundation\Cookie
          * @see \Illuminate\Cookie\CookieJar::make()
          */
-        public static function make($name, $value, $minutes = 0, $path = null, $domain = null, $secure = false, $httpOnly = true)
+        public static function make($name, $value, $minutes = 0, $path = null, $domain = null, $secure = false, $httpOnly = true, $raw = false, $sameSite = null)
         {
         }
 
@@ -186,10 +195,12 @@ namespace Illuminate\Support\Facades {
          * @param string $domain
          * @param bool $secure
          * @param bool $httpOnly
+         * @param bool $raw
+         * @param string|null $sameSite
          * @return \Symfony\Component\HttpFoundation\Cookie
          * @see \Illuminate\Cookie\CookieJar::forever()
          */
-        public static function forever($name, $value, $path = null, $domain = null, $secure = false, $httpOnly = true)
+        public static function forever($name, $value, $path = null, $domain = null, $secure = false, $httpOnly = true, $raw = false, $sameSite = null)
         {
         }
 
@@ -257,17 +268,18 @@ namespace Illuminate\Support\Facades {
          * @param string $path
          * @param string $domain
          * @param bool $secure
+         * @param string $sameSite
          * @return \Illuminate\Cookie\CookieJar
          * @see \Illuminate\Cookie\CookieJar::setDefaultPathAndDomain()
          */
-        public static function setDefaultPathAndDomain($path, $domain, $secure = false)
+        public static function setDefaultPathAndDomain($path, $domain, $secure = false, $sameSite = null)
         {
         }
 
         /**
          * Get the cookies which have been queued for the next request.
          *
-         * @return array
+         * @return \Symfony\Component\HttpFoundation\Cookie[]
          * @see \Illuminate\Cookie\CookieJar::getQueuedCookies()
          */
         public static function getQueuedCookies()

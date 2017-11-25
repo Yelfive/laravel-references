@@ -41,13 +41,25 @@ namespace Illuminate\Support\Facades {
         protected $customCreators;
 
         /**
-         * Replace the given disk with a local, testing disk.
+         * Replace the given disk with a local testing disk.
          *
-         * @param string $disk
+         * @param string|null $disk
+         *
          * @return null
          * @see \Illuminate\Support\Facades\Storage::fake()
          */
-        public static function fake($disk)
+        public static function fake($disk = null)
+        {
+        }
+
+        /**
+         * Replace the given disk with a persistent local testing disk.
+         *
+         * @param string|null $disk
+         * @return null
+         * @see \Illuminate\Support\Facades\Storage::persistentFake()
+         */
+        public static function persistentFake($disk = null)
         {
         }
 

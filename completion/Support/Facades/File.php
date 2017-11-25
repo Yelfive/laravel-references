@@ -177,6 +177,17 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Get the MD5 hash of the file at the given path.
+         *
+         * @param string $path
+         * @return string
+         * @see \Illuminate\Filesystem\Filesystem::hash()
+         */
+        public static function hash($path)
+        {
+        }
+
+        /**
          * Write the contents of a file.
          *
          * @param string $path
@@ -420,10 +431,11 @@ namespace Illuminate\Support\Facades {
          * Get an array of all files in a directory.
          *
          * @param string $directory
-         * @return array
+         * @param bool $hidden
+         * @return \Symfony\Component\Finder\SplFileInfo[]
          * @see \Illuminate\Filesystem\Filesystem::files()
          */
-        public static function files($directory)
+        public static function files($directory, $hidden = false)
         {
         }
 
@@ -432,7 +444,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $directory
          * @param bool $hidden
-         * @return array
+         * @return \Symfony\Component\Finder\SplFileInfo[]
          * @see \Illuminate\Filesystem\Filesystem::allFiles()
          */
         public static function allFiles($directory, $hidden = false)
@@ -519,11 +531,23 @@ namespace Illuminate\Support\Facades {
          * Register a custom macro.
          *
          * @param string $name
-         * @param callable $macro
+         * @param object|callable $macro
+         *
          * @return null
          * @see \Illuminate\Filesystem\Filesystem::macro()
          */
-        public static function macro($name, callable $macro)
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Filesystem\Filesystem::mixin()
+         */
+        public static function mixin($mixin)
         {
         }
 

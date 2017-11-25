@@ -150,6 +150,17 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Create a new encryption key for the given cipher.
+         *
+         * @param string $cipher
+         * @return string
+         * @see \Illuminate\Encryption\Encrypter::generateKey()
+         */
+        public static function generateKey($cipher)
+        {
+        }
+
+        /**
          * Encrypt the given value.
          *
          * @param mixed $value

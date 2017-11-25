@@ -42,6 +42,13 @@ namespace Illuminate\Support\Facades {
         protected $session;
 
         /**
+         * The registered string macros.
+         *
+         * @var array
+         */
+        protected static $macros;
+
+        /**
          * Convert the facade into a Mockery spy.
          *
          * @return null
@@ -285,6 +292,41 @@ namespace Illuminate\Support\Facades {
          * @see \Illuminate\Routing\Redirector::setSession()
          */
         public static function setSession(Store $session)
+        {
+        }
+
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         *
+         * @return null
+         * @see \Illuminate\Routing\Redirector::macro()
+         */
+        public static function macro($name, $macro)
+        {
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return null
+         * @see \Illuminate\Routing\Redirector::mixin()
+         */
+        public static function mixin($mixin)
+        {
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool
+         * @see \Illuminate\Routing\Redirector::hasMacro()
+         */
+        public static function hasMacro($name)
         {
         }
 

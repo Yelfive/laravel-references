@@ -288,13 +288,23 @@ namespace Illuminate\Support\Facades {
         /**
          * Create the user provider implementation for the driver.
          *
-         * @param string $provider
-         * @return \Illuminate\Contracts\Auth\UserProvider
+         * @param string|null $provider
+         * @return \Illuminate\Contracts\Auth\UserProvider|null
          *
          * @throws \InvalidArgumentException
          * @see \Illuminate\Auth\AuthManager::createUserProvider()
          */
-        public static function createUserProvider($provider)
+        public static function createUserProvider($provider = null)
+        {
+        }
+
+        /**
+         * Get the default user provider name.
+         *
+         * @return string
+         * @see \Illuminate\Auth\AuthManager::getDefaultUserProvider()
+         */
+        public static function getDefaultUserProvider()
         {
         }
 

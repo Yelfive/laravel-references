@@ -57,10 +57,11 @@ namespace Illuminate\Support\Facades {
         /**
          * Replace the bound instance with a fake.
          *
+         * @param array|string $eventsToFake
          * @return null
          * @see \Illuminate\Support\Facades\Event::fake()
          */
-        public static function fake()
+        public static function fake($eventsToFake = [])
         {
         }
 
@@ -267,9 +268,9 @@ namespace Illuminate\Support\Facades {
         /**
          * Register an event listener with the dispatcher.
          *
-         * @param string|\Closure $listener
+         * @param \Closure|string $listener
          * @param bool $wildcard
-         * @return mixed
+         * @return \Closure
          * @see \Illuminate\Events\Dispatcher::makeListener()
          */
         public static function makeListener($listener, $wildcard = false)

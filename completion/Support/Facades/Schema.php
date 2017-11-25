@@ -172,6 +172,16 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Drop all tables from the database.
+         *
+         * @return null
+         * @see \Illuminate\Database\Schema\MySqlBuilder::dropAllTables()
+         */
+        public static function dropAllTables()
+        {
+        }
+
+        /**
          * Create a new database Schema manager.
          *
          * @param \Illuminate\Database\Connection $connection

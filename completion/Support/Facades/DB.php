@@ -506,6 +506,17 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Indicate if any records have been modified.
+         *
+         * @param bool $value
+         * @return null
+         * @see \Illuminate\Database\Connection::recordsHaveBeenModified()
+         */
+        public static function recordsHaveBeenModified($value = true)
+        {
+        }
+
+        /**
          * Is Doctrine available?
          *
          * @return bool
@@ -570,7 +581,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Set the PDO connection.
          *
-         * @param \PDO|null $pdo
+         * @param \PDO|\Closure|null $pdo
          * @return \Illuminate\Database\Connection
          * @see \Illuminate\Database\Connection::setPdo()
          */
@@ -581,7 +592,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Set the PDO connection used for reading.
          *
-         * @param \PDO|null $pdo
+         * @param \PDO||\Closure|null $pdo
          * @return \Illuminate\Database\Connection
          * @see \Illuminate\Database\Connection::setReadPdo()
          */

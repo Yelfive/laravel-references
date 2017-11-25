@@ -152,6 +152,29 @@ namespace Illuminate\Support\Facades {
         {
         }
 
+        /**
+         * Resolve the given connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection
+         *
+         * @throws \InvalidArgumentException
+         * @see \Illuminate\Redis\RedisManager::resolve()
+         */
+        public static function resolve($name = null)
+        {
+        }
+
+        /**
+         * Return all of the created connections.
+         *
+         * @return array
+         * @see \Illuminate\Redis\RedisManager::connections()
+         */
+        public static function connections()
+        {
+        }
+
     }
 }
 
