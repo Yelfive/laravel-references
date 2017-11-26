@@ -19,7 +19,7 @@ trait HandleModelTrait
      *      - `increment`, `decrement` to be public
      * @see  \Illuminate\Database\Eloquent\Builder
      *      - __call -> $this->query->$method
-     * @see  Illuminate\Database\Query\Builder
+     * @see  \Illuminate\Database\Query\Builder
      *      - call public methods
      *      - __call -> `whereOrField` `whereAndField`
      *      - try if `whereField` works

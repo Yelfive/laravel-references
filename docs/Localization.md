@@ -9,6 +9,7 @@
 ```
 
 In `zh-CN/messages.php` reads
+
 ```php
 <?php
 
@@ -17,29 +18,35 @@ return [
 ];
 ```
 
-# Choose your locale
+## Choose your locale
+
 `locale` is defined in the `config/app.php` by default
-```
+
+```php
 return [
     'locale' => 'zh-CN'
 ];
 ```
 
-# Message file - Group with `.`
+## Message file - Group with `.`
+
 ```
 echo __('group.translate key');
 ```
+
 Notice the dot(`.`) there, the first dot will divide the translation into
 group and the real translation sentence
 
 If we have a translation file `zh-CN/welcome.php`, and we want to translate `Welcome to China`
 
 It should be called like this
+
 ```php
 echo __('welcome.Welcome to China.');
 ```
 
-# Alias - Namespace with `::`
+## Alias - Namespace with `::`
+
 Namespace here is a path alias for Localization files
 
 ### Defining a namespace

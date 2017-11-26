@@ -5,6 +5,7 @@
  * @date 2017-04-30
  */
 use fk\reference\support\Helper;
+use Illuminate\Support\Facades\App;
 
 /**
  * @var array $namespace
@@ -19,6 +20,16 @@ use fk\reference\support\Helper;
  */
 
 echo "<?php\n";
+
+switch (substr(App::version(), 0, 3)) {
+    case '5.4':
+        $eventProperty = 'events';
+        break;
+    case '5.5':
+    default:
+        $eventProperty = 'dispatchesEvents';
+        break;
+}
 
 ?>
 
@@ -51,6 +62,10 @@ class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
      * @var string Name of the table, without prefix
      */
     public $table = '<?= $tableName ?>';
+
+    public $<?= $eventProperty ?> = [
+        'saving' => \App\Events\ModelSaving::class,
+    ];
 
     public function rules()
     {

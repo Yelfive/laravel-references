@@ -14,6 +14,7 @@ use fk\reference\support\DumperExpression;
 use fk\reference\support\Helper;
 use fk\reference\support\TableSchema;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -148,7 +149,7 @@ QUESTION
 
             // Do not set rules for primary key, for they are always auto increment
             if ($column->columnKey !== 'PRI') {
-                $rules[$column->columnName] = $this->getRules($column);
+                $rules[$column->columnName] = $this->getColumnRules($column);
             }
         }
         $modelName = ucfirst(ColumnSchema::camelCase($table));
@@ -202,10 +203,11 @@ QUESTION
     }
 
     /**
+     * Rule of one column
      * @param ColumnSchema $column
      * @return array
      */
-    protected function getRules($column)
+    protected function getColumnRules($column)
     {
         $returnArray = false;
         $rules = [];
@@ -265,7 +267,7 @@ QUESTION
                 break;
         }
 
-        if (!$column->columnKey === 'UNI') array_unshift($rules, "unique:$column->tableName");
+        if ($column->columnKey === 'UNI') array_unshift($rules, 'unique:' . substr($column->tableName, strlen(DB::getTablePrefix())));
         if (!$column->isNullable && $column->columnDefault === null) array_unshift($rules, 'required');
 
         if (!$rules) $rules[] = '';
