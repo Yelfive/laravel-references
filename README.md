@@ -35,10 +35,33 @@ class AppServiceProvider extends ServiceProvider
     }
 }
 
-```       
+```      
+## Publish
 
-## Call
+```bash
+artisan vendor:publish
+``` 
+
+## Usage
+
+Generate a eloquent model with properties with database constrains (as rules).
 
 ```bash
 artisan reference:model table_name
+```
+
+## Event: Eloquent saving
+
+Register event-listener in your event provider, and then every saving will validate the rules in `Eloquent` first.
+
+**How**
+
+Update `\App\Providers\EventServiceProvider` set `$listen`
+
+```text
+protected $listen = [
+    \App\Events\ModelSaving::class => [
+        \App\Listeners\CheckRules::class,
+    ],
+];
 ```
