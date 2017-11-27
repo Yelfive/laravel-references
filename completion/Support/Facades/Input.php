@@ -2099,6 +2099,15 @@ namespace Illuminate\Support\Facades {
         {
         }
 
+        /**
+         * @param array $rules
+         *
+         * @return \
+         */
+        public static function validate($rules)
+        {
+        }
+
     }
 }
 

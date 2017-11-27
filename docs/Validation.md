@@ -17,6 +17,23 @@ $extension = function (string $field, mixed $value, array $parameters ,\Illumina
 
 ```
 
+## Localization
+
+Add a replacer to replace error message
+
+
+When you have a message like `something is invalid: :invalid_list`, and the `:invalid_list` is calculated after validation,
+that's where the replacer comes in.
+
+```php
+// $validator is the one makes the `passes` or `fails` call
+$validator->addReplacer(string $rule, function (string $message, $attribute, string $rule, array $parameters,\Illuminate\Validation\Validator $validator) use ($invalid) {
+    return str_replace(':invalid', implode(', ', $invalid), $message);
+});
+```
+
+**Reference** \Illuminate\Validation\Concerns\FormatsMessages::makeReplacements
+
 ## Built-in Validators
 
 - Accepted

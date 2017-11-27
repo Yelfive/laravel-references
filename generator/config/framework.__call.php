@@ -34,6 +34,12 @@ return [
             'parameters' => [['mixed', '$value']],
         ],
     ],
+    \Illuminate\Http\Request::class => [
+        [
+            'methods' => 'validate',
+            'parameters' => [['array', '$rules']]
+        ]
+    ],
     \Illuminate\Database\Eloquent\Model::class => \Illuminate\Database\Eloquent\Builder::class,
     \Illuminate\Database\Eloquent\Builder::class => \Illuminate\Database\Query\Builder::class,
     \Illuminate\Database\DatabaseManager::class => \Illuminate\Database\Connection::class,

@@ -220,4 +220,5 @@ return [
     // Normal classes
     \Illuminate\Routing\RouteRegistrar::class,
     \Illuminate\Database\Eloquent\Model::class,
+    \Illuminate\Http\Request::class,
 ];
