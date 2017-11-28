@@ -257,6 +257,9 @@ QUESTION
                     'max:' . $column->characterMaximumLength
                 ];
                 break;
+            case 'text':
+                $rules[] = 'string';
+                break;
             case 'date':
             case 'timestamp':
                 $rules = ['date'];
