@@ -27,3 +27,7 @@ class Say
     see migrations/init, reference staff
 
     see fk/laravel-references/completion/Support/Fluent.php
+
+- Model
+    - relation methods
+    - rules(exists in database)

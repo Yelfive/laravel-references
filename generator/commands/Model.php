@@ -148,7 +148,7 @@ QUESTION
             ];
 
             // Do not set rules for primary key, for they are always auto increment
-            if ($column->columnKey !== 'PRI') {
+            if ($column->columnKey !== 'PRI' || $column->extra !== 'auto_increment') {
                 $rules[$column->columnName] = $this->getColumnRules($column);
             }
         }
