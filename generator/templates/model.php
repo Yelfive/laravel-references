@@ -21,16 +21,6 @@ use Illuminate\Support\Facades\App;
 
 echo "<?php\n";
 
-switch (substr(App::version(), 0, 3)) {
-    case '5.4':
-        $eventProperty = 'events';
-        break;
-    case '5.5':
-    default:
-        $eventProperty = 'dispatchesEvents';
-        break;
-}
-
 ?>
 
 namespace <?= $namespace ?>;
@@ -45,7 +35,7 @@ use <?= $use; ?>;
  * Fields in the table `<?= $tableName ?>`
  *
 <?php foreach ($columns as list($type, $property, $description)): ?>
- * @property <?= $type ?> $<?= $property ?> <?= $description ?><?= "\n" ?>
+ * @property <?= $type ?> $<?= $property ?> <?= trim($description) ?><?= "\n" ?>
 <?php endforeach; ?>
  *
 <?php if($methods): ?>
@@ -62,10 +52,6 @@ class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
      * @var string Name of the table, without prefix
      */
     public $table = '<?= $tableName ?>';
-
-    public $<?= $eventProperty ?> = [
-        'saving' => \App\Events\ModelSaving::class,
-    ];
 
     public function rules()
     {

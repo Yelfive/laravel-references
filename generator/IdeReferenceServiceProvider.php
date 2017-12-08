@@ -86,6 +86,7 @@ TIPS;
             __DIR__ . '/config/' . self::CONFIG_NAMESPACE . '.php' => config_path(self::CONFIG_NAMESPACE . '.php'),
             __DIR__ . '/../Events/ModelSaving.php' => base_path('app/Events/ModelSaving.php'),
             __DIR__ . '/../Listeners/CheckRules.php' => base_path('app/Listeners/CheckRules.php'),
+            __DIR__ . '/../Models/Model.php' => base_path('app/Models/Model.php'),
         ]);
     }
 }
