@@ -35,7 +35,7 @@ use <?= $use; ?>;
  * Fields in the table `<?= $tableName ?>`
  *
 <?php foreach ($columns as list($type, $property, $description)): ?>
- * @property <?= $type ?> $<?= $property ?> <?= trim($description) ?><?= "\n" ?>
+ * @property <?= $type ?> $<?= $property ?><?= $description ? ' ' . trim($description) : '' ?><?= "\n" ?>
 <?php endforeach; ?>
  *
 <?php if($methods): ?>
