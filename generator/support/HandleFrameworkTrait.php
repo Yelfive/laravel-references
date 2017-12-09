@@ -7,8 +7,6 @@
 
 namespace fk\reference\support;
 
-use function MongoDB\is_string_array;
-
 /**
  * @method info(string $message)
  */
@@ -49,9 +47,8 @@ trait HandleFrameworkTrait
 
         if (is_array($classInfo)) $aliasReflectionClass = new \ReflectionClass($classInfo['alias']);
 
-        if (empty($aliasReflectionClass)) {
-            $aliasReflectionClass = $reflectionClass;
-        }
+        if (empty($aliasReflectionClass)) $aliasReflectionClass = $reflectionClass;
+
         $this->targetClassName = $aliasReflectionClass->name;
         $this->setIsStaticMethod($aliasReflectionClass->name);
 
@@ -77,7 +74,9 @@ DOC;
         $this->parseProperties($reflectionClass);
 
         if ($aliasReflectionClass !== $reflectionClass) $this->parseMethods($aliasReflectionClass);
-        $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass);
+        $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass, function (\ReflectionMethod $method) use ($aliasReflectionClass) {
+            return $method->class !== $aliasReflectionClass->name;
+        });
 
         $this->handleExtraCall($reflectionClass->name);
     }

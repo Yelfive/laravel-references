@@ -2,7 +2,7 @@
 
 namespace Illuminate\Routing;
 
-use Illuminate\Routing\Router;
+
 
 
 class RouteRegistrar
@@ -43,92 +43,6 @@ class RouteRegistrar
      * @var array
      */
     protected $aliases;
-
-    /**
-     * Create a new route registrar instance.
-     *
-     * @param \Illuminate\Routing\Router $router
-     * 
-     * @see \Illuminate\Routing\RouteRegistrar::__construct()
-     */
-    public function __construct(Router $router)
-    {
-    }
-
-    /**
-     * Set the value for a given attribute.
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return $this
-     *
-     * @throws \InvalidArgumentException
-     * @see \Illuminate\Routing\RouteRegistrar::attribute()
-     */
-    public function attribute($key, $value)
-    {
-    }
-
-    /**
-     * Route a resource to a controller.
-     *
-     * @param string $name
-     * @param string $controller
-     * @param array $options
-     * @return \Illuminate\Routing\PendingResourceRegistration
-     * @see \Illuminate\Routing\RouteRegistrar::resource()
-     */
-    public function resource($name, $controller, array $options = [])
-    {
-    }
-
-    /**
-     * Create a route group with shared attributes.
-     *
-     * @param \Closure|string $callback
-     * @return null
-     * @see \Illuminate\Routing\RouteRegistrar::group()
-     */
-    public function group($callback)
-    {
-    }
-
-    /**
-     * Register a new route with the given verbs.
-     *
-     * @param array|string $methods
-     * @param string $uri
-     * @param \Closure|array|string|null $action
-     * @return \Illuminate\Routing\Route
-     * @see \Illuminate\Routing\RouteRegistrar::match()
-     */
-    public function match($methods, $uri, $action = null)
-    {
-    }
-
-    /**
-     * Register a new route with the router.
-     *
-     * @param string $method
-     * @param string $uri
-     * @param \Closure|array|string|null $action
-     * @return \Illuminate\Routing\Route
-     * @see \Illuminate\Routing\RouteRegistrar::registerRoute()
-     */
-    protected function registerRoute($method, $uri, $action = null)
-    {
-    }
-
-    /**
-     * Compile the action into an array including the attributes.
-     *
-     * @param \Closure|array|string|null $action
-     * @return array
-     * @see \Illuminate\Routing\RouteRegistrar::compileAction()
-     */
-    protected function compileAction($action)
-    {
-    }
 
     /**
      * @param string $uri

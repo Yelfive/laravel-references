@@ -45,22 +45,27 @@ trait ParseClassTrait
 
         if (!$this->validateDirectory($dir)) return false;
 
-        if (
-            !is_file($filename)
-            || is_file($filename) && (
-                $this->option('overwrite') ||
-                $this->confirm("File [$filename] exits, overwrite?")
-            )
-        ) {
-            fwrite($handler = fopen($filename, 'w'), $content);
-            fclose($handler);
+        if (is_file($filename)) {
+            if (!$this->fileChanged($filename, $content)) {
+                $this->warn("Unchanged: $filename");
+                return false;
+            }
 
-            $this->info("Class `$fullClassName` written");
-            return true;
-        } else {
-            $this->warn('Abort overwriting.');
-            return false;
+            if (!$this->option('overwrite') && !$this->confirm("File [$filename] exits, overwrite?")) {
+                $this->warn('User canceled');
+                return false;
+            }
         }
+        fwrite($handler = fopen($filename, 'w'), $content);
+        fclose($handler);
+
+        $this->info("Class `$fullClassName` written");
+        return true;
+    }
+
+    protected function fileChanged($filename, $content): bool
+    {
+        return md5_file($filename) !== md5($content);
     }
 
     protected function validateDirectory($dir)
