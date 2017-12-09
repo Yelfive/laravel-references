@@ -1201,6 +1201,461 @@ class Request
     }
 
     /**
+     * Determine if the given content types match.
+     *
+     * @param string $actual
+     * @param string $type
+     * @return bool
+     * @see \Illuminate\Http\Request::matchesType()
+     */
+    public static function matchesType($actual, $type)
+    {
+    }
+
+    /**
+     * Determine if the request is sending JSON.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::isJson()
+     */
+    public function isJson()
+    {
+    }
+
+    /**
+     * Determine if the current request probably expects a JSON response.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::expectsJson()
+     */
+    public function expectsJson()
+    {
+    }
+
+    /**
+     * Determine if the current request is asking for JSON in return.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::wantsJson()
+     */
+    public function wantsJson()
+    {
+    }
+
+    /**
+     * Determines whether the current requests accepts a given content type.
+     *
+     * @param string|array $contentTypes
+     * @return bool
+     * @see \Illuminate\Http\Request::accepts()
+     */
+    public function accepts($contentTypes)
+    {
+    }
+
+    /**
+     * Return the most suitable content type from the given array based on content negotiation.
+     *
+     * @param string|array $contentTypes
+     * @return string|null
+     * @see \Illuminate\Http\Request::prefers()
+     */
+    public function prefers($contentTypes)
+    {
+    }
+
+    /**
+     * Determines whether a request accepts JSON.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::acceptsJson()
+     */
+    public function acceptsJson()
+    {
+    }
+
+    /**
+     * Determines whether a request accepts HTML.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::acceptsHtml()
+     */
+    public function acceptsHtml()
+    {
+    }
+
+    /**
+     * Get the data format expected in the response.
+     *
+     * @param string $default
+     * @return string
+     * @see \Illuminate\Http\Request::format()
+     */
+    public function format($default = 'html')
+    {
+    }
+
+    /**
+     * Retrieve an old input item.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::old()
+     */
+    public function old($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Flash the input for the current request to the session.
+     *
+     * @return null
+     * @see \Illuminate\Http\Request::flash()
+     */
+    public function flash()
+    {
+    }
+
+    /**
+     * Flash only some of the input to the session.
+     *
+     * @param array|mixed $keys
+     * @return null
+     * @see \Illuminate\Http\Request::flashOnly()
+     */
+    public function flashOnly($keys)
+    {
+    }
+
+    /**
+     * Flash only some of the input to the session.
+     *
+     * @param array|mixed $keys
+     * @return null
+     * @see \Illuminate\Http\Request::flashExcept()
+     */
+    public function flashExcept($keys)
+    {
+    }
+
+    /**
+     * Flush all of the old input from the session.
+     *
+     * @return null
+     * @see \Illuminate\Http\Request::flush()
+     */
+    public function flush()
+    {
+    }
+
+    /**
+     * Retrieve a server variable from the request.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::server()
+     */
+    public function server($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Determine if a header is set on the request.
+     *
+     * @param string $key
+     * @return bool
+     * @see \Illuminate\Http\Request::hasHeader()
+     */
+    public function hasHeader($key)
+    {
+    }
+
+    /**
+     * Retrieve a header from the request.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::header()
+     */
+    public function header($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Get the bearer token from the request headers.
+     *
+     * @return string|null
+     * @see \Illuminate\Http\Request::bearerToken()
+     */
+    public function bearerToken()
+    {
+    }
+
+    /**
+     * Determine if the request contains a given input item key.
+     *
+     * @param string|array $key
+     * @return bool
+     * @see \Illuminate\Http\Request::exists()
+     */
+    public function exists($key)
+    {
+    }
+
+    /**
+     * Determine if the request contains a given input item key.
+     *
+     * @param string|array $key
+     * @return bool
+     * @see \Illuminate\Http\Request::has()
+     */
+    public function has($key)
+    {
+    }
+
+    /**
+     * Determine if the request contains any of the given inputs.
+     *
+     * @param dynamic $key
+     * @return bool
+     * @see \Illuminate\Http\Request::hasAny()
+     */
+    public function hasAny($keys)
+    {
+    }
+
+    /**
+     * Determine if the request contains a non-empty value for an input item.
+     *
+     * @param string|array $key
+     * @return bool
+     * @see \Illuminate\Http\Request::filled()
+     */
+    public function filled($key)
+    {
+    }
+
+    /**
+     * Determine if the given input key is an empty string for "has".
+     *
+     * @param string $key
+     * @return bool
+     * @see \Illuminate\Http\Request::isEmptyString()
+     */
+    protected function isEmptyString($key)
+    {
+    }
+
+    /**
+     * Get the keys for all of the input and files.
+     *
+     * @return array
+     * @see \Illuminate\Http\Request::keys()
+     */
+    public function keys()
+    {
+    }
+
+    /**
+     * Get all of the input and files for the request.
+     *
+     * @param array|mixed $keys
+     * @return array
+     * @see \Illuminate\Http\Request::all()
+     */
+    public function all($keys = null)
+    {
+    }
+
+    /**
+     * Retrieve an input item from the request.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::input()
+     */
+    public function input($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Get a subset containing the provided keys with values from the input data.
+     *
+     * @param array|mixed $keys
+     * @return array
+     * @see \Illuminate\Http\Request::only()
+     */
+    public function only($keys)
+    {
+    }
+
+    /**
+     * Get all of the input except for a specified array of items.
+     *
+     * @param array|mixed $keys
+     * @return array
+     * @see \Illuminate\Http\Request::except()
+     */
+    public function except($keys)
+    {
+    }
+
+    /**
+     * Retrieve a query string item from the request.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::query()
+     */
+    public function query($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Retrieve a request payload item from the request.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     *
+     * @return string|array
+     * @see \Illuminate\Http\Request::post()
+     */
+    public function post($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Determine if a cookie is set on the request.
+     *
+     * @param string $key
+     * @return bool
+     * @see \Illuminate\Http\Request::hasCookie()
+     */
+    public function hasCookie($key)
+    {
+    }
+
+    /**
+     * Retrieve a cookie from the request.
+     *
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::cookie()
+     */
+    public function cookie($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Get an array of all of the files on the request.
+     *
+     * @return array
+     * @see \Illuminate\Http\Request::allFiles()
+     */
+    public function allFiles()
+    {
+    }
+
+    /**
+     * Convert the given array of Symfony UploadedFiles to custom Laravel UploadedFiles.
+     *
+     * @param array $files
+     * @return array
+     * @see \Illuminate\Http\Request::convertUploadedFiles()
+     */
+    protected function convertUploadedFiles(array $files)
+    {
+    }
+
+    /**
+     * Determine if the uploaded data contains a file.
+     *
+     * @param string $key
+     * @return bool
+     * @see \Illuminate\Http\Request::hasFile()
+     */
+    public function hasFile($key)
+    {
+    }
+
+    /**
+     * Check that the given file is a valid file instance.
+     *
+     * @param mixed $file
+     * @return bool
+     * @see \Illuminate\Http\Request::isValidFile()
+     */
+    protected function isValidFile($file)
+    {
+    }
+
+    /**
+     * Retrieve a file from the request.
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return \Illuminate\Http\UploadedFile|array|null
+     * @see \Illuminate\Http\Request::file()
+     */
+    public function file($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Retrieve a parameter item from a given source.
+     *
+     * @param string $source
+     * @param string $key
+     * @param string|array|null $default
+     * @return string|array
+     * @see \Illuminate\Http\Request::retrieveItem()
+     */
+    protected function retrieveItem($source, $key, $default)
+    {
+    }
+
+    /**
+     * Register a custom macro.
+     *
+     * @param string $name
+     * @param object|callable $macro
+     *
+     * @return null
+     * @see \Illuminate\Http\Request::macro()
+     */
+    public static function macro($name, $macro)
+    {
+    }
+
+    /**
+     * Mix another object into the class.
+     *
+     * @param object $mixin
+     * @return null
+     * @see \Illuminate\Http\Request::mixin()
+     */
+    public static function mixin($mixin)
+    {
+    }
+
+    /**
+     * Checks if macro is registered.
+     *
+     * @param string $name
+     * @return bool
+     * @see \Illuminate\Http\Request::hasMacro()
+     */
+    public static function hasMacro($name)
+    {
+    }
+
+    /**
      * @param array $rules
      *
      * @return \
