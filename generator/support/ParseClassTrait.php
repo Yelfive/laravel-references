@@ -33,9 +33,8 @@ trait ParseClassTrait
 
     protected function write($fullClassName, $content)
     {
-        $basename = substr($fullClassName, strlen('Illuminate\\'));
 
-        $basename = str_replace('\\', '/', $basename);
+        $basename = trim(str_replace('\\', '/', $fullClassName),'/');
 
         $filename = dirname(dirname(__DIR__)) . "/completion/$basename.php";
 

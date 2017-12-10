@@ -2,6 +2,7 @@
 
 namespace Illuminate\Http;
 
+use Closure;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
@@ -241,6 +242,463 @@ class Request
      * @var array
      */
     protected static $macros;
+
+    /**
+     * Create a new Illuminate HTTP request from server variables.
+     *
+     * @return static
+     * @see \Illuminate\Http\Request::capture()
+     */
+    public static function capture()
+    {
+    }
+
+    /**
+     * Return the Request instance.
+     *
+     * @return $this
+     * @see \Illuminate\Http\Request::instance()
+     */
+    public function instance()
+    {
+    }
+
+    /**
+     * Get the request method.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::method()
+     */
+    public function method()
+    {
+    }
+
+    /**
+     * Get the root URL for the application.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::root()
+     */
+    public function root()
+    {
+    }
+
+    /**
+     * Get the URL (no query string) for the request.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::url()
+     */
+    public function url()
+    {
+    }
+
+    /**
+     * Get the full URL for the request.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::fullUrl()
+     */
+    public function fullUrl()
+    {
+    }
+
+    /**
+     * Get the full URL for the request with the added query string parameters.
+     *
+     * @param array $query
+     * @return string
+     * @see \Illuminate\Http\Request::fullUrlWithQuery()
+     */
+    public function fullUrlWithQuery(array $query)
+    {
+    }
+
+    /**
+     * Get the current path info for the request.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::path()
+     */
+    public function path()
+    {
+    }
+
+    /**
+     * Get the current decoded path info for the request.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::decodedPath()
+     */
+    public function decodedPath()
+    {
+    }
+
+    /**
+     * Get a segment from the URI (1 based index).
+     *
+     * @param int $index
+     * @param string|null $default
+     * @return string|null
+     * @see \Illuminate\Http\Request::segment()
+     */
+    public function segment($index, $default = null)
+    {
+    }
+
+    /**
+     * Get all of the segments for the request path.
+     *
+     * @return array
+     * @see \Illuminate\Http\Request::segments()
+     */
+    public function segments()
+    {
+    }
+
+    /**
+     * Determine if the current request URI matches a pattern.
+     *
+     * @param dynamic $patterns
+     * @return bool
+     * @see \Illuminate\Http\Request::is()
+     */
+    public function is($patterns)
+    {
+    }
+
+    /**
+     * Determine if the route name matches a given pattern.
+     *
+     * @param dynamic $patterns
+     * @return bool
+     * @see \Illuminate\Http\Request::routeIs()
+     */
+    public function routeIs($patterns)
+    {
+    }
+
+    /**
+     * Determine if the current request URL and query string matches a pattern.
+     *
+     * @param dynamic $patterns
+     * @return bool
+     * @see \Illuminate\Http\Request::fullUrlIs()
+     */
+    public function fullUrlIs($patterns)
+    {
+    }
+
+    /**
+     * Determine if the request is the result of an AJAX call.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::ajax()
+     */
+    public function ajax()
+    {
+    }
+
+    /**
+     * Determine if the request is the result of an PJAX call.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::pjax()
+     */
+    public function pjax()
+    {
+    }
+
+    /**
+     * Determine if the request is over HTTPS.
+     *
+     * @return bool
+     * @see \Illuminate\Http\Request::secure()
+     */
+    public function secure()
+    {
+    }
+
+    /**
+     * Get the client IP address.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::ip()
+     */
+    public function ip()
+    {
+    }
+
+    /**
+     * Get the client IP addresses.
+     *
+     * @return array
+     * @see \Illuminate\Http\Request::ips()
+     */
+    public function ips()
+    {
+    }
+
+    /**
+     * Get the client user agent.
+     *
+     * @return string
+     * @see \Illuminate\Http\Request::userAgent()
+     */
+    public function userAgent()
+    {
+    }
+
+    /**
+     * Merge new input into the current request's input array.
+     *
+     * @param array $input
+     * @return null
+     * @see \Illuminate\Http\Request::merge()
+     */
+    public function merge(array $input)
+    {
+    }
+
+    /**
+     * Replace the input for the current request.
+     *
+     * @param array $input
+     * @return null
+     * @see \Illuminate\Http\Request::replace()
+     */
+    public function replace(array $input)
+    {
+    }
+
+    /**
+     * Get the JSON payload for the request.
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     * @see \Illuminate\Http\Request::json()
+     */
+    public function json($key = null, $default = null)
+    {
+    }
+
+    /**
+     * Get the input source for the request.
+     *
+     * @return \Symfony\Component\HttpFoundation\ParameterBag
+     * @see \Illuminate\Http\Request::getInputSource()
+     */
+    protected function getInputSource()
+    {
+    }
+
+    /**
+     * Create an Illuminate request from a Symfony instance.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Illuminate\Http\Request
+     * @see \Illuminate\Http\Request::createFromBase()
+     */
+    public static function createFromBase(\Symfony\Component\HttpFoundation\Request $request)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \Illuminate\Http\Request::duplicate()
+     */
+    public function duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
+    {
+    }
+
+    /**
+     * Filter the given array of files, removing any empty values.
+     *
+     * @param mixed $files
+     * @return mixed
+     * @see \Illuminate\Http\Request::filterFiles()
+     */
+    protected function filterFiles($files)
+    {
+    }
+
+    /**
+     * Get the session associated with the request.
+     *
+     * @return \Illuminate\Session\Store
+     *
+     * @throws \RuntimeException
+     * @see \Illuminate\Http\Request::session()
+     */
+    public function session()
+    {
+    }
+
+    /**
+     * Set the session instance on the request.
+     *
+     * @param \Illuminate\Contracts\Session\Session $session
+     * @return null
+     * @see \Illuminate\Http\Request::setLaravelSession()
+     */
+    public function setLaravelSession($session)
+    {
+    }
+
+    /**
+     * Get the user making the request.
+     *
+     * @param string|null $guard
+     * @return mixed
+     * @see \Illuminate\Http\Request::user()
+     */
+    public function user($guard = null)
+    {
+    }
+
+    /**
+     * Get the route handling the request.
+     *
+     * @param string|null $param
+     *
+     * @return \Illuminate\Routing\Route|object|string
+     * @see \Illuminate\Http\Request::route()
+     */
+    public function route($param = null)
+    {
+    }
+
+    /**
+     * Get a unique fingerprint for the request / route / IP address.
+     *
+     * @return string
+     *
+     * @throws \RuntimeException
+     * @see \Illuminate\Http\Request::fingerprint()
+     */
+    public function fingerprint()
+    {
+    }
+
+    /**
+     * Set the JSON payload for the request.
+     *
+     * @param array $json
+     * @return $this
+     * @see \Illuminate\Http\Request::setJson()
+     */
+    public function setJson($json)
+    {
+    }
+
+    /**
+     * Get the user resolver callback.
+     *
+     * @return \Closure
+     * @see \Illuminate\Http\Request::getUserResolver()
+     */
+    public function getUserResolver()
+    {
+    }
+
+    /**
+     * Set the user resolver callback.
+     *
+     * @param \Closure $callback
+     * @return $this
+     * @see \Illuminate\Http\Request::setUserResolver()
+     */
+    public function setUserResolver(Closure $callback)
+    {
+    }
+
+    /**
+     * Get the route resolver callback.
+     *
+     * @return \Closure
+     * @see \Illuminate\Http\Request::getRouteResolver()
+     */
+    public function getRouteResolver()
+    {
+    }
+
+    /**
+     * Set the route resolver callback.
+     *
+     * @param \Closure $callback
+     * @return $this
+     * @see \Illuminate\Http\Request::setRouteResolver()
+     */
+    public function setRouteResolver(Closure $callback)
+    {
+    }
+
+    /**
+     * Get all of the input and files for the request.
+     *
+     * @return array
+     * @see \Illuminate\Http\Request::toArray()
+     */
+    public function toArray()
+    {
+    }
+
+    /**
+     * Determine if the given offset exists.
+     *
+     * @param string $offset
+     * @return bool
+     * @see \Illuminate\Http\Request::offsetExists()
+     */
+    public function offsetExists($offset)
+    {
+    }
+
+    /**
+     * Get the value at the given offset.
+     *
+     * @param string $offset
+     * @return mixed
+     * @see \Illuminate\Http\Request::offsetGet()
+     */
+    public function offsetGet($offset)
+    {
+    }
+
+    /**
+     * Set the value at the given offset.
+     *
+     * @param string $offset
+     * @param mixed $value
+     * @return null
+     * @see \Illuminate\Http\Request::offsetSet()
+     */
+    public function offsetSet($offset, $value)
+    {
+    }
+
+    /**
+     * Remove the value at the given offset.
+     *
+     * @param string $offset
+     * @return null
+     * @see \Illuminate\Http\Request::offsetUnset()
+     */
+    public function offsetUnset($offset)
+    {
+    }
+
+    /**
+     * Check if an input element is set on the request.
+     *
+     * @param string $key
+     * @return bool
+     * @see \Illuminate\Http\Request::__isset()
+     */
+    public function __isset($key)
+    {
+    }
 
     /**
      * @param array $query The GET parameters

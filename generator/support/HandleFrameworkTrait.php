@@ -75,13 +75,13 @@ DOC;
 
         if ($aliasReflectionClass !== $reflectionClass) $this->parseMethods($aliasReflectionClass);
         $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass, function (\ReflectionMethod $method) use ($aliasReflectionClass) {
-            if ($method->class !== $aliasReflectionClass->name) return true;
-
-            foreach ($aliasReflectionClass->getTraits() as $trait) {
-                if ($trait->hasMethod($method->name)) return true;
-            }
-
-            return false;
+            return true;
+//            if ($method->class !== $aliasReflectionClass->name) return true;
+//
+//            foreach ($aliasReflectionClass->getTraits() as $trait) {
+//                if ($trait->hasMethod($method->name)) return true;
+//            }
+//            return false;
         });
 
         $this->handleExtraCall($reflectionClass->name);
