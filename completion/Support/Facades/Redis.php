@@ -135,6 +135,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $driver
          * @param array $config
+         * 
          * @see \Illuminate\Redis\RedisManager::__construct()
          */
         public function __construct($driver, array $config)

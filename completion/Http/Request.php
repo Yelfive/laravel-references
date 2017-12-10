@@ -1046,6 +1046,22 @@ class Request
     }
 
     /**
+     * Returns the protocol version.
+     *
+     * If the application is behind a proxy, the protocol version used in the
+     * requests between the client and the proxy and between the proxy and the
+     * server might be different. This returns the former (from the "Via" header)
+     * if the proxy is trusted (see "setTrustedProxies()"), otherwise it returns
+     * the latter (from the "SERVER_PROTOCOL" server parameter).
+     *
+     * @return string
+     * @see \Symfony\Component\HttpFoundation\Request::getProtocolVersion()
+     */
+    public function getProtocolVersion()
+    {
+    }
+
+    /**
      * Returns the request body content.
      *
      * @param bool $asResource If true, a resource will be returned

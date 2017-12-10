@@ -221,4 +221,5 @@ return [
     \Illuminate\Routing\RouteRegistrar::class,
     \Illuminate\Database\Eloquent\Model::class,
     \Illuminate\Http\Request::class,
+    \fk\utility\Database\Eloquent\Model::class,
 ];

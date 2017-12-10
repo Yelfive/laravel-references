@@ -12,7 +12,7 @@ namespace Illuminate\Support\Facades {
      */
     class App
     {
-        const VERSION = '5.5.21';
+        const VERSION = '5.5.24';
 
         const MASTER_REQUEST = 1;
 
