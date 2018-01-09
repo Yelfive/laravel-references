@@ -297,6 +297,7 @@ QUESTION
             case 'longtext':
             case 'enum':
                 return 'string';
+            case 'date':
             case 'datetime':
             case 'time':
             case 'timestamp':
