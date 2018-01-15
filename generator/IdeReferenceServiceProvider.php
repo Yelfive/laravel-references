@@ -65,8 +65,8 @@ class IdeReferenceServiceProvider extends ServiceProvider
 1. Remember to update your `App\Providers\EventServiceProvider`
 
 protected \$listen = [\033[032m
-    $event => [
-        $listener,
+    \\$event::class => [
+        \\$listener::class,
     ]\033[0m
 ];
 
