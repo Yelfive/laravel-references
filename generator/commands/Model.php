@@ -168,7 +168,11 @@ QUESTION
             'relations' => $relations,
             'uses' => $this->uses,
         ]);
-        $this->write($modelName, $content);
+        if ($this->option('without-writing')) {
+            $this->line($content);
+        } else {
+            $this->write($modelName, $content);
+        }
     }
 
     protected function willUse($class)
@@ -335,7 +339,8 @@ QUESTION
         return [
             ['dir', 'd', InputOption::VALUE_OPTIONAL, 'Directory for the models to be placed', 'App\Models'],
             ['overwrite', null, InputOption::VALUE_NONE, 'Overwrite if model exists when passed'],
-            ['force', 'f', InputOption::VALUE_NONE, 'Force to create model even when no column fetched from database']
+            ['force', 'f', InputOption::VALUE_NONE, 'Force to create model even when no column fetched from database'],
+            ['without-writing', null, InputOption::VALUE_NONE, 'Return the content without writing into file'],
         ];
     }
 

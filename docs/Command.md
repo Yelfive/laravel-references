@@ -28,7 +28,7 @@ class MyCommand extends \Illuminate\Console\Command
     protected function getArguments()
     {
         return [
-            ['ArgumentName', 'ArgumentRule', 'Discription', 'DefaultValue'],
+            ['ArgumentName', 'ArgumentRule', 'Description', 'DefaultValue'],
         ];
     }
 }
