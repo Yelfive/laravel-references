@@ -1,21 +1,39 @@
 # Validation
 
 You can extend a validation by calling
-```php
-\Illuminate\Support\Facades\Validator::extend($rule, $extension, $failedMessage);
-```
 
-and the $extension is callable
+### usage
 
 ```php
 <?php
-
-$extension = function (string $field, $value, array $parameters ,\Illuminate\Validation\Validator $validator) {
-    // return true to indicate passes
-    // return false indicates otherwise
-};
-
+\Illuminate\Support\Facades\Validator::extend($rule, $extension, $failedMessage);
 ```
+
+### parameters
+
+- `$rule` string name of the rule
+
+    ```php
+    <?php
+    $request->validate([
+        'field_name' => ['your custom rule name']
+    ]);
+    ```
+
+- `$extension` is callable
+
+    ```php
+    <?php
+
+    $extension = function (string $field, $value, array $parameters ,\Illuminate\Validation\Validator $validator) {
+        // return true to indicate passes
+        // return false indicates otherwise
+    };
+
+    ```
+
+- `$failedMessage` string set to the `field` when this rule fails
+
 
 ## Localization
 
