@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\App;
  * @var array $rules
  * @var array $dynamicWhere
  * @var array $uses
+ * @var bool $isAbstract
  */
 
 echo "<?php\n";
@@ -45,7 +46,7 @@ use <?= $use; ?>;
  *
 <?php endif; ?>
  */
-class <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
+<?= $isAbstract ? 'abstract class' : 'class' ?> <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
 {
 
     /**

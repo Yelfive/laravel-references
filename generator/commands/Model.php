@@ -7,6 +7,7 @@
 
 namespace fk\reference\commands;
 
+use fk\helpers\Str;
 use fk\reference\exceptions\FileNotFoundException;
 use fk\reference\IdeReferenceServiceProvider;
 use fk\reference\support\ColumnSchema;
@@ -46,7 +47,6 @@ class Model extends Command
     {
         $tables = $this->argument('tables');
         foreach ($tables as $table) {
-            $table = strtolower($table);
             $this->generateModel($table);
         }
     }
@@ -56,7 +56,7 @@ class Model extends Command
         $tmp = sys_get_temp_dir() . '/php_temp';
         file_put_contents($tmp, $content);
         exec(<<<CMD
-diff -y $filename $tmp
+diff $filename $tmp
 CMD
             , $output);
         unlink($tmp);
@@ -87,7 +87,7 @@ QUESTION
 
     protected function write($modelShortName, $content)
     {
-        $file = base_path($this->config('dir')) . "/$modelShortName.php";
+        $file = base_path($this->config('dir')) . ($this->option('abstract') ? '/Contracts' : '') . "/$modelShortName.php";
         $file = str_replace('\\', '/', $file);
         $existedAlready = file_exists($file);
         if (
@@ -117,7 +117,8 @@ QUESTION
                 return;
             }
         }
-        fwrite($handler = fopen($file, 'w'), $content);
+        $handler = fopen($file, 'w');
+        fwrite($handler, $content);
         fclose($handler);
         $this->comment("Model `$modelShortName` " . ($existedAlready ? 'updated.' : 'created.'));
     }
@@ -129,7 +130,11 @@ QUESTION
 
     protected function generateModel($table)
     {
-        $schema = $this->getTableSchema($table);
+        $schema = $this->getTableSchema(strtolower($table));
+        if (!$schema->columns) {
+            $table = Str::toSnakeCase($table);
+            $schema = $this->getTableSchema($table);
+        }
         if (!$schema->columns) {
             $this->alert('No column found, maybe prefix missing ?');
             if ($this->option('force')) {
@@ -138,7 +143,9 @@ QUESTION
                 return;
             }
         }
+        $isAbstract = $this->option('abstract');
         $namespace = $this->config('namespace', 'App\Models');
+        if ($isAbstract) $namespace .= '\Contracts';
 
         $columns = $rules = [];
         foreach ($schema->columns as $column) {
@@ -152,9 +159,9 @@ QUESTION
                 $rules[$column->columnName] = $this->getColumnRules($column);
             }
         }
-        $modelName = ucfirst(ColumnSchema::camelCase($table));
+
+        $modelName = ucfirst(ColumnSchema::camelCase($table)) . ($isAbstract ? 'Contract' : '');
         $baseModelName = $this->config('baseModel', 'App\Models\Model');
-        $this->compareModelNamespace($namespace, $baseModelName);
         // todo add relations
         $relations = [];
         $content = $this->render([
@@ -162,11 +169,12 @@ QUESTION
             'columns' => $columns,
             'methods' => $this->getMethods(),
             'modelName' => $modelName,
-            'baseModelName' => $baseModelName,
+            'baseModelName' => $this->compareModelNamespace($namespace, $baseModelName),
             'rules' => $rules,
             'tableName' => $table,
             'relations' => $relations,
             'uses' => $this->uses,
+            'isAbstract' => $isAbstract
         ]);
         if ($this->option('without-writing')) {
             $this->line($content);
@@ -198,12 +206,21 @@ QUESTION
      * @param string $namespace
      * @param string $model
      */
-    protected function compareModelNamespace($namespace, &$model)
+    protected function compareModelNamespace($namespace, $model)
     {
         $namespace = $namespace . '\\';
         if (strpos($model, $namespace) === 0) {
-            $model = substr($model, strlen($namespace));
+            return substr($model, strlen($namespace));
         }
+        if (strpos($model, '\\') !== false) {
+            /*
+             * $namespace = App\Models\Contracts
+             * $model = App\Models
+             */
+            $this->uses[] = $model;
+            return substr($model, strrpos($model, '\\') + 1);
+        }
+        return $model;
     }
 
     /**
@@ -217,6 +234,7 @@ QUESTION
         $rules = [];
         switch ($column->columnType) {
             case 'tinyint':
+            case 'smallint':
             case 'mediumint':
             case 'int':
             case 'bigint':
@@ -228,6 +246,15 @@ QUESTION
                     } else {
                         $rules[] = 'min:-128';
                         $rules[] = 'max:127';
+                    }
+                }
+                if ($column->columnType === 'smallint') {
+                    if ($column->unsigned) {
+                        $rules[] = 'min:0';
+                        $rules[] = 'max:65535';
+                    } else {
+                        $rules[] = 'min:32768';
+                        $rules[] = 'max:-32767';
                     }
                 } else if ($column->columnType === 'mediumint') {
                     if ($column->unsigned) {
@@ -286,6 +313,7 @@ QUESTION
     {
         switch ($type) {
             case 'tinyint':
+            case 'smallint':
             case 'mediumint':
             case 'int':
             case 'bigint':
@@ -342,6 +370,7 @@ QUESTION
             ['overwrite', null, InputOption::VALUE_NONE, 'Overwrite if model exists when passed'],
             ['force', 'f', InputOption::VALUE_NONE, 'Force to create model even when no column fetched from database'],
             ['without-writing', null, InputOption::VALUE_NONE, 'Return the content without writing into file'],
+            ['abstract', null, InputOption::VALUE_NONE, 'Create an abstract class'],
         ];
     }
 

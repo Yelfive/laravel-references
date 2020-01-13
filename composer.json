@@ -5,5 +5,8 @@
     "psr-4": {
       "fk\\reference\\": "generator"
     }
+  },
+  "require": {
+    "fk/laravel-utility": ">=2.0.16"
   }
 }
