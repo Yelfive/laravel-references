@@ -38,6 +38,11 @@ class Model extends Command
         }
     }
 
+    protected function init()
+    {
+        $this->uses = [];
+    }
+
     protected function generateDocs()
     {
 
@@ -47,6 +52,7 @@ class Model extends Command
     {
         $tables = $this->argument('tables');
         foreach ($tables as $table) {
+            $this->init();
             $this->generateModel($table);
         }
     }
@@ -90,22 +96,25 @@ QUESTION
         $file = base_path($this->config('dir')) . ($this->option('abstract') ? '/Contracts' : '') . "/$modelShortName.php";
         $file = str_replace('\\', '/', $file);
         $existedAlready = file_exists($file);
-        if (
-            $existedAlready
-            &&
-            (
-                $this->option('overwrite') === false
-                || $this->doubleConfirm($modelShortName) !== $modelShortName
-            )
-        ) {
-            if ($this->option('overwrite')) {
-                $this->error("Confirm failed. The answer is `$modelShortName`");
-                sleep(1);
+        // Contract does not need to confirm when overwriting
+        if (!$this->option('abstract')) {
+            if (
+                $existedAlready
+                &&
+                (
+                    $this->option('overwrite') === false
+                    || $this->doubleConfirm($modelShortName) !== $modelShortName
+                )
+            ) {
+                if ($this->option('overwrite')) {
+                    $this->error("Confirm failed. The answer is `$modelShortName`");
+                    sleep(1);
+                }
+                $this->warn("Model `$modelShortName` already exists at : $file");
+                $this->compareModel($file, $content);
+                $this->error('Use option --overwrite if you want to overwrite the existed file.');
+                return;
             }
-            $this->warn("Model `$modelShortName` already exists at : $file");
-            $this->compareModel($file, $content);
-            $this->error('Use option --overwrite if you want to overwrite the existed file.');
-            return;
         }
 
         $dir = dirname($file);
@@ -143,6 +152,7 @@ QUESTION
                 return;
             }
         }
+        $table = $schema->tableName;
         $isAbstract = $this->option('abstract');
         $namespace = $this->config('namespace', 'App\Models');
         if ($isAbstract) $namespace .= '\Contracts';
@@ -187,6 +197,7 @@ QUESTION
     {
         if (!in_array($class, $this->uses)) {
             $this->uses[] = $class;
+            sort($this->uses);
         }
     }
 
@@ -217,7 +228,7 @@ QUESTION
              * $namespace = App\Models\Contracts
              * $model = App\Models
              */
-            $this->uses[] = $model;
+            $this->willUse($model);
             return substr($model, strrpos($model, '\\') + 1);
         }
         return $model;
@@ -301,8 +312,15 @@ QUESTION
                 break;
         }
 
-        if ($column->columnKey === 'UNI') array_unshift($rules, 'unique:' . substr($column->tableName, strlen(DB::getTablePrefix())));
-        if (!$column->isNullable && $column->columnDefault === null) array_unshift($rules, 'required');
+        if ($column->columnKey === 'UNI') {
+            $this->willUse(Rule::class);
+            array_unshift($rules, new DumperExpression('Rule::unique($this->table)->ignore($this->id)'));
+        }
+        if ($column->isNullable) {
+            array_unshift($rules, 'nullable');
+        } else if ($column->columnDefault === null) {
+            array_unshift($rules, 'required');
+        }
 
         if (!$rules) $rules[] = '';
 
@@ -359,7 +377,7 @@ QUESTION
     protected function getArguments()
     {
         return [
-            ['tables', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'Name(s) of the table']
+            ['tables', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'Name(s)/Model(s) for the table']
         ];
     }
 
