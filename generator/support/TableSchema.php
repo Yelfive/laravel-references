@@ -27,7 +27,7 @@ class TableSchema
     {
         $this->tablePrefix = DB::getTablePrefix();
         $this->databaseName = DB::getDatabaseName();
-        $this->tableName = "$this->tablePrefix$table";
+        $this->tableName = "{$this->tablePrefix}{$table}";
         $this->columns = DB::select("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='$this->databaseName' AND TABLE_NAME ='$this->tableName'");
         $this->intoColumnSchema();
     }

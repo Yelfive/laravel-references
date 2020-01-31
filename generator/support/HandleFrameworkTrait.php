@@ -7,6 +7,10 @@
 
 namespace fk\reference\support;
 
+use ReflectionClass;
+use ReflectionException;
+use ReflectionMethod;
+
 /**
  * @method info(string $message)
  */
@@ -19,6 +23,7 @@ trait HandleFrameworkTrait
         $count = -1;
         foreach ($classes as $k => $classInfo) {
             $content = $this->docForClass($classInfo);
+            if (!$content) continue;
             $written = $this->write(is_array($classInfo) ? $classInfo['alias'] : $classInfo, $content);
             $count += $written ? 1 : 0;
         }
@@ -33,19 +38,27 @@ trait HandleFrameworkTrait
      */
     protected function docForClass($classInfo)
     {
-        $this->parse($classInfo);
+        try {
+            $this->parse($classInfo);
+        } catch (ReflectionException $e) {
+            return '';
+        }
         return $this->metaToString();
     }
 
+    /**
+     * @param $classInfo
+     * @throws ReflectionException
+     */
     protected function parse($classInfo)
     {
         $this->initMeta();
 
         $classWithNamespace = $this->extractClassName($classInfo);
 
-        $reflectionClass = new \ReflectionClass($classWithNamespace);
+        $reflectionClass = new ReflectionClass($classWithNamespace);
 
-        if (is_array($classInfo)) $aliasReflectionClass = new \ReflectionClass($classInfo['alias']);
+        if (is_array($classInfo)) $aliasReflectionClass = new ReflectionClass($classInfo['alias']);
 
         if (empty($aliasReflectionClass)) $aliasReflectionClass = $reflectionClass;
 
@@ -74,7 +87,7 @@ DOC;
         $this->parseProperties($reflectionClass);
 
         if ($aliasReflectionClass !== $reflectionClass) $this->parseMethods($aliasReflectionClass);
-        $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass, function (\ReflectionMethod $method) use ($aliasReflectionClass) {
+        $this->parseMethods($reflectionClass, $aliasReflectionClass !== $reflectionClass, function (ReflectionMethod $method) use ($aliasReflectionClass) {
             return true;
 //            if ($method->class !== $aliasReflectionClass->name) return true;
 //
@@ -97,7 +110,7 @@ DOC;
             if (is_string($info) || $this->isIndexedArray($info)) {
                 $infoArray = (array)$info;
                 foreach ($infoArray as $info) {
-                    $rc = new \ReflectionClass($info);
+                    $rc = new ReflectionClass($info);
                     $this->parseMethods($rc, $this->isStaticMethod);
                     $accessor = $rc->name;
                 }

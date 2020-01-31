@@ -9,6 +9,7 @@ namespace fk\reference\commands;
 
 use fk\helpers\Str;
 use fk\reference\exceptions\FileNotFoundException;
+use fk\reference\exceptions\InvalidVariableException;
 use fk\reference\IdeReferenceServiceProvider;
 use fk\reference\support\ColumnSchema;
 use fk\reference\support\DumperExpression;
@@ -53,7 +54,7 @@ class Model extends Command
         $tables = $this->argument('tables');
         foreach ($tables as $table) {
             $this->init();
-            $this->generateModel($table);
+            $this->generate($table);
         }
     }
 
@@ -129,7 +130,7 @@ QUESTION
         $handler = fopen($file, 'w');
         fwrite($handler, $content);
         fclose($handler);
-        $this->comment("Model `$modelShortName` " . ($existedAlready ? 'updated.' : 'created.'));
+        $this->comment(sprintf("%s `%s` %s", $this->option('abstract') ? 'Contract' : 'Model', $modelShortName, ($existedAlready ? 'updated.' : 'created.')));
     }
 
     protected function config($name, $default = '')
@@ -137,12 +138,12 @@ QUESTION
         return config(IdeReferenceServiceProvider::CONFIG_NAMESPACE . ".model.$name", $default);
     }
 
-    protected function generateModel($table)
+    protected function generate($tableWithoutPrefix)
     {
-        $schema = $this->getTableSchema(strtolower($table));
+        $schema = $this->getTableSchema(strtolower($tableWithoutPrefix));
         if (!$schema->columns) {
-            $table = Str::toSnakeCase($table);
-            $schema = $this->getTableSchema($table);
+            $tableWithoutPrefix = Str::toSnakeCase($tableWithoutPrefix);
+            $schema = $this->getTableSchema($tableWithoutPrefix);
         }
         if (!$schema->columns) {
             $this->alert('No column found, maybe prefix missing ?');
@@ -152,7 +153,7 @@ QUESTION
                 return;
             }
         }
-        $table = $schema->tableName;
+        $tableWithoutPrefix = substr($schema->tableName, strlen(DB::getTablePrefix()));
         $isAbstract = $this->option('abstract');
         $namespace = $this->config('namespace', 'App\Models');
         if ($isAbstract) $namespace .= '\Contracts';
@@ -170,7 +171,7 @@ QUESTION
             }
         }
 
-        $modelName = ucfirst(ColumnSchema::camelCase($table)) . ($isAbstract ? 'Contract' : '');
+        $modelName = ucfirst(ColumnSchema::camelCase($tableWithoutPrefix)) . ($isAbstract ? 'Contract' : '');
         $baseModelName = $this->config('baseModel', 'App\Models\Model');
         // todo add relations
         $relations = [];
@@ -181,7 +182,8 @@ QUESTION
             'modelName' => $modelName,
             'baseModelName' => $this->compareModelNamespace($namespace, $baseModelName),
             'rules' => $rules,
-            'tableName' => $table,
+            'fullTableName' => $schema->tableName,
+            'tableName' => $tableWithoutPrefix,
             'relations' => $relations,
             'uses' => $this->uses,
             'isAbstract' => $isAbstract
@@ -190,6 +192,53 @@ QUESTION
             $this->line($content);
         } else {
             $this->write($modelName, $content);
+        }
+
+        if ($this->option('abstract')) {
+            $this->generateModelIfNotExists($namespace, $tableWithoutPrefix);
+        }
+    }
+
+    protected function concatPath(...$partials)
+    {
+        if (is_array($partials[0])) $partials = $partials[0];
+
+        // If the first element starts with a DIRECTORY_SEPARATOR, it must be an absolute path
+        // otherwise, it's a relative one
+        $prefix = in_array($partials[0][0], ['\\', '/']) ? DIRECTORY_SEPARATOR : '';
+
+        return $prefix . implode(DIRECTORY_SEPARATOR, array_map(
+                function ($part) {
+                    // Remove redundant DIRECTORY_SEPARATOR
+                    return trim(str_replace('\\', DIRECTORY_SEPARATOR, $part), '/\\');
+                },
+                $partials
+            ));
+    }
+
+    protected function generateModelIfNotExists($namespace, $table)
+    {
+        $namespacePartials = explode('\\', $namespace);
+        array_pop($namespacePartials);
+        $namespace = implode('\\', $namespacePartials);
+        $model = ucfirst(ColumnSchema::camelCase($table));
+        $filename = $this->concatPath(base_path(), $this->config('dir'), "{$model}.php");
+        if (file_exists($filename)) {
+            $this->line(sprintf('<comment>Skipping</comment> <info>%s</info>, exited already.', substr($filename, strlen(base_path()) + 1)));
+            return false;
+        } else {
+            file_put_contents($filename, <<<PHP
+<?php
+
+namespace {$namespace};
+
+class {$model} extends Contracts\\{$model}Contract
+{
+}
+PHP
+            );
+            $this->line("Model <info>$model</info> created.");
+            return true;
         }
     }
 
@@ -216,6 +265,7 @@ QUESTION
      *  $model = 'Model';
      * @param string $namespace
      * @param string $model
+     * @return false|string
      */
     protected function compareModelNamespace($namespace, $model)
     {
@@ -238,6 +288,7 @@ QUESTION
      * Rule of one column
      * @param ColumnSchema $column
      * @return array
+     * @throws InvalidVariableException
      */
     protected function getColumnRules($column)
     {
@@ -365,8 +416,7 @@ QUESTION
 
         ob_start();
         include $path;
-        $content = ob_get_clean();
-        return $content;
+        return ob_get_clean();
     }
 
     protected function getTableSchema($table)

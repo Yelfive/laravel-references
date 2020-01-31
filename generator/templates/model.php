@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\App;
  * @var array $columns
  * @var array $methods
  * @var string $modelName
+ * @var string $fullTableName
  * @var string $tableName
  * @var string $baseModelName
  * @var array $rules
@@ -33,7 +34,7 @@ use <?= $use; ?>;
 <?php endif; ?>
 
 /**
- * Fields in the table `<?= $tableName ?>`
+ * Fields in the table `<?= $fullTableName ?>`
  *
 <?php foreach ($columns as list($type, $property, $description)): ?>
  * @property <?= $type ?> $<?= $property ?><?= $description ? ' ' . trim($description) : '' ?><?= "\n" ?>

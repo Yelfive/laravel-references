@@ -8,6 +8,11 @@
 namespace fk\reference\support;
 
 use fk\reference\exceptions\InvalidVariableException;
+use ReflectionClass;
+use ReflectionException;
+use ReflectionMethod;
+use ReflectionProperty;
+use ReflectionType;
 
 trait ParseClassTrait
 {
@@ -31,31 +36,37 @@ trait ParseClassTrait
         ];
     }
 
+    /**
+     * @param $fullClassName
+     * @param $content
+     * @return bool
+     * @throws InvalidVariableException
+     */
     protected function write($fullClassName, $content)
     {
 
-        $basename = trim(str_replace('\\', '/', $fullClassName),'/');
+        $basename = trim(str_replace('\\', '/', $fullClassName), '/');
 
-        $filename = dirname(dirname(__DIR__)) . "/completion/$basename.php";
+        $destination = rtrim(config('ide-reference.completion.destination', dirname(dirname(__DIR__)) . '/completion'), '/') . "/$basename.php";
 
-        if (is_dir($filename)) throw new InvalidVariableException("Failed to write: The destination is a directory. $filename");
+        if (is_dir($destination)) throw new InvalidVariableException("Failed to write: The destination is a directory. $destination");
 
-        $dir = dirname($filename);
+        $dir = dirname($destination);
 
         if (!$this->validateDirectory($dir)) return false;
 
-        if (is_file($filename)) {
-            if (!$this->fileChanged($filename, $content)) {
-                $this->warn("Unchanged: $filename");
+        if (is_file($destination)) {
+            if (!$this->fileChanged($destination, $content)) {
+                $this->warn("Unchanged: $destination");
                 return false;
             }
 
-            if (!$this->option('overwrite') && !$this->confirm("File [$filename] exits, overwrite?")) {
+            if (!$this->option('overwrite') && !$this->confirm("File [$destination] exits, overwrite?")) {
                 $this->warn('User canceled');
                 return false;
             }
         }
-        fwrite($handler = fopen($filename, 'w'), $content);
+        fwrite($handler = fopen($destination, 'w'), $content);
         fclose($handler);
 
         $this->info("Class `$fullClassName` written");
@@ -67,6 +78,11 @@ trait ParseClassTrait
         return md5_file($filename) !== md5($content);
     }
 
+    /**
+     * @param $dir
+     * @return bool
+     * @throws InvalidVariableException
+     */
     protected function validateDirectory($dir)
     {
         if (file_exists($dir)) {
@@ -134,12 +150,16 @@ trait ParseClassTrait
         return implode($glue, $pieces);
     }
 
-    protected function parseClassName(\ReflectionClass $reflectionClass)
+    protected function parseClassName(ReflectionClass $reflectionClass)
     {
         $this->meta['class_name'] = $reflectionClass->getShortName();
     }
 
-    protected function parseConstants(\ReflectionClass $reflectionClass)
+    /**
+     * @param ReflectionClass $reflectionClass
+     * @throws InvalidVariableException
+     */
+    protected function parseConstants(ReflectionClass $reflectionClass)
     {
         foreach ($reflectionClass->getConstants() as $constant => $value) {
             $value = Helper::dump($value, true);
@@ -150,18 +170,18 @@ DOC;
         }
     }
 
-    protected function parseNamespace(\ReflectionClass $reflectionClass)
+    protected function parseNamespace(ReflectionClass $reflectionClass)
     {
         $this->meta['namespace'] = $reflectionClass->getNamespaceName();
     }
 
-    protected function parseClassDoc(\ReflectionClass $reflectionClass)
+    protected function parseClassDoc(ReflectionClass $reflectionClass)
     {
         $this->meta['class_doc'] = $reflectionClass->getDocComment();
     }
 
     /**
-     * @param \ReflectionClass $reflectionClass
+     * @param ReflectionClass $reflectionClass
      */
     protected function parseProperties($reflectionClass)
     {
@@ -180,7 +200,7 @@ DOC;
         }
     }
 
-    protected function propertyPrivacy(\ReflectionProperty $property)
+    protected function propertyPrivacy(ReflectionProperty $property)
     {
         if ($property->isProtected()) {
             return 'protected';
@@ -192,7 +212,7 @@ DOC;
         return '';
     }
 
-    protected function getMethodDocument(\ReflectionMethod $method)
+    protected function getMethodDocument(ReflectionMethod $method)
     {
         $raw = $method->getDocComment();
 
@@ -205,7 +225,7 @@ DOC;
                 $params = $config[$method->name];
                 if (!is_array($params)) break;
                 foreach ($params as $param => $types) {
-                    $raw = preg_replace("#@param +([\w\|\\\\]+) +\\$$param#", "@param $types|$1 $param", $raw);
+                    $raw = preg_replace("#@param +([\w|\\\\]+) +\\$$param#", "@param $types|$1 $param", $raw);
                 }
             }
         }
@@ -213,11 +233,13 @@ DOC;
     }
 
     /**
-     * @param \ReflectionClass $reflectionClass
+     * @param ReflectionClass $reflectionClass
      * @param bool $forceStatic
      * @param null|callable $condition
+     * @throws InvalidVariableException
+     * @throws ReflectionException
      */
-    protected function parseMethods(\ReflectionClass $reflectionClass, $forceStatic = false, $condition = null)
+    protected function parseMethods(ReflectionClass $reflectionClass, $forceStatic = false, $condition = null)
     {
         $methods = $reflectionClass->getMethods();
 
@@ -248,11 +270,11 @@ DOC;
     }
 
     /**
-     * @param \ReflectionMethod $method
+     * @param ReflectionMethod $method
      * @param bool|callable $forceStatic
      * @return string
      */
-    protected function methodStatic(\ReflectionMethod $method, $forceStatic = false): string
+    protected function methodStatic(ReflectionMethod $method, $forceStatic = false): string
     {
         if (is_callable($forceStatic)) $forceStatic = $forceStatic($method);
 
@@ -262,7 +284,7 @@ DOC;
         return $forceStatic || $method->isStatic() ? 'static ' : '';
     }
 
-    protected function methodDoc(\ReflectionMethod $method): string
+    protected function methodDoc(ReflectionMethod $method): string
     {
         $rawDoc = $this->getMethodDocument($method);
         $doc = [];
@@ -288,7 +310,7 @@ DOC;
         return $docString;
     }
 
-    protected function skipMethod(\ReflectionMethod $method): bool
+    protected function skipMethod(ReflectionMethod $method): bool
     {
         return $method->isPrivate() || in_array($method->name, [
                 '__call', '__callStatic', '__toString',
@@ -296,7 +318,7 @@ DOC;
             ]);
     }
 
-    protected function methodPrivacy(\ReflectionMethod $method)
+    protected function methodPrivacy(ReflectionMethod $method)
     {
         if ($method->isProtected()) {
             return 'protected';
@@ -306,7 +328,13 @@ DOC;
         return '';
     }
 
-    protected function parameters(\ReflectionMethod $method): string
+    /**
+     * @param ReflectionMethod $method
+     * @return string
+     * @throws InvalidVariableException
+     * @throws ReflectionException
+     */
+    protected function parameters(ReflectionMethod $method): string
     {
         $parameters = [];
         foreach ($method->getParameters() as $parameter) {
@@ -318,8 +346,8 @@ DOC;
 
     protected function parameterType($reflectionType): string
     {
-        if ($reflectionType instanceof \ReflectionType) {
-            $type = $reflectionType->__toString();
+        if ($reflectionType instanceof ReflectionType) {
+            $type = version_compare(PHP_VERSION, '7.1', '>=') ? $reflectionType->getName() : $reflectionType->__toString();
 
             if ($reflectionType->isBuiltin()) return $type . ' ';
 
@@ -329,7 +357,7 @@ DOC;
             if ($shortType === $this->meta['class_name'] || !isset($uses[$type]) && in_array($shortType, $uses->getData())) {
                 return "\\$type ";
             } else {
-                $this->meta['uses'][$type] = $shortType;
+                if ($shortType !== 'self') $this->meta['uses'][$type] = $shortType;
                 return "$shortType ";
             }
         } else {

@@ -19,4 +19,14 @@ return [
         'preferArrayRules' => true,
         'except' => ['updated_at', 'created_at', 'deleted']
     ],
+    'completion' => [
+        /*
+         +----------------------------------------------------------------
+         | Where the ide-completion should be generated
+         +----------------------------------------------------------------
+         | This is a directory to hold all the generated files,
+         | which should never be autoload-able.
+         */
+        'destination' => __DIR__ . '/../app/Documents/completion',
+    ]
 ];
