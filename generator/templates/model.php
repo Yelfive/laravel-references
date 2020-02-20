@@ -4,6 +4,7 @@
  * @author Felix Huang <yelfivehuang@gmail.com>
  * @date 2017-04-30
  */
+
 use fk\reference\support\Helper;
 use Illuminate\Support\Facades\App;
 
@@ -47,7 +48,7 @@ use <?= $use; ?>;
  *
 <?php endif; ?>
  */
-<?= $isAbstract ? 'abstract class' : 'class' ?> <?= $modelName ?> extends <?= $baseModelName ?> <?= "\n" ?>
+<?= $isAbstract ? 'abstract class' : 'class' ?> <?= $modelName ?> extends <?= $baseModelName ?><?= "\n" ?>
 {
 
     /**
@@ -63,5 +64,4 @@ use <?= $use; ?>;
 <?php endforeach; ?>
         ];
     }
-
 }

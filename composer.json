@@ -9,7 +9,9 @@
   "require": {
     "fk/laravel-utility": ">=2.0.16"
   },
-  "branch-alias": {
-    "dev-dev": "2.x-dev"
+  "extra": {
+    "branch-alias": {
+      "dev-dev": "2.x-dev"
+    }
   }
 }
