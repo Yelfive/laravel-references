@@ -16,6 +16,7 @@ use fk\reference\support\DumperExpression;
 use fk\reference\support\Helper;
 use fk\reference\support\TableSchema;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Symfony\Component\Console\Input\InputArgument;
@@ -159,7 +160,9 @@ QUESTION
         if ($isAbstract) $namespace .= '\Contracts';
 
         $columns = $rules = [];
+        $useSoftDeletes = false;
         foreach ($schema->columns as $column) {
+            if ($column->columnName === 'deleted_at') $useSoftDeletes = true;
             $description = ($column->columnDefault === null ? '' : "[Default " . Helper::dump($column->columnDefault, true) . "] ") . $column->columnComment;
             $columns[] = [
                 $this->getColumnType($column->columnType), $column->columnName, $description
@@ -195,7 +198,7 @@ QUESTION
         }
 
         if ($this->option('abstract')) {
-            $this->generateModelIfNotExists($namespace, $tableWithoutPrefix);
+            $this->generateModelIfNotExists($namespace, $tableWithoutPrefix, $useSoftDeletes);
         }
     }
 
@@ -216,7 +219,7 @@ QUESTION
             ));
     }
 
-    protected function generateModelIfNotExists($namespace, $table)
+    protected function generateModelIfNotExists(string $namespace, string $table, bool $useSoftDeletes)
     {
         $namespacePartials = explode('\\', $namespace);
         array_pop($namespacePartials);
@@ -227,14 +230,25 @@ QUESTION
             $this->line(sprintf('<comment>Skipping</comment> <info>%s</info>, exited already.', substr($filename, strlen(base_path()) + 1)));
             return false;
         } else {
-            file_put_contents($filename, <<<PHP
+            if ($useSoftDeletes) {
+                $useHead = "\nuse " . SoftDeletes::class . ";\n";
+                $useBody = "\n    use SoftDeletes;";
+            } else {
+                $useHead = '';
+                $useBody = '';
+            }
+
+            file_put_contents(
+                $filename,
+                <<<PHP
 <?php
 
 namespace {$namespace};
-
+{$useHead}
 class {$model} extends Contracts\\{$model}Contract
-{
+{{$useBody}
 }
+
 PHP
             );
             $this->line("Model <info>$model</info> created.");
